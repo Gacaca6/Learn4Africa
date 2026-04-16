@@ -1,0 +1,255 @@
+{
+  "id": "digital_literacy",
+  "title": "Digital Skills for Everyone",
+  "tagline": "57 million African jobs will require digital skills by 2030. This is yours.",
+  "duration_weeks": 4,
+  "estimated_weekly_hours": 8,
+  "difficulty": "beginner",
+  "target_jobs": [
+    {
+      "title": "Office Administrator",
+      "salary_rwf": "180,000 - 350,000 RWF/month",
+      "companies": ["NGOs", "Government", "SMEs", "Schools"]
+    },
+    {
+      "title": "Small Business Owner (Online)",
+      "salary_rwf": "Variable — 100,000 - 1,000,000+ RWF/month",
+      "companies": ["Self-employed", "WhatsApp Business", "Instagram shops"]
+    },
+    {
+      "title": "Virtual Assistant",
+      "salary_rwf": "250,000 - 600,000 RWF/month ($200-500 USD remote)",
+      "companies": ["Remote international", "Upwork", "Fiverr"]
+    },
+    {
+      "title": "Data Entry / Back Office",
+      "salary_rwf": "150,000 - 300,000 RWF/month",
+      "companies": ["BPOs", "Banks", "Insurance companies"]
+    }
+  ],
+  "capstone_project": "Launch a real WhatsApp-based small business with a digital storefront, pricing sheet, and first customer within 4 weeks",
+  "modules": [
+    {
+      "module_number": 1,
+      "title": "Using a Computer and Smartphone Productively",
+      "estimated_hours": 6,
+      "why_africa": "Most Africans own a smartphone but use only 10% of what it can do. The person who knows how to type fast, manage files, and use productivity apps can earn 3x more than someone who just knows WhatsApp and Facebook. This is the foundation everything else rests on.",
+      "concepts": [
+        "Keyboard typing — reaching 30+ words per minute",
+        "File and folder organisation",
+        "Copy, paste, screenshot — the daily tools",
+        "Managing your phone storage (why your phone is slow)",
+        "Backing up to Google Drive (never lose photos again)",
+        "Password managers — stop forgetting passwords"
+      ],
+      "video_primary": {
+        "title": "Basic Computer Skills Tutorial for Beginners",
+        "channel": "GCFLearnFree",
+        "url": "https://www.youtube.com/watch?v=mTmG9JFpUUE",
+        "video_id": "mTmG9JFpUUE",
+        "duration_minutes": 60,
+        "watch_for": "File management — how to create folders, move files, and never lose work again."
+      },
+      "video_secondary": null,
+      "practice_exercise": {
+        "title": "Build Your Digital Life System",
+        "instructions": "1. Take a free typing test at typing.com — record your current WPM (words per minute)\n2. Practice daily for 20 minutes. Target: 30 WPM by end of week.\n3. On your phone or computer, create this folder structure: /Work, /Personal, /Learning, /Money\n4. Create a Google Drive account (free 15GB). Back up your 20 most important photos.\n5. Install a free password manager (Bitwarden). Save your 5 most important accounts.\n\nTake screenshots of each step completed.",
+        "sandbox": "https://www.typing.com/",
+        "estimated_minutes": 180
+      },
+      "interview_questions": [
+        {
+          "question": "How comfortable are you with basic computer tasks?",
+          "model_answer": "Be specific, not vague. Bad answer: 'I am good with computers.' Good answer: 'I type at about 35 words per minute, I use Google Drive to manage my files, I am comfortable with Word, Excel, and email. Last week I organised all my documents using a folder system.' Specifics prove skill.",
+          "difficulty": "junior"
+        }
+      ],
+      "portfolio_contribution": "Typing speed certificate + organised Google Drive"
+    },
+    {
+      "module_number": 2,
+      "title": "Internet and Online Safety",
+      "estimated_hours": 6,
+      "why_africa": "Africans lose an estimated $4 billion per year to online scams. Mobile money fraud, WhatsApp impersonation, fake job offers — these attacks specifically target people who are new online. Learning safety is not paranoia. It is survival.",
+      "concepts": [
+        "How to spot phishing and scam messages",
+        "Strong passwords and two-factor authentication (2FA)",
+        "What is safe to share online (and what is not)",
+        "Recognising fake job offers and advance-fee scams",
+        "WhatsApp and Facebook security settings",
+        "What to do if you are hacked"
+      ],
+      "video_primary": {
+        "title": "Internet Safety for Beginners",
+        "channel": "GCFLearnFree",
+        "url": "https://www.youtube.com/watch?v=aO858HyFbKI",
+        "video_id": "aO858HyFbKI",
+        "duration_minutes": 45,
+        "watch_for": "Phishing — learn to recognise the warning signs of fake messages. This one skill will save you money."
+      },
+      "video_secondary": null,
+      "practice_exercise": {
+        "title": "Audit and Secure Your Digital Life",
+        "instructions": "1. Turn on 2-factor authentication (2FA) for: Gmail, WhatsApp, Facebook, Mobile Money\n2. Change 3 weak passwords to strong ones (at least 12 characters, mix of letters + numbers + symbols)\n3. Review your Facebook privacy settings — change 'Who can see my posts' to 'Friends only'\n4. Review the last 10 messages in your inbox. Identify any that look like scams. Write why.\n5. Write a 1-page 'safety rules' document for your family — share it with them.\n\nThis single exercise prevents more losses than any other skill.",
+        "sandbox": null,
+        "estimated_minutes": 120
+      },
+      "interview_questions": [
+        {
+          "question": "How do you protect sensitive company data?",
+          "model_answer": "I use strong unique passwords and 2FA on every work account. I never share login details over WhatsApp or email. I lock my computer when I step away. I verify unusual requests — if 'my boss' suddenly asks for urgent mobile money, I call to confirm. I know phishing emails often look real but ask you to act fast.",
+          "difficulty": "junior"
+        }
+      ],
+      "portfolio_contribution": "Personal security audit checklist"
+    },
+    {
+      "module_number": 3,
+      "title": "Google Workspace — Docs, Sheets, Gmail",
+      "estimated_hours": 8,
+      "why_africa": "Every office job in Kigali uses Google Workspace or Microsoft Office. The person who can write a professional email, build a spreadsheet, and format a document is instantly employable. This is the single highest-ROI module in this entire track.",
+      "concepts": [
+        "Gmail — professional email writing",
+        "Google Docs — formatting, headings, tables",
+        "Google Sheets — basic formulas (SUM, AVERAGE, IF)",
+        "Making charts from data",
+        "Sharing and collaborating on documents",
+        "Keyboard shortcuts (save hours per week)"
+      ],
+      "video_primary": {
+        "title": "Google Workspace Tutorial for Beginners",
+        "channel": "Teacher's Tech",
+        "url": "https://www.youtube.com/watch?v=VQPIugIqqFc",
+        "video_id": "VQPIugIqqFc",
+        "duration_minutes": 90,
+        "watch_for": "Google Sheets formulas — SUM, AVERAGE, IF. These three functions will get you through 90% of office work."
+      },
+      "video_secondary": null,
+      "practice_exercise": {
+        "title": "Build a Small Business Tracker",
+        "instructions": "Imagine you run a small shop. In Google Sheets, build:\n1. A product list with columns: Product Name, Cost Price, Sell Price, Profit (use a formula!)\n2. A daily sales tracker for 7 days\n3. A chart showing which products sell best\n4. A Google Docs invoice template with your 'business' name, a table of products, total, and payment info\n5. Send the invoice from Gmail as a PDF attachment\n\nAll free. All real skills.",
+        "sandbox": "https://sheets.google.com/",
+        "estimated_minutes": 240
+      },
+      "interview_questions": [
+        {
+          "question": "How comfortable are you with Excel or Google Sheets?",
+          "model_answer": "Specific again. 'I can build spreadsheets with formulas like SUM, AVERAGE, and IF. I have built a small business tracker with a chart that shows which products sell best. I am comfortable formatting data, making tables, and creating invoices. I am still learning VLOOKUP and pivot tables.' Honesty about what you know and what you are learning is attractive.",
+          "difficulty": "junior"
+        }
+      ],
+      "portfolio_contribution": "Small business tracker spreadsheet + invoice template"
+    },
+    {
+      "module_number": 4,
+      "title": "Mobile Money and Digital Finance",
+      "estimated_hours": 4,
+      "why_africa": "Rwanda, Kenya, Ghana, Uganda — mobile money is how Africa pays. MTN Mobile Money, M-Pesa, Airtel Money. Knowing how to use these tools for personal AND business is essential. Bonus: how to open a digital bank account and start saving.",
+      "concepts": [
+        "Sending and receiving money safely",
+        "Mobile money for business (accepting customer payments)",
+        "Checking transaction history",
+        "Avoiding mobile money scams",
+        "Opening a digital bank account (Equity, Bank of Kigali)",
+        "Starting a savings habit with mobile money"
+      ],
+      "video_primary": {
+        "title": "Mobile Money Tutorial — Complete Guide",
+        "channel": "Techmoran",
+        "url": "https://www.youtube.com/watch?v=3tDzxBnMmLs",
+        "video_id": "3tDzxBnMmLs",
+        "duration_minutes": 30,
+        "watch_for": "How businesses accept mobile money from customers — this is the difference between a hobby and a business."
+      },
+      "video_secondary": null,
+      "practice_exercise": {
+        "title": "Build Your Personal Finance Tracker",
+        "instructions": "1. In Google Sheets, create a money tracker with columns: Date, Category (Food, Transport, Business, Savings), Amount, Notes\n2. Track every transaction for 7 days — yes, every one\n3. At the end of the week, use SUM to total each category\n4. Create a pie chart of where your money went\n5. Write 3 insights: Where am I overspending? Where can I save? How much can I save next week?\n\nMost people never do this. The ones who do, get rich slowly but surely.",
+        "sandbox": "https://sheets.google.com/",
+        "estimated_minutes": 120
+      },
+      "interview_questions": [
+        {
+          "question": "Do you have experience handling payments or money?",
+          "model_answer": "Frame mobile money experience professionally. 'Yes. I manage my own finances using Mobile Money and track every transaction in a spreadsheet. I am comfortable reconciling transactions and spotting errors. I have also handled customer payments through MoMo for side projects.' You are showing trustworthiness and attention to detail.",
+          "difficulty": "junior"
+        }
+      ],
+      "portfolio_contribution": "Personal finance tracker with charts"
+    },
+    {
+      "module_number": 5,
+      "title": "Finding and Applying for Jobs Online",
+      "estimated_hours": 6,
+      "why_africa": "Most job seekers in Rwanda walk from office to office with paper CVs. The ones who get hired search online, have LinkedIn profiles, and apply to jobs the same day they are posted. You are going to be one of them.",
+      "concepts": [
+        "Writing a professional CV (free templates)",
+        "Writing a cover letter that gets read",
+        "LinkedIn profile — the modern CV",
+        "Where to find jobs (JobInRwanda, BrighterMonday, LinkedIn, Upwork)",
+        "Applying strategically (quality over quantity)",
+        "Following up professionally"
+      ],
+      "video_primary": {
+        "title": "How to Write a CV That Gets You Hired",
+        "channel": "CareerVidz",
+        "url": "https://www.youtube.com/watch?v=uG2aEh5xBJE",
+        "video_id": "uG2aEh5xBJE",
+        "duration_minutes": 25,
+        "watch_for": "The 'results-focused' CV — instead of listing duties, list what you achieved. Numbers beat adjectives."
+      },
+      "video_secondary": null,
+      "practice_exercise": {
+        "title": "Build Your Complete Job Search Kit",
+        "instructions": "1. Write a 1-page CV in Google Docs using a clean template (results-focused, not duty-focused)\n2. Write a 3-paragraph cover letter you can customise per application\n3. Create a LinkedIn profile with a professional photo, headline, and summary\n4. Find 5 real jobs you could apply to on JobInRwanda or LinkedIn\n5. Apply to 2 of them this week with your CV + customised cover letter\n\nThis is the exact sequence that gets people hired.",
+        "sandbox": "https://www.jobinrwanda.com/",
+        "estimated_minutes": 240
+      },
+      "interview_questions": [
+        {
+          "question": "Tell me about yourself.",
+          "model_answer": "60-second structure: (1) Who you are now, (2) One relevant accomplishment, (3) Why this role. Example: 'I recently completed a digital skills program where I built a small business tracker in Google Sheets and learned how to manage online workflows. I am looking for a role like this because I want to apply those skills in a real office environment and keep growing.' Confident. Specific. Brief.",
+          "difficulty": "junior"
+        }
+      ],
+      "portfolio_contribution": "Professional CV + LinkedIn profile + cover letter template"
+    },
+    {
+      "module_number": 6,
+      "title": "Starting an Online Business with Zero Money",
+      "estimated_hours": 8,
+      "why_africa": "You do not need capital to start an online business in Rwanda. WhatsApp Business, Instagram, and Mobile Money are all free. Thousands of young Rwandans are quietly earning more from side businesses than from full-time jobs. This module shows you exactly how.",
+      "concepts": [
+        "What to sell (without owning inventory)",
+        "WhatsApp Business setup — product catalog, auto-replies",
+        "Taking product photos with just a phone",
+        "Pricing your product or service",
+        "Getting your first 10 customers",
+        "Turning one customer into five through referrals"
+      ],
+      "video_primary": {
+        "title": "WhatsApp Business Tutorial — Complete Setup",
+        "channel": "WhatsApp",
+        "url": "https://www.youtube.com/watch?v=Tr6KReOKMCE",
+        "video_id": "Tr6KReOKMCE",
+        "duration_minutes": 20,
+        "watch_for": "Product catalog setup — this turns WhatsApp into a real storefront customers can browse."
+      },
+      "video_secondary": null,
+      "practice_exercise": {
+        "title": "Launch a Real WhatsApp Business in 1 Week",
+        "instructions": "1. Pick ONE thing to sell — can be a service (tutoring, cleaning, graphic design) or reselling (snacks, phone accessories, used books)\n2. Create a WhatsApp Business account with a clear name and catalog\n3. Take 5 good product photos with your phone (natural light, clean background)\n4. Set your price based on: cost + time + small profit\n5. Tell 20 people about it — in person, on WhatsApp status, on Facebook\n6. Goal: Get 1 paying customer this week\n\nThe goal is not to get rich. The goal is to prove to yourself that you can earn money using only the skills from this track. After that, scaling is just repetition.",
+        "sandbox": null,
+        "estimated_minutes": 360
+      },
+      "interview_questions": [
+        {
+          "question": "What drives you?",
+          "model_answer": "Answer with a specific story. 'I started a small WhatsApp business selling [X] during this course. My first customer paid me 5,000 RWF. That small win taught me that digital skills translate directly into income. That is what drives me — building skills that pay off.' Specific. Real. Memorable.",
+          "difficulty": "junior"
+        }
+      ],
+      "portfolio_contribution": "Live WhatsApp Business with at least 1 real customer transaction — your capstone proof"
+    }
+  ]
+}

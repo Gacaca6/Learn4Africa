@@ -1,0 +1,62 @@
+# Learn4Africa — Backend Dependencies
+# ====================================
+
+# Core
+fastapi>=0.111.0
+uvicorn[standard]>=0.30.0
+pydantic[email]>=2.7.0
+pydantic-settings>=2.3.0
+python-dotenv>=1.0.1
+python-multipart>=0.0.9
+email-validator>=2.1.0
+
+# Database (using psycopg3 — works on Windows without pg_config)
+sqlalchemy>=2.0.30
+alembic>=1.13.0
+psycopg[binary]>=3.1.0
+
+# Cache
+redis>=5.0.0
+
+# AI / LLM
+openai>=1.35.0
+httpx>=0.27.0
+
+# Text-to-Speech (for podcasts — FREE, no API key)
+edge-tts>=6.1.0
+pydub>=0.25.1
+
+# Image Generation (for comics)
+Pillow>=10.3.0
+
+# Auth
+pyjwt>=2.8.0
+# We use `bcrypt` directly — passlib's wrapper calls `bcrypt.hashpw` with a
+# 112-byte self-test string during initialisation, which `bcrypt>=4.1` now
+# rejects (72-byte hard limit). Direct bcrypt sidesteps that probe.
+bcrypt>=4.1.0
+google-auth>=2.29.0
+# google-auth uses `requests` as its HTTP transport for fetching Google's
+# JWKs when verifying ID tokens — it is a soft dependency of google-auth
+# so we must pin it ourselves.
+requests>=2.31.0
+
+# MongoDB (users, progress, portfolio, Mwalimu memory)
+motor>=3.4.0
+
+# Utilities
+jinja2>=3.1.0
+aiofiles>=24.1.0
+python-slugify>=8.0.0
+
+# YouTube curriculum builder (no API key required)
+youtube-search-python>=1.6.6
+yt-dlp>=2024.4.9
+youtube-transcript-api>=0.6.2
+
+# Rate limiting — slowapi wraps starlette-limiter with a FastAPI-friendly API.
+slowapi>=0.1.9
+
+# Dev / test
+pytest>=8.0.0
+pytest-asyncio>=0.23.0

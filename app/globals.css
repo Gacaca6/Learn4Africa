@@ -1,0 +1,335 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 36 25% 97%;
+    --foreground: 30 12% 12%;
+    --primary: 24 80% 50%;
+    --primary-foreground: 0 0% 100%;
+    --muted: 36 12% 93%;
+    --muted-foreground: 30 6% 46%;
+    --accent: 152 45% 42%;
+    --accent-foreground: 0 0% 100%;
+    --border: 36 12% 88%;
+    --ring: 24 80% 50%;
+    --radius: 0.625rem;
+
+    /* Emil Kowalski custom easing curves */
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+    --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+
+    /* Stagger tokens */
+    --stagger-1: 0ms;
+    --stagger-2: 50ms;
+    --stagger-3: 100ms;
+    --stagger-4: 150ms;
+    --stagger-5: 200ms;
+    --stagger-6: 250ms;
+    --stagger-7: 300ms;
+    --stagger-8: 350ms;
+  }
+
+  .dark {
+    --background: 30 10% 7%;
+    --foreground: 36 12% 92%;
+    --primary: 24 80% 50%;
+    --primary-foreground: 0 0% 100%;
+    --muted: 30 10% 14%;
+    --muted-foreground: 30 6% 58%;
+    --accent: 152 45% 42%;
+    --accent-foreground: 0 0% 100%;
+    --border: 30 10% 18%;
+    --ring: 24 80% 50%;
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar — tinted to match warm palette */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(30 10% 70% / 0.4);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(30 10% 60% / 0.6);
+}
+
+/* ============================================
+   BUTTON & INTERACTIVE ELEMENT SYSTEM
+   Emil Kowalski: buttons must feel responsive
+   ============================================ */
+
+/* Base interactive — all clickable elements get press feedback */
+button,
+[role="button"],
+a.btn,
+.interactive {
+  transition: transform 160ms var(--ease-out), background-color 200ms ease, box-shadow 200ms ease, border-color 200ms ease, opacity 200ms ease;
+}
+
+button:active:not(:disabled),
+[role="button"]:active:not(:disabled),
+a.btn:active,
+.interactive:active {
+  transform: scale(0.97);
+}
+
+/* Gate hover animations behind pointer capability */
+@media (hover: hover) and (pointer: fine) {
+  button:hover:not(:disabled),
+  [role="button"]:hover:not(:disabled) {
+    transition-duration: 100ms;
+  }
+}
+
+/* Focus ring — visible for keyboard, hidden for mouse */
+:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ============================================
+   STAGGER ANIMATION SYSTEM
+   Elements cascade in with slight delays
+   ============================================ */
+
+.stagger-in > * {
+  opacity: 0;
+  transform: translateY(8px);
+  animation: staggerFadeIn 400ms var(--ease-out) forwards;
+}
+
+.stagger-in > *:nth-child(1) { animation-delay: var(--stagger-1); }
+.stagger-in > *:nth-child(2) { animation-delay: var(--stagger-2); }
+.stagger-in > *:nth-child(3) { animation-delay: var(--stagger-3); }
+.stagger-in > *:nth-child(4) { animation-delay: var(--stagger-4); }
+.stagger-in > *:nth-child(5) { animation-delay: var(--stagger-5); }
+.stagger-in > *:nth-child(6) { animation-delay: var(--stagger-6); }
+.stagger-in > *:nth-child(7) { animation-delay: var(--stagger-7); }
+.stagger-in > *:nth-child(8) { animation-delay: var(--stagger-8); }
+.stagger-in > *:nth-child(n+9) { animation-delay: 400ms; }
+
+@keyframes staggerFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Slide-up entrance for sections */
+.slide-up {
+  opacity: 0;
+  transform: translateY(16px);
+  animation: slideUp 500ms var(--ease-out) forwards;
+}
+
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   CARD SYSTEM
+   No generic border + shadow + white combo
+   ============================================ */
+
+.card {
+  background: white;
+  border-radius: var(--radius);
+  transition: transform 250ms var(--ease-out), box-shadow 250ms var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px -8px hsl(30 30% 30% / 0.08), 0 2px 8px -2px hsl(30 30% 30% / 0.04);
+  }
+}
+
+.card:active {
+  transform: scale(0.98);
+}
+
+/* ============================================
+   FLASHCARD FLIP
+   ============================================ */
+
+.card-flip {
+  perspective: 1000px;
+}
+.card-flip-inner {
+  transition: transform 500ms var(--ease-in-out);
+  transform-style: preserve-3d;
+}
+.card-flip-inner.flipped {
+  transform: rotateY(180deg);
+}
+.card-front, .card-back {
+  backface-visibility: hidden;
+}
+.card-back {
+  transform: rotateY(180deg);
+}
+
+/* ============================================
+   XP & PROGRESS ANIMATIONS
+   Using transitions over keyframes where possible
+   ============================================ */
+
+.xp-bar-fill {
+  transition: width 800ms var(--ease-out);
+}
+
+/* Subtle pulse for streaks — kept minimal */
+.streak-pulse {
+  animation: streakPulse 3s ease-in-out infinite;
+}
+
+@keyframes streakPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* ============================================
+   IMAGE ART DIRECTION
+   Editorial-quality image treatments
+   ============================================ */
+
+/* Course card image with hover zoom */
+.card-image {
+  overflow: hidden;
+}
+
+.card-image img {
+  transition: transform 600ms var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card-image:hover img {
+    transform: scale(1.05);
+  }
+}
+
+/* Section image with reveal animation */
+.image-reveal {
+  clip-path: inset(0 0 0 0);
+  animation: imageReveal 800ms var(--ease-out) forwards;
+}
+
+@keyframes imageReveal {
+  from { clip-path: inset(0 100% 0 0); }
+  to { clip-path: inset(0 0 0 0); }
+}
+
+/* ============================================
+   NOISE TEXTURE OVERLAY
+   Breaks digital flatness
+   ============================================ */
+
+.noise::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.018;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px;
+}
+
+/* ============================================
+   REDUCED MOTION
+   Keep opacity/color, remove movement
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .stagger-in > * {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .slide-up {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}
+
+/* ============================================
+   TYPOGRAPHY POLISH
+   ============================================ */
+
+/* Prevent orphaned words on headings */
+h1, h2, h3 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+/* Tabular numbers for data */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ============================================
+   SKIP-TO-CONTENT (Accessibility)
+   ============================================ */
+
+.skip-to-content {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 10000;
+  padding: 0.75rem 1.5rem;
+  background: hsl(var(--primary));
+  color: white;
+  font-weight: 600;
+  border-radius: 0 0 var(--radius) var(--radius);
+}
+
+.skip-to-content:focus {
+  left: 50%;
+  transform: translateX(-50%);
+}

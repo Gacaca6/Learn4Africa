@@ -1,0 +1,297 @@
+{
+  "rwanda_tech_companies": [
+    {
+      "name": "Andela",
+      "focus": "Remote software engineering talent marketplace",
+      "typical_roles": ["Software Engineer", "Frontend Developer", "Backend Developer", "DevOps Engineer"],
+      "salary_range_rwf": "800,000 - 3,000,000 RWF/month",
+      "notes": "Andela places African engineers with international clients. Rigorous technical screening. Remote."
+    },
+    {
+      "name": "AC Group",
+      "focus": "Smart transport (Tap&Go cards), fintech",
+      "typical_roles": ["Software Developer", "Data Analyst", "Mobile Developer", "QA Engineer"],
+      "salary_range_rwf": "500,000 - 1,200,000 RWF/month",
+      "notes": "Behind the Tap&Go card used on Kigali buses. Product company with real users."
+    },
+    {
+      "name": "Irembo",
+      "focus": "Government digital services platform",
+      "typical_roles": ["Full-Stack Developer", "DevOps Engineer", "Product Manager", "UI/UX Designer"],
+      "salary_range_rwf": "600,000 - 1,500,000 RWF/month",
+      "notes": "Public-private partnership. Irembo is how Rwandans access government services online."
+    },
+    {
+      "name": "Bank of Kigali",
+      "focus": "Banking, digital banking app",
+      "typical_roles": ["Software Engineer", "Data Analyst", "Cybersecurity Analyst", "DevOps"],
+      "salary_range_rwf": "600,000 - 1,800,000 RWF/month",
+      "notes": "Largest bank in Rwanda. Strong digital team. Stable employer, often hires junior talent."
+    },
+    {
+      "name": "MTN Rwanda",
+      "focus": "Telecom + MoMo mobile money",
+      "typical_roles": ["Network Engineer", "Data Analyst", "Developer", "IT Support"],
+      "salary_range_rwf": "500,000 - 1,500,000 RWF/month",
+      "notes": "MoMo is one of the largest mobile money platforms in Africa."
+    },
+    {
+      "name": "Teta Tech",
+      "focus": "Digital marketing, e-commerce development",
+      "typical_roles": ["Digital Marketer", "Web Developer", "Content Creator"],
+      "salary_range_rwf": "300,000 - 700,000 RWF/month",
+      "notes": "Local agency. Great first job for freelancers moving to full-time."
+    },
+    {
+      "name": "RwandaOnline",
+      "focus": "Government portal services",
+      "typical_roles": ["Backend Developer", "DBA", "System Administrator"],
+      "salary_range_rwf": "500,000 - 1,200,000 RWF/month",
+      "notes": "Builds and maintains government digital infrastructure."
+    },
+    {
+      "name": "Zipline",
+      "focus": "Medical drone delivery (blood, vaccines)",
+      "typical_roles": ["Embedded Engineer", "Data Engineer", "Operations Engineer"],
+      "salary_range_rwf": "700,000 - 2,000,000 RWF/month",
+      "notes": "World-famous Rwanda-based drone company. Highly competitive to join."
+    },
+    {
+      "name": "Awesomity Lab",
+      "focus": "Product design and development agency",
+      "typical_roles": ["Developer", "Designer", "Project Manager"],
+      "salary_range_rwf": "500,000 - 1,200,000 RWF/month",
+      "notes": "One of Kigali's top design-focused agencies."
+    },
+    {
+      "name": "HeHe Labs",
+      "focus": "E-commerce and logistics tech",
+      "typical_roles": ["Full-Stack Developer", "Mobile Developer", "Growth Marketer"],
+      "salary_range_rwf": "400,000 - 1,000,000 RWF/month",
+      "notes": "Startup with strong local traction."
+    }
+  ],
+  "coding_analogies": {
+    "variable": "A variable is like a labelled envelope at the post office. The label is the name, the contents are the value. You can swap what is inside, but the label stays the same.",
+    "function": "A function is like an umuganda team — you tell them 'clean this street', they do their job, and they give you back a clean street. You do not care HOW they clean, you just care about the result.",
+    "array": "An array is like a line of students at assembly. Each student has a position (index), starting from 0. You can count them, line them up, or call the 3rd one forward.",
+    "object": "An object is like a national ID card. It has fields: name, date of birth, nationality, ID number. Each field has a value. You look up information by field name.",
+    "loop": "A loop is like harvesting a field of maize. You move from one plant to the next, doing the same action — pick the maize — until the field is empty. That is exactly what a for-loop does.",
+    "conditional": "An if-statement is like the checkpoint at the airport. IF your passport is valid, you pass through. ELSE you are turned away. The computer makes the same decision thousands of times per second.",
+    "class": "A class is like the blueprint for a house. The blueprint is not a house. But you can build many houses from the same blueprint. Each house (object) has the same rooms but can have different paint colours.",
+    "api": "An API is like the waiter at a restaurant. You (the client) do not go into the kitchen (the server). You tell the waiter what you want (request), they bring it back to you (response). The waiter is the API.",
+    "database": "A database is like the Rwanda national ID registry. It stores millions of records, each one structured the same way, and you can search by ID number to find any citizen instantly.",
+    "git": "Git is like version control for your group assignment. Every time someone makes a change, Git takes a snapshot. If someone ruins the document, you can go back to any previous snapshot. No more 'final_v2_REAL_final.docx'.",
+    "cache": "A cache is like keeping sugar on your kitchen counter instead of the cupboard. You use it often, so you keep it close. Caches make programs fast by keeping frequently-used data nearby.",
+    "recursion": "Recursion is like nesting baskets. You open a basket, inside is another basket, inside is another, until you find the smallest one with the answer. Then you close them back up, one by one."
+  },
+  "job_search_resources": [
+    {
+      "name": "JobInRwanda",
+      "url": "https://www.jobinrwanda.com",
+      "description": "The main job board for Rwanda. Most Kigali tech jobs are posted here first.",
+      "category": "local"
+    },
+    {
+      "name": "BrighterMonday Rwanda",
+      "url": "https://www.brightermonday.co.rw",
+      "description": "Regional African job board with strong Rwanda listings.",
+      "category": "local"
+    },
+    {
+      "name": "LinkedIn Jobs",
+      "url": "https://www.linkedin.com/jobs",
+      "description": "International and local jobs. Filter by 'Rwanda' or 'Remote'.",
+      "category": "international"
+    },
+    {
+      "name": "Upwork",
+      "url": "https://www.upwork.com",
+      "description": "The largest freelance marketplace. Remote work that pays in USD.",
+      "category": "freelance"
+    },
+    {
+      "name": "Fiverr",
+      "url": "https://www.fiverr.com",
+      "description": "Gig-based freelance site. Good for quick wins and building reviews.",
+      "category": "freelance"
+    },
+    {
+      "name": "Andela",
+      "url": "https://andela.com",
+      "description": "Talent network placing African engineers with international companies.",
+      "category": "remote"
+    },
+    {
+      "name": "Turing",
+      "url": "https://www.turing.com",
+      "description": "Remote software engineering jobs with US-based companies. Rigorous screening.",
+      "category": "remote"
+    },
+    {
+      "name": "Toptal",
+      "url": "https://www.toptal.com",
+      "description": "Elite freelance network. Top 3% of applicants. Pays very well.",
+      "category": "freelance"
+    },
+    {
+      "name": "Remote OK",
+      "url": "https://remoteok.com",
+      "description": "Open remote job board. Global positions, many of which are Africa-friendly.",
+      "category": "remote"
+    },
+    {
+      "name": "We Work Remotely",
+      "url": "https://weworkremotely.com",
+      "description": "One of the oldest and biggest remote job boards.",
+      "category": "remote"
+    }
+  ],
+  "salary_benchmarks": {
+    "junior_frontend_developer": {
+      "low": 300000,
+      "mid": 450000,
+      "high": 700000,
+      "currency": "RWF/month",
+      "notes": "Entry-level React or Vue developer in Kigali."
+    },
+    "junior_backend_developer": {
+      "low": 400000,
+      "mid": 600000,
+      "high": 900000,
+      "currency": "RWF/month",
+      "notes": "Node.js, Python, or Java developer."
+    },
+    "full_stack_developer": {
+      "low": 500000,
+      "mid": 800000,
+      "high": 1200000,
+      "currency": "RWF/month",
+      "notes": "Can work across frontend and backend."
+    },
+    "data_analyst": {
+      "low": 400000,
+      "mid": 600000,
+      "high": 900000,
+      "currency": "RWF/month",
+      "notes": "SQL, Excel, Tableau, basic Python."
+    },
+    "data_scientist": {
+      "low": 600000,
+      "mid": 900000,
+      "high": 1500000,
+      "currency": "RWF/month",
+      "notes": "ML, statistics, Python deep knowledge."
+    },
+    "devops_engineer": {
+      "low": 500000,
+      "mid": 800000,
+      "high": 1500000,
+      "currency": "RWF/month",
+      "notes": "Docker, CI/CD, cloud experience."
+    },
+    "cloud_support_engineer": {
+      "low": 400000,
+      "mid": 700000,
+      "high": 1200000,
+      "currency": "RWF/month",
+      "notes": "AWS or Azure support, troubleshooting."
+    },
+    "digital_marketer": {
+      "low": 250000,
+      "mid": 400000,
+      "high": 700000,
+      "currency": "RWF/month",
+      "notes": "Social media, paid ads, content strategy."
+    },
+    "seo_specialist": {
+      "low": 300000,
+      "mid": 500000,
+      "high": 800000,
+      "currency": "RWF/month",
+      "notes": "Technical SEO + content SEO + link building."
+    },
+    "remote_junior_developer_usd": {
+      "low": 800,
+      "mid": 1500,
+      "high": 3000,
+      "currency": "USD/month",
+      "notes": "Remote role for international company. Requires strong English and portfolio."
+    },
+    "remote_senior_developer_usd": {
+      "low": 3000,
+      "mid": 5000,
+      "high": 10000,
+      "currency": "USD/month",
+      "notes": "Senior engineer with 4+ years for a US or EU startup via Andela/Turing."
+    },
+    "freelance_digital_marketer_usd": {
+      "low": 500,
+      "mid": 1200,
+      "high": 2500,
+      "currency": "USD/month",
+      "notes": "Upwork/Fiverr digital marketing income range."
+    }
+  },
+  "interview_culture_tips": [
+    "Kigali tech interviews are more formal than Silicon Valley. Dress business casual even for virtual interviews.",
+    "Always greet the interviewer in their preferred language first (Kinyarwanda, English, or French) — shows respect.",
+    "Do not interrupt. Africans value letting elders and authority figures finish speaking.",
+    "Be humble about achievements. Brag indirectly through stories, not directly.",
+    "Mention community work or Umuganda — Rwandan employers value civic contribution.",
+    "Never badmouth previous employers or teachers. Ever.",
+    "When asked 'What is your weakness?', have a real answer. Not 'I work too hard'.",
+    "Follow up within 24 hours with a short thank-you email mentioning one specific thing from the conversation."
+  ],
+  "free_certifications": [
+    {
+      "name": "Google Analytics Certification",
+      "url": "https://skillshop.exceedlms.com/",
+      "cost": "Free",
+      "value": "Globally recognised. Required for most digital marketing jobs."
+    },
+    {
+      "name": "Google Digital Garage — Fundamentals of Digital Marketing",
+      "url": "https://learndigital.withgoogle.com/digitalgarage",
+      "cost": "Free",
+      "value": "40-hour course + certificate. Strong resume builder."
+    },
+    {
+      "name": "HubSpot Academy",
+      "url": "https://academy.hubspot.com/",
+      "cost": "Free",
+      "value": "Inbound marketing, content marketing, email marketing certifications."
+    },
+    {
+      "name": "Microsoft Azure AZ-900 (Exam costs ~$99)",
+      "url": "https://learn.microsoft.com/certifications/azure-fundamentals/",
+      "cost": "Study free, exam paid",
+      "value": "Globally recognised entry-level cloud certification."
+    },
+    {
+      "name": "AWS Cloud Practitioner",
+      "url": "https://aws.amazon.com/certification/certified-cloud-practitioner/",
+      "cost": "Study free, exam $100",
+      "value": "Entry point for any AWS career."
+    },
+    {
+      "name": "freeCodeCamp Certifications",
+      "url": "https://www.freecodecamp.org/",
+      "cost": "Free",
+      "value": "Responsive Web Design, JavaScript, Data Analysis with Python — all globally recognised."
+    },
+    {
+      "name": "Meta Blueprint (Facebook Ads)",
+      "url": "https://www.facebook.com/business/learn",
+      "cost": "Free",
+      "value": "Official Facebook Ads certification."
+    }
+  ],
+  "africa_tech_news_sources": [
+    {"name": "TechCabal", "url": "https://techcabal.com", "focus": "Pan-African tech news"},
+    {"name": "Disrupt Africa", "url": "https://disrupt-africa.com", "focus": "African startup news"},
+    {"name": "Techpoint Africa", "url": "https://techpoint.africa", "focus": "Nigerian and African tech"},
+    {"name": "WeeTracker", "url": "https://weetracker.com", "focus": "African startup funding"},
+    {"name": "Ventureburn", "url": "https://ventureburn.com", "focus": "African tech ecosystem"}
+  ]
+}

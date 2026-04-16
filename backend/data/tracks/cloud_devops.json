@@ -1,0 +1,383 @@
+{
+  "id": "cloud_devops",
+  "title": "Cloud & DevOps Fundamentals",
+  "tagline": "The fastest growing, highest paying skill gap in Rwanda's tech sector.",
+  "duration_weeks": 10,
+  "estimated_weekly_hours": 12,
+  "difficulty": "intermediate",
+  "target_jobs": [
+    {
+      "title": "IT Administrator",
+      "salary_rwf": "350,000 - 600,000 RWF/month",
+      "companies": ["Banks", "Government agencies", "Large enterprises"]
+    },
+    {
+      "title": "Junior DevOps Engineer",
+      "salary_rwf": "500,000 - 900,000 RWF/month",
+      "companies": ["BK Tech", "Irembo", "Kigali tech startups"]
+    },
+    {
+      "title": "Cloud Support Engineer",
+      "salary_rwf": "$1,000 - $2,000 USD/month (remote)",
+      "companies": ["AWS", "Microsoft", "Remote international"]
+    }
+  ],
+  "capstone_project": "Deploy a containerised application to Azure/AWS with CI/CD and monitoring",
+  "modules": [
+    {
+      "module_number": 1,
+      "title": "The Linux Command Line",
+      "estimated_hours": 10,
+      "why_africa": "Every server on earth runs Linux. Every cloud platform runs Linux. DevOps engineers live in the terminal. Master this or fail every interview.",
+      "concepts": [
+        "Navigating the filesystem",
+        "File permissions",
+        "Processes and services",
+        "Pipes and redirection",
+        "Shell scripting basics",
+        "SSH — connecting to remote servers"
+      ],
+      "video_primary": {
+        "title": "Linux Command Line Full Course",
+        "channel": "freeCodeCamp.org",
+        "url": "https://www.youtube.com/watch?v=ZtqBQ68cfJc",
+        "video_id": "ZtqBQ68cfJc",
+        "duration_minutes": 300,
+        "watch_for": "File permissions (chmod, chown) — every Linux interview asks about this."
+      },
+      "video_secondary": null,
+      "practice_exercise": {
+        "title": "Set Up a Free Linux Playground",
+        "instructions": "1. Create a free Oracle Cloud or AWS account\n2. Launch a free-tier Linux VM (Ubuntu 22.04)\n3. SSH into it from your laptop\n4. Create a directory structure for a fake web server\n5. Write a shell script that backs up a folder to another location\n6. Schedule it with cron to run daily\n\nThis is real DevOps work from day one.",
+        "sandbox": "https://www.oracle.com/cloud/free/",
+        "estimated_minutes": 240
+      },
+      "interview_questions": [
+        {
+          "question": "What does chmod 755 mean?",
+          "model_answer": "File permissions in octal. 7 = read+write+execute (owner), 5 = read+execute (group), 5 = read+execute (others). A script usually has 755 — the owner can edit it, others can run it but not modify. chmod 644 is a normal file — owner writes, everyone reads.",
+          "difficulty": "junior"
+        }
+      ]
+    },
+    {
+      "module_number": 2,
+      "title": "Networking Basics for DevOps",
+      "estimated_hours": 8,
+      "why_africa": "You cannot debug a broken production system without understanding the network. TCP/IP, DNS, firewalls — these are the daily vocabulary of DevOps.",
+      "concepts": [
+        "TCP/IP basics",
+        "DNS — how names become IPs",
+        "Ports and firewalls",
+        "HTTP vs HTTPS",
+        "Public vs private networks",
+        "Reading network errors"
+      ],
+      "video_primary": {
+        "title": "Networking for DevOps",
+        "channel": "TechWorld with Nana",
+        "url": "https://www.youtube.com/watch?v=rL8RSckZ3kk",
+        "video_id": "rL8RSckZ3kk",
+        "duration_minutes": 60,
+        "watch_for": "When she explains how a request reaches a container through Kubernetes — draw this."
+      },
+      "video_secondary": null,
+      "practice_exercise": {
+        "title": "Network Debugging Lab",
+        "instructions": "On your Linux VM from Module 1: install nginx, start it, open port 80 in the firewall, curl it from your laptop, read the access logs. Then break it — stop the service, close the port — and use tools like ping, telnet, curl -v to diagnose what is wrong. This is the daily work of DevOps.",
+        "sandbox": null,
+        "estimated_minutes": 180
+      },
+      "interview_questions": [
+        {
+          "question": "A user says 'the website is down' — how do you debug it?",
+          "model_answer": "Work up the stack. 1) Is DNS resolving? (nslookup), 2) Can I reach the server? (ping, traceroute), 3) Is the port open? (telnet, nmap), 4) Is the web server running? (systemctl status), 5) Are there errors in the logs? (journalctl, /var/log/nginx/error.log), 6) Can the server reach the database?. Methodical beats panicked every time.",
+          "difficulty": "mid"
+        }
+      ]
+    },
+    {
+      "module_number": 3,
+      "title": "Git and GitHub — Deep Dive",
+      "estimated_hours": 8,
+      "why_africa": "DevOps is 'infrastructure as code'. Every piece of infrastructure is stored in Git. Every change is reviewed in a pull request. Git mastery is the foundation.",
+      "concepts": [
+        "Git internals — how it really works",
+        "Branching strategies (GitFlow, trunk-based)",
+        "Rebasing vs merging",
+        "Resolving conflicts",
+        "Git hooks",
+        "GitHub Actions basics"
+      ],
+      "video_primary": {
+        "title": "Git and GitHub for DevOps",
+        "channel": "TechWorld with Nana",
+        "url": "https://www.youtube.com/watch?v=Ez8F0nW6S-w",
+        "video_id": "Ez8F0nW6S-w",
+        "duration_minutes": 60,
+        "watch_for": "GitHub Actions intro — this is your first taste of CI/CD."
+      },
+      "video_secondary": null,
+      "practice_exercise": {
+        "title": "Your First CI Pipeline",
+        "instructions": "Create a GitHub repo. Add a simple Python or Node script. Add a GitHub Actions workflow that runs on every push and: (1) checks out the code, (2) installs dependencies, (3) runs a test. See it turn green. This is CI — continuous integration.",
+        "sandbox": "https://github.com/",
+        "estimated_minutes": 180
+      },
+      "interview_questions": [
+        {
+          "question": "What is CI/CD?",
+          "model_answer": "Continuous Integration means every code change is automatically tested when it is pushed. Continuous Delivery means code that passes tests is automatically prepared for deployment. Continuous Deployment means it is automatically deployed to production. CI/CD makes releases safer, faster, and more frequent. Modern teams deploy multiple times per day because of CI/CD.",
+          "difficulty": "junior"
+        }
+      ]
+    },
+    {
+      "module_number": 4,
+      "title": "Docker Containers",
+      "estimated_hours": 12,
+      "why_africa": "Docker is the #1 skill listed on DevOps jobs globally. Understanding containers unlocks everything else in modern infrastructure.",
+      "concepts": [
+        "Why containers exist (the 'works on my machine' problem)",
+        "Images vs containers",
+        "Dockerfile — building images",
+        "Docker Compose — multi-container apps",
+        "Volumes and networking",
+        "Pushing to Docker Hub"
+      ],
+      "video_primary": {
+        "title": "Docker Tutorial for Beginners",
+        "channel": "TechWorld with Nana",
+        "url": "https://www.youtube.com/watch?v=3c-iBn73dDE",
+        "video_id": "3c-iBn73dDE",
+        "duration_minutes": 120,
+        "watch_for": "The Dockerfile section — every layer matters for image size and build speed."
+      },
+      "video_secondary": null,
+      "practice_exercise": {
+        "title": "Containerise a Web App",
+        "instructions": "Take any simple web app (Python Flask or Node Express). Write a Dockerfile that builds it into an image. Run it with docker run and access it from your browser. Then use Docker Compose to run it alongside a database (Postgres or Redis). Push your image to Docker Hub.",
+        "sandbox": "https://labs.play-with-docker.com/",
+        "estimated_minutes": 240
+      },
+      "interview_questions": [
+        {
+          "question": "What is the difference between a Docker image and a container?",
+          "model_answer": "An image is a blueprint — static files containing everything needed to run an application. A container is a running instance of an image. You can run multiple containers from the same image. Image is like a class, container is like an object created from that class.",
+          "difficulty": "junior"
+        }
+      ],
+      "portfolio_contribution": "Your first Dockerised app on Docker Hub and GitHub"
+    },
+    {
+      "module_number": 5,
+      "title": "Cloud Concepts — AWS and Azure Free Tier",
+      "estimated_hours": 10,
+      "why_africa": "The cloud is where Rwandan companies are moving. Understanding cloud basics opens doors to every modern infrastructure job.",
+      "concepts": [
+        "IaaS, PaaS, SaaS",
+        "Regions and availability zones",
+        "Compute (EC2, VMs)",
+        "Storage (S3, Blob)",
+        "Networking (VPC, VNet)",
+        "Identity and access management"
+      ],
+      "video_primary": {
+        "title": "AWS Certified Cloud Practitioner Full Course",
+        "channel": "freeCodeCamp.org",
+        "url": "https://www.youtube.com/watch?v=NhDYbskXRgc",
+        "video_id": "NhDYbskXRgc",
+        "duration_minutes": 840,
+        "watch_for": "Not all in one sitting. One chapter per session. The IAM section is the most tested on interviews and exams."
+      },
+      "video_secondary": null,
+      "practice_exercise": {
+        "title": "Deploy to the Cloud Free Tier",
+        "instructions": "1. Create AWS free tier account\n2. Launch an EC2 instance (t2.micro)\n3. Create an S3 bucket and upload a file\n4. Deploy your Docker container from Module 4 to the EC2 instance\n5. Access it from your phone with a public URL\n6. SHUT IT DOWN when done to avoid charges\n\nThis is your first live cloud deployment.",
+        "sandbox": "https://aws.amazon.com/free/",
+        "estimated_minutes": 240
+      },
+      "interview_questions": [
+        {
+          "question": "What is the difference between IaaS, PaaS, and SaaS?",
+          "model_answer": "Infrastructure as a Service (EC2, VMs) — you manage the OS, they manage the hardware. Platform as a Service (Heroku, Render) — you manage only the code, they manage OS and runtime. Software as a Service (Gmail, Salesforce) — you just use the software. As you move up, less control but less work.",
+          "difficulty": "junior"
+        }
+      ]
+    },
+    {
+      "module_number": 6,
+      "title": "CI/CD with GitHub Actions",
+      "estimated_hours": 8,
+      "why_africa": "Automated pipelines are what separate amateur DevOps from professional. Every serious company expects CI/CD knowledge.",
+      "concepts": [
+        "Workflow syntax",
+        "Jobs, steps, actions",
+        "Secrets management",
+        "Building and testing",
+        "Deploying from Actions",
+        "Matrix builds"
+      ],
+      "video_primary": {
+        "title": "GitHub Actions Tutorial",
+        "channel": "TechWorld with Nana",
+        "url": "https://www.youtube.com/watch?v=R8_veQiYBjI",
+        "video_id": "R8_veQiYBjI",
+        "duration_minutes": 60,
+        "watch_for": "Secrets and environment variables — never commit them to Git."
+      },
+      "video_secondary": null,
+      "practice_exercise": {
+        "title": "Full Pipeline: Test, Build, Deploy",
+        "instructions": "For your Dockerised app from Module 4: create a GitHub Actions workflow that, on every push to main, (1) runs tests, (2) builds a Docker image, (3) pushes it to Docker Hub, (4) deploys it to your EC2 instance via SSH. Store Docker Hub credentials and SSH key as GitHub secrets.",
+        "sandbox": null,
+        "estimated_minutes": 180
+      },
+      "interview_questions": [
+        {
+          "question": "Where do you store secrets in CI/CD?",
+          "model_answer": "Never in code. Never in logs. Use the platform's secret manager — GitHub Secrets, AWS Secrets Manager, HashiCorp Vault. Reference them via environment variables at runtime. Rotate them regularly. Audit who has access.",
+          "difficulty": "junior"
+        }
+      ],
+      "portfolio_contribution": "GitHub repo with full CI/CD pipeline"
+    },
+    {
+      "module_number": 7,
+      "title": "Monitoring and Logs",
+      "estimated_hours": 8,
+      "why_africa": "When things break at 3am, logs are how you find out what happened. Monitoring is how you find out before users do. This is the difference between a junior and a mid-level DevOps engineer.",
+      "concepts": [
+        "What to monitor (the four golden signals)",
+        "Logs vs metrics vs traces",
+        "Prometheus basics",
+        "Grafana dashboards",
+        "Alerting that does not cause burnout",
+        "Reading and parsing logs"
+      ],
+      "video_primary": {
+        "title": "Prometheus and Grafana Tutorial",
+        "channel": "TechWorld with Nana",
+        "url": "https://www.youtube.com/watch?v=h4Sl21AKiDg",
+        "video_id": "h4Sl21AKiDg",
+        "duration_minutes": 60,
+        "watch_for": "The four golden signals: latency, traffic, errors, saturation. Memorize them."
+      },
+      "video_secondary": null,
+      "practice_exercise": {
+        "title": "Monitor Your App",
+        "instructions": "Add Prometheus and Grafana to your Docker Compose setup. Expose a metrics endpoint from your app. Create a Grafana dashboard showing: request rate, error rate, response time. Trigger some errors and watch them appear in the dashboard.",
+        "sandbox": null,
+        "estimated_minutes": 180
+      },
+      "interview_questions": [
+        {
+          "question": "What are the four golden signals of monitoring?",
+          "model_answer": "From Google's SRE book: (1) Latency — how long requests take, (2) Traffic — how many requests, (3) Errors — how many fail, (4) Saturation — how full the system is. Monitor these four for every service and you will catch 90% of problems before users do.",
+          "difficulty": "mid"
+        }
+      ]
+    },
+    {
+      "module_number": 8,
+      "title": "Infrastructure as Code Basics",
+      "estimated_hours": 10,
+      "why_africa": "Clicking buttons in a cloud console does not scale. IaC — Infrastructure as Code — is how professionals manage real infrastructure. Terraform is the industry standard.",
+      "concepts": [
+        "Why infrastructure as code",
+        "Terraform basics",
+        "Writing .tf files",
+        "State files and why they matter",
+        "Modules",
+        "Planning before applying"
+      ],
+      "video_primary": {
+        "title": "Terraform Tutorial for Beginners",
+        "channel": "TechWorld with Nana",
+        "url": "https://www.youtube.com/watch?v=l5k1ai_GBDE",
+        "video_id": "l5k1ai_GBDE",
+        "duration_minutes": 60,
+        "watch_for": "Always run terraform plan before terraform apply. This is the #1 rule of IaC."
+      },
+      "video_secondary": null,
+      "practice_exercise": {
+        "title": "Provision a VM with Terraform",
+        "instructions": "Write a Terraform configuration that creates: an EC2 instance, a security group opening port 22 and 80, an S3 bucket. Run terraform plan, then terraform apply. Verify in AWS console. Then terraform destroy to clean up. Commit the .tf files to Git.",
+        "sandbox": null,
+        "estimated_minutes": 180
+      },
+      "interview_questions": [
+        {
+          "question": "What is the Terraform state file and why does it matter?",
+          "model_answer": "The state file is Terraform's memory of what infrastructure it has created. It maps your .tf code to real cloud resources. If you lose the state file, Terraform does not know what it owns. In teams, store state remotely (S3, Terraform Cloud) with locking to prevent two people applying changes simultaneously.",
+          "difficulty": "mid"
+        }
+      ]
+    },
+    {
+      "module_number": 9,
+      "title": "Get a Free Cloud Certification",
+      "estimated_hours": 15,
+      "why_africa": "A cloud certification is globally recognised proof of skill. Microsoft offers the AZ-900 exam free to students in Rwanda through their Africa initiatives. This is the fastest path to a real credential.",
+      "concepts": [
+        "Exam preparation strategies",
+        "Practice tests",
+        "Scheduling your exam",
+        "What happens on exam day",
+        "Adding certs to LinkedIn and CV"
+      ],
+      "video_primary": {
+        "title": "AZ-900 Azure Fundamentals Full Course",
+        "channel": "John Savill",
+        "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA",
+        "video_id": "NKEFWyqJ5XA",
+        "duration_minutes": 180,
+        "watch_for": "The shared responsibility model — always on the exam."
+      },
+      "video_secondary": null,
+      "practice_exercise": {
+        "title": "Pass the AZ-900 (or AWS Cloud Practitioner)",
+        "instructions": "1. Study for 2 weeks using the video and Microsoft Learn (free official training)\n2. Take practice tests until you consistently score 80%+\n3. Schedule the real exam (Microsoft often has free vouchers via Africa programs)\n4. Pass\n5. Add the badge to LinkedIn\n\nThis is a globally recognised credential that opens doors.",
+        "sandbox": "https://learn.microsoft.com/en-us/training/paths/microsoft-azure-fundamentals-describe-cloud-concepts/",
+        "estimated_minutes": 900
+      },
+      "interview_questions": [
+        {
+          "question": "What is the shared responsibility model?",
+          "model_answer": "In cloud computing, the provider (AWS, Azure) is responsible for security OF the cloud (the physical infrastructure). The customer is responsible for security IN the cloud (your data, your IAM, your OS patches for IaaS). Understanding this boundary is critical — misconfiguring a security group or leaking an S3 bucket is YOUR fault, not the provider's.",
+          "difficulty": "junior"
+        }
+      ],
+      "portfolio_contribution": "AZ-900 certification badge on LinkedIn and CV"
+    },
+    {
+      "module_number": 10,
+      "title": "Capstone — Full Cloud Deployment",
+      "estimated_hours": 15,
+      "why_africa": "Putting it all together — a live, deployed, monitored, automated cloud application is the portfolio piece that gets you hired at the best Rwandan and remote DevOps jobs.",
+      "concepts": [
+        "System design",
+        "Putting it all together",
+        "Documentation",
+        "Writing a post-mortem",
+        "Presenting your work"
+      ],
+      "video_primary": null,
+      "video_secondary": null,
+      "practice_exercise": {
+        "title": "Deploy a Full System",
+        "instructions": "Build and deploy a complete system with:\n1. A containerised web app\n2. A managed database\n3. Provisioned via Terraform\n4. Deployed via GitHub Actions on every commit\n5. Monitored with Prometheus + Grafana dashboards\n6. Documented in a README with architecture diagram\n\nThis is your DevOps capstone. When you show this in an interview, you stand out from everyone who only watched videos.",
+        "sandbox": null,
+        "estimated_minutes": 900
+      },
+      "interview_questions": [
+        {
+          "question": "Walk me through your capstone project.",
+          "model_answer": "Structure: (1) The system — what it does, (2) The architecture — draw it, (3) The tech stack and why each choice, (4) How you deployed it — CI/CD pipeline, (5) How you monitor it — dashboards and alerts, (6) What you would improve if you had more time. Honesty about trade-offs impresses senior engineers.",
+          "difficulty": "mid"
+        }
+      ],
+      "portfolio_contribution": "CAPSTONE — Full cloud deployment with IaC, CI/CD, and monitoring"
+    }
+  ]
+}

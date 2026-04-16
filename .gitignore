@@ -1,0 +1,80 @@
+# ──────────────────────────────────────────────────────────────────────────────
+# Learn4Africa — .gitignore
+# ──────────────────────────────────────────────────────────────────────────────
+
+# ── Dependencies ──────────────────────────────────────────────────────────────
+node_modules/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+env/
+.Python
+*.egg-info/
+pip-log.txt
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ── Build output ──────────────────────────────────────────────────────────────
+.next/
+out/
+dist/
+build/
+*.tsbuildinfo
+
+# ── Environment & secrets ─────────────────────────────────────────────────────
+# Never commit real secrets. Only .env.example is tracked.
+.env
+.env.local
+.env.production
+.env.development.local
+.env.test.local
+*.pem
+*.key
+!public/**/*.pem   # allow non-secret pem files inside /public if any
+.secrets/
+secrets.json
+
+# ── Runtime & user data ───────────────────────────────────────────────────────
+# Local JSON fallback for users (keep the directory, ignore the contents)
+backend/data/local_users.json
+backend/data/local_*.json
+
+# Generated media — keep directory structure, ignore the files themselves
+backend/media/podcasts/*
+backend/media/comics/*
+backend/media/songs/*
+!backend/media/**/.gitkeep
+
+# Databases
+*.sqlite
+*.sqlite3
+*.db
+
+# ── Logs ──────────────────────────────────────────────────────────────────────
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ── IDE / editor ──────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+.cursor/
+
+# ── OS ────────────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Docker ────────────────────────────────────────────────────────────────────
+docker-compose.override.yml
+
+# ── Claude / LLM scratch ──────────────────────────────────────────────────────
+.claude/

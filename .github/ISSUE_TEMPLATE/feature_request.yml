@@ -1,0 +1,32 @@
+name: Feature request
+description: Suggest a capability or improvement
+title: "[Feature]: "
+labels: ["enhancement", "needs-triage"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does this solve?
+      description: Describe the student / teacher / contributor pain point.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+  - type: dropdown
+    id: priority
+    attributes:
+      label: How blocking is this for you?
+      options:
+        - "Nice to have"
+        - "Would significantly improve my workflow"
+        - "I cannot use Learn4Africa without this"
+    validations:
+      required: true
