@@ -4,7 +4,7 @@
 
 **Free AI-powered learning platform for Africa.**
 
-[![CI](https://github.com/learn4africa/learn4africa/actions/workflows/ci.yml/badge.svg)](https://github.com/learn4africa/learn4africa/actions/workflows/ci.yml)
+[![CI](https://github.com/Gacaca6/Learn4Africa/actions/workflows/ci.yml/badge.svg)](https://github.com/Gacaca6/Learn4Africa/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
 [![Tests](https://img.shields.io/badge/tests-39%20passing-brightgreen)](./backend/tests)
 [![Next.js 14](https://img.shields.io/badge/Next.js-14-black?logo=next.js)](https://nextjs.org)
@@ -18,7 +18,7 @@
 ## Quick Start
 
 ```bash
-git clone https://github.com/your-org/learn4africa.git && cd learn4africa
+git clone https://github.com/Gacaca6/Learn4Africa.git && cd Learn4Africa
 cp .env.example .env                            # fill in AUTH_SECRET + JWT_SECRET (see SECURITY.md)
 npm run setup                                   # installs frontend + backend deps
 (cd backend && uvicorn main:app --reload --port 8001) &   # FastAPI on :8001
