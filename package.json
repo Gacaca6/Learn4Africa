@@ -5,15 +5,13 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "convex": "convex dev",
+    "dev:all": "concurrently -n next,convex -c blue,magenta \"npm run dev\" \"npm run convex\"",
     "typecheck": "tsc --noEmit",
     "build": "tsc --noEmit && next build",
     "start": "next start",
     "lint": "next lint",
-    "backend": "cd backend && uvicorn main:app --reload --port 8001",
-    "test:backend": "cd backend && python -m pytest -v",
-    "docker:up": "docker compose up -d",
-    "docker:down": "docker compose down",
-    "setup": "npm install && cd backend && pip install -r requirements.txt"
+    "setup": "npm install"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.0.0",
@@ -24,6 +22,8 @@
     "autoprefixer": "^10.4.0",
     "axios": "^1.7.0",
     "clsx": "^2.1.0",
+    "concurrently": "^8.2.2",
+    "convex": "^1.17.0",
     "framer-motion": "^11.0.0",
     "lucide-react": "^0.400.0",
     "next": "^14.2.0",

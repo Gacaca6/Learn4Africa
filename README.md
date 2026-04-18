@@ -4,12 +4,11 @@
 
 **Free AI-powered learning platform for Africa.**
 
-[![CI](https://github.com/Gacaca6/Learn4Africa/actions/workflows/ci.yml/badge.svg)](https://github.com/Gacaca6/Learn4Africa/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
-[![Tests](https://img.shields.io/badge/tests-39%20passing-brightgreen)](./backend/tests)
 [![Next.js 14](https://img.shields.io/badge/Next.js-14-black?logo=next.js)](https://nextjs.org)
-[![FastAPI](https://img.shields.io/badge/FastAPI-0.111-009688?logo=fastapi)](https://fastapi.tiangolo.com)
-[![Python 3.13](https://img.shields.io/badge/Python-3.13-3776AB?logo=python&logoColor=white)](https://python.org)
+[![Convex](https://img.shields.io/badge/Convex-backend-ee342f)](https://convex.dev)
+[![Vercel](https://img.shields.io/badge/Vercel-hosting-000000?logo=vercel)](https://vercel.com)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)](https://typescriptlang.org)
 
 *"Zigama" means "to understand deeply" — because true education is not about memorising, it is about seeing the world through a new lens.*
 
@@ -19,15 +18,16 @@
 
 ```bash
 git clone https://github.com/Gacaca6/Learn4Africa.git && cd Learn4Africa
-cp .env.example .env                            # fill in AUTH_SECRET + JWT_SECRET (see SECURITY.md)
-npm run setup                                   # installs frontend + backend deps
-(cd backend && uvicorn main:app --reload --port 8001) &   # FastAPI on :8001
-npm run dev                                     # Next.js on :3000
+npm install                                     # installs Next.js + Convex deps
+cp .env.example .env.local                      # fill in AUTH_SECRET + Google OAuth
+npx convex dev                                  # links this repo to your Convex deployment
+                                                # (writes NEXT_PUBLIC_CONVEX_URL into .env.local)
+npm run dev:all                                 # Next.js on :3000 + Convex watcher
 open http://localhost:3000
 ```
 
-Or run the whole stack with Docker: `docker compose up` (MongoDB included).
-Add `--profile ai` to bring up Ollama locally for AI features.
+Deployment: **Vercel** (frontend) + **Convex Cloud** (backend, DB, functions).
+See `STAGE1.md` for step-by-step deploy.
 
 ## Feature status
 
@@ -63,28 +63,26 @@ learn4africa/
 |   |-- course/             # Multi-format course viewer
 |   |-- portfolio/          # Auto-generated CV + projects
 |   |-- tutor/              # Mwalimu chat
-|   `-- api/auth/           # NextAuth route handlers
+|   |-- api/auth/           # NextAuth route handlers
+|   `-- ConvexClientProvider.tsx
+|-- convex/                 # Convex backend — schema + functions
+|   |-- schema.ts           # Database tables + indexes
+|   `-- users.ts            # User queries + mutations
 |-- components/             # TopNav, UserMenu, DemoModeBanner
-|-- lib/                    # apiClient, curriculumStore, trackSync, useAuth
-|-- backend/                # Python FastAPI backend
-|   |-- main.py             # API entry point (port 8001)
-|   |-- routes/             # auth, tracks, tutor, curriculum, courses, ...
-|   |-- engines/            # AI generation engines
-|   `-- models/mongo.py     # Mongo + local_json fallback
+|-- lib/                    # apiClient, curriculumStore, convexServer
+|-- auth.ts                 # NextAuth v5 — upserts into Convex on sign-in
 |-- middleware.ts           # NextAuth route protection
-|-- auth.ts                 # NextAuth v5 config
+|-- backend-legacy/         # Old FastAPI backend — reference only, being ported
 `-- .env.example            # Environment template
 ```
 
 ## Tech stack
 
 - **Frontend**: Next.js 14, React 18, Tailwind CSS, Zustand, NextAuth v5
-- **Backend**: Python FastAPI on port 8001
-- **AI**: Ollama (default model `minimax-m2:cloud`), with OpenAI/Anthropic fallbacks
-- **Database**: MongoDB Atlas (falls back to `local_json` for demos)
-- **Audio**: Edge TTS (free)
-- **Images**: Hugging Face Inference API (free tier)
-- **Auth**: Google OAuth + email/password credentials
+- **Backend**: [Convex](https://convex.dev) — TypeScript functions + reactive DB
+- **Hosting**: Vercel (frontend) + Convex Cloud (backend/DB/functions)
+- **AI**: OpenAI / Anthropic — called from Convex actions (Stage 3+)
+- **Auth**: Google OAuth via NextAuth v5 + Convex user upsert
 
 ## Designed for Africa
 
@@ -96,17 +94,17 @@ learn4africa/
 ## Testing
 
 ```bash
-# Backend — 39 tests covering auth routes, JWT lifecycle, bcrypt, policy
-cd backend && python -m pytest -v
-
-# Frontend — type-check + production build
+# Type-check + production build
 npm run typecheck
 npm run build
 ```
 
-See [SECURITY.md](./SECURITY.md) for secret-rotation procedures and the
-threat model covering JWT revocation, rate limits, and the portfolio
-privacy gate.
+Convex function tests are coming in Stage 2 as we port features across.
+The old FastAPI test suite (39 tests) lives in `backend-legacy/tests/`
+for reference.
+
+See [SECURITY.md](./SECURITY.md) for the threat model and secret-rotation
+procedures.
 
 ## Contributing
 

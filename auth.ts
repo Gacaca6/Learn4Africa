@@ -1,29 +1,31 @@
 /**
  * Learn4Africa — NextAuth v5 (Auth.js) configuration.
  *
- * Two providers:
- *   1. Google — primary OAuth flow. On sign-in, we forward the Google
- *      ID token to our FastAPI backend (`/api/v1/auth/google`) which
- *      verifies it, upserts the user in MongoDB, and returns a JWT.
+ * Stage 1 (Convex port): on successful sign-in we upsert the user into
+ * the Convex `users` table. The user's Convex `_id` is stashed on the
+ * NextAuth session so the frontend can pass it into Convex queries /
+ * mutations.
  *
- *   2. Credentials — email + password fallback for learners without a
- *      Google account. Calls `/api/v1/auth/login` and stores the JWT.
- *
- * The backend JWT travels through NextAuth's own JWT callback so the
- * frontend can attach it as `Authorization: Bearer ...` to any API call.
+ * Providers:
+ *   1. Google — OAuth, fully wired via Convex.
+ *   2. Credentials (email + password) — DISABLED in Stage 1. The old
+ *      FastAPI `/api/v1/auth/login` route is gone; email/password will
+ *      come back in Stage 2 with bcrypt-in-Convex. Until then the form
+ *      returns "Invalid credentials" if submitted.
  */
 
 import NextAuth, { type DefaultSession } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import Google from "next-auth/providers/google";
+import { api } from "@/convex/_generated/api";
+import { convexServer } from "@/lib/convexServer";
 
 // ---------------------------------------------------------------------------
-// Module augmentation — surface backend JWT + user id on the session
+// Module augmentation — surface convex user id on the session
 // ---------------------------------------------------------------------------
 
 declare module "next-auth" {
   interface Session {
-    backendToken?: string;
     user: {
       id?: string;
       authProvider?: string;
@@ -33,70 +35,15 @@ declare module "next-auth" {
   }
 
   interface User {
-    backendToken?: string;
     authProvider?: string;
     preferredLanguage?: string;
     activeTrackId?: string | null;
   }
 }
 
-// Note: next-auth v5 stores JWT augmentations via the "next-auth" module
-// itself — no separate "next-auth/jwt" declaration needed here.
-
 // ---------------------------------------------------------------------------
 // Config
 // ---------------------------------------------------------------------------
-
-const BACKEND_URL =
-  process.env.NEXT_PUBLIC_API_URL || "http://localhost:8001";
-
-async function exchangeGoogleIdToken(idToken: string) {
-  const res = await fetch(`${BACKEND_URL}/api/v1/auth/google`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ id_token: idToken }),
-  });
-  if (!res.ok) {
-    const text = await res.text().catch(() => "");
-    throw new Error(`Backend google exchange failed (${res.status}): ${text}`);
-  }
-  return res.json() as Promise<{
-    access_token: string;
-    user: {
-      id: string;
-      name: string;
-      email: string;
-      avatar_url?: string;
-      auth_provider: string;
-      preferred_language?: string;
-      active_track_id?: string | null;
-    };
-  }>;
-}
-
-async function loginWithPassword(email: string, password: string) {
-  const res = await fetch(`${BACKEND_URL}/api/v1/auth/login`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email, password }),
-  });
-  if (!res.ok) {
-    const text = await res.text().catch(() => "");
-    throw new Error(`Login failed (${res.status}): ${text}`);
-  }
-  return res.json() as Promise<{
-    access_token: string;
-    user: {
-      id: string;
-      name: string;
-      email: string;
-      avatar_url?: string;
-      auth_provider: string;
-      preferred_language?: string;
-      active_track_id?: string | null;
-    };
-  }>;
-}
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   trustHost: true,
@@ -124,66 +71,65 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         email: { label: "Email", type: "email" },
         password: { label: "Password", type: "password" },
       },
-      async authorize(creds) {
-        const email = String(creds?.email || "").trim();
-        const password = String(creds?.password || "");
-        if (!email || !password) return null;
-        try {
-          const data = await loginWithPassword(email, password);
-          return {
-            id: data.user.id,
-            name: data.user.name,
-            email: data.user.email,
-            image: data.user.avatar_url || null,
-            backendToken: data.access_token,
-            authProvider: data.user.auth_provider,
-            preferredLanguage: data.user.preferred_language || "en",
-            activeTrackId: data.user.active_track_id ?? null,
-          };
-        } catch (err) {
-          console.error("[auth] credentials authorize failed", err);
-          return null;
-        }
+      // Stage 1: email/password is temporarily disabled. Stage 2 will
+      // reintroduce it backed by a Convex action that verifies bcrypt
+      // hashes inline. Returning null here makes NextAuth redirect back
+      // to /auth/login with the standard "Invalid credentials" error.
+      async authorize() {
+        return null;
       },
     }),
   ],
   callbacks: {
     /**
-     * When a Google sign-in succeeds, exchange the ID token with the
-     * backend and attach the backend JWT to the NextAuth user object
-     * so it can be picked up by the `jwt` callback below.
+     * On Google sign-in, upsert the user in Convex and stash the
+     * Convex `_id` on the NextAuth user object so the `jwt` callback
+     * below can persist it.
      */
-    async signIn({ account, user }) {
-      if (account?.provider !== "google") return true;
-      const idToken = account.id_token as string | undefined;
-      if (!idToken) {
-        console.error("[auth] Google provider returned no id_token");
+    async signIn({ account, user, profile }) {
+      if (account?.provider !== "google") {
+        // Only Google is active in Stage 1. Credentials path already
+        // returned null above, so this branch just guards the future.
+        return true;
+      }
+
+      const email = (user.email || profile?.email || "").trim();
+      if (!email) {
+        console.error("[auth] Google sign-in returned no email");
         return false;
       }
+
       try {
-        const data = await exchangeGoogleIdToken(idToken);
-        // Mutate the user object — NextAuth passes this into `jwt()`.
-        (user as any).id = data.user.id;
-        (user as any).backendToken = data.access_token;
-        (user as any).authProvider = data.user.auth_provider;
-        (user as any).preferredLanguage = data.user.preferred_language || "en";
-        (user as any).activeTrackId = data.user.active_track_id ?? null;
+        const result = await convexServer.mutation(api.users.upsertFromOAuth, {
+          email,
+          name: user.name || profile?.name || email.split("@")[0],
+          avatarUrl: user.image || (profile?.picture as string | undefined),
+          authProvider: "google",
+        });
+
+        // Convex returns the user's _id + profile fields. Mutate the
+        // NextAuth user object so `jwt()` picks them up.
+        (user as any).id = result.id;
+        (user as any).authProvider = result.authProvider;
+        (user as any).preferredLanguage = result.preferredLanguage || "en";
+        (user as any).activeTrackId = result.activeTrackId ?? null;
         return true;
       } catch (err) {
-        console.error("[auth] backend google exchange failed", err);
+        console.error("[auth] Convex user upsert failed", err);
         return false;
       }
     },
+
     async jwt({ token, user }) {
       if (user) {
         (token as any).userId = (user as any).id;
-        (token as any).backendToken = (user as any).backendToken;
         (token as any).authProvider = (user as any).authProvider;
         (token as any).preferredLanguage = (user as any).preferredLanguage;
         (token as any).activeTrackId = (user as any).activeTrackId;
       }
       return token;
     },
+
     async session({ session, token }) {
       const t = token as any;
       if (session.user) {
@@ -192,7 +138,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         (session.user as any).preferredLanguage = t.preferredLanguage;
         (session.user as any).activeTrackId = t.activeTrackId ?? null;
       }
-      (session as any).backendToken = t.backendToken;
       return session;
     },
   },
