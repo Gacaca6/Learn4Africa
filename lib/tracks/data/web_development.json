@@ -1,0 +1,611 @@
+{
+  "id": "web_development",
+  "title": "Full-Stack Web Developer",
+  "tagline": "Build websites and web apps. Get hired at tech companies across Africa and remotely worldwide.",
+  "duration_weeks": 16,
+  "estimated_weekly_hours": 15,
+  "difficulty": "beginner",
+  "target_jobs": [
+    {
+      "title": "Junior Frontend Developer",
+      "salary_rwf": "300,000 - 550,000 RWF/month",
+      "companies": ["BK Tech", "Irembo", "Kigali startups"]
+    },
+    {
+      "title": "Full-Stack Developer",
+      "salary_rwf": "500,000 - 900,000 RWF/month",
+      "companies": ["Norrsken Kigali", "MTN Rwanda", "BK Tech"]
+    },
+    {
+      "title": "Freelance Web Developer",
+      "salary_rwf": "Variable — international clients",
+      "companies": ["Self-employed", "Upwork", "Toptal"]
+    },
+    {
+      "title": "Remote Developer",
+      "salary_rwf": "$800 - $1,500 USD/month",
+      "companies": ["Andela", "Umurava", "International remote"]
+    }
+  ],
+  "capstone_project": "Live full-stack Kigali Job Board with authentication, deployed to Vercel + Render",
+  "modules": [
+    {
+      "module_number": 1,
+      "title": "How the Web Works",
+      "estimated_hours": 2,
+      "why_africa": "Every business in Kigali — from Inyange to MTN — needs a website. Understanding how the web works is the foundation of a career that can earn you 10x what most jobs pay.",
+      "concepts": [
+        "DNS and how browsers find websites",
+        "HTTP requests and responses",
+        "How servers talk to browsers",
+        "What happens when you type a URL"
+      ],
+      "video_primary": {
+        "title": "How The Web Works — The Big Picture",
+        "channel": "Traversy Media",
+        "url": "https://www.youtube.com/watch?v=hJHvdBlSxug",
+        "video_id": "hJHvdBlSxug",
+        "duration_minutes": 7,
+        "watch_for": "Pay attention to the request-response cycle — every web developer is tested on this in interviews"
+      },
+      "video_secondary": {
+        "title": "What is the Internet?",
+        "channel": "CS50",
+        "url": "https://www.youtube.com/watch?v=n_KghQP86Sw",
+        "video_id": "n_KghQP86Sw",
+        "duration_minutes": 12
+      },
+      "practice_exercise": {
+        "title": "Map the Journey",
+        "instructions": "Open your browser and go to google.com. In a text file or notebook, write down in your own words every step that happens from when you press Enter to when you see the Google homepage. Include: your computer, your router, DNS, the internet, Google's servers, the response. Draw it as a diagram.",
+        "sandbox": null,
+        "estimated_minutes": 30
+      },
+      "interview_questions": [
+        {
+          "question": "What happens when you type a URL into a browser?",
+          "model_answer": "The browser first checks its cache, then asks a DNS server to translate the domain name into an IP address. It then sends an HTTP GET request to that IP address. The server processes the request and sends back an HTTP response with status code and HTML content. The browser parses the HTML, requests any linked CSS/JS/images, renders the page.",
+          "difficulty": "junior",
+          "companies_ask": ["Most web developer interviews", "Andela screening", "Google Africa"]
+        },
+        {
+          "question": "What is the difference between HTTP and HTTPS?",
+          "model_answer": "HTTPS is HTTP with SSL/TLS encryption. The S stands for Secure. HTTPS encrypts data between browser and server so attackers cannot read it. Every production website should use HTTPS. You can tell by the padlock icon in the browser.",
+          "difficulty": "junior"
+        }
+      ],
+      "portfolio_contribution": null,
+      "fcc_alignment": null,
+      "odin_alignment": "Foundations/Prerequisites",
+      "mdn_reference": "https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Web_mechanics/How_does_the_Internet_work"
+    },
+    {
+      "module_number": 2,
+      "title": "HTML — The Structure of Every Website",
+      "estimated_hours": 6,
+      "why_africa": "HTML is the language every website on earth is written in. In 2 hours you can write your first web page. In 2 weeks you can build pages that look professional. This is the first step toward your first developer job.",
+      "concepts": [
+        "HTML document structure",
+        "Tags, elements, attributes",
+        "Headings, paragraphs, lists",
+        "Links and images",
+        "Forms and inputs",
+        "Semantic HTML (employers test this)"
+      ],
+      "video_primary": {
+        "title": "HTML Full Course - Build a Website Tutorial",
+        "channel": "freeCodeCamp.org",
+        "url": "https://www.youtube.com/watch?v=pQN-pnXPaVg",
+        "video_id": "pQN-pnXPaVg",
+        "duration_minutes": 120,
+        "watch_for": "Build along with the tutorial. Do not just watch. Every time they write code, pause and write it yourself first."
+      },
+      "video_secondary": {
+        "title": "HTML Crash Course For Absolute Beginners",
+        "channel": "Traversy Media",
+        "url": "https://www.youtube.com/watch?v=UB1O30fR-EE",
+        "video_id": "UB1O30fR-EE",
+        "duration_minutes": 60
+      },
+      "practice_exercise": {
+        "title": "Build Your First Real Page — A Digital Business Card",
+        "instructions": "Create an HTML file called index.html. Build a personal page that includes:\n1. Your name as an h1 heading\n2. A short paragraph about yourself (2-3 sentences)\n3. A section titled 'Skills I am Learning' with an unordered list\n4. A section titled 'My Goals' with an ordered list of 3 goals\n5. A link to freeCodeCamp.org (where you are learning)\n6. One image (can be from the internet using an <img> tag)\n7. A contact section with your email using a mailto: link\n\nRequirements: Must use proper HTML document structure (<!DOCTYPE html>, <html>, <head>, <body>). Must use at least one semantic element (<header>, <main>, <footer>, <section>). Open in your browser — does it look right?",
+        "sandbox": "https://replit.com/new/html",
+        "estimated_minutes": 90
+      },
+      "interview_questions": [
+        {
+          "question": "What is semantic HTML and why does it matter?",
+          "model_answer": "Semantic HTML uses tags that describe their meaning — like <header>, <nav>, <main>, <article>, <footer> — instead of generic <div> tags. It matters for 3 reasons: (1) accessibility — screen readers for blind users rely on semantic tags, (2) SEO — search engines rank semantically structured pages higher, (3) maintainability — other developers can read your code more easily.",
+          "difficulty": "junior"
+        },
+        {
+          "question": "What is the difference between block and inline elements?",
+          "model_answer": "Block elements (div, p, h1-h6, ul, li, section) take up the full width available and start on a new line. Inline elements (span, a, img, strong, em) only take up as much space as their content and do not start on a new line. Understanding this is essential for CSS layout.",
+          "difficulty": "junior"
+        }
+      ],
+      "portfolio_contribution": null,
+      "fcc_alignment": "Responsive Web Design Certification — Step 1",
+      "odin_alignment": "Foundations/HTML Foundations",
+      "mdn_reference": "https://developer.mozilla.org/en-US/docs/Learn/HTML"
+    },
+    {
+      "module_number": 3,
+      "title": "CSS — Making Websites Beautiful",
+      "estimated_hours": 8,
+      "why_africa": "A website without CSS looks like a Word document. CSS is what makes websites look like real products. Companies hire developers who can build interfaces that users love. This is where you learn that.",
+      "concepts": [
+        "Selectors and specificity",
+        "The Box Model (most important concept in CSS)",
+        "Flexbox layout",
+        "CSS Grid layout",
+        "Responsive design and media queries",
+        "Variables and modern CSS"
+      ],
+      "video_primary": {
+        "title": "CSS Tutorial — Full Course for Beginners",
+        "channel": "freeCodeCamp.org",
+        "url": "https://www.youtube.com/watch?v=OXGznpKZ_sA",
+        "video_id": "OXGznpKZ_sA",
+        "duration_minutes": 192,
+        "watch_for": "The Box Model section is the most important. Every developer is tested on this. Write it down: content → padding → border → margin."
+      },
+      "video_secondary": {
+        "title": "Flexbox in 100 Seconds",
+        "channel": "Fireship",
+        "url": "https://www.youtube.com/watch?v=K74l26pE4YA",
+        "video_id": "K74l26pE4YA",
+        "duration_minutes": 2
+      },
+      "practice_exercise": {
+        "title": "Style Your Business Card",
+        "instructions": "Take the HTML page you built in Module 2. Add a stylesheet called style.css and link it.\nRequirements:\n1. Set a background color and a different color for the main content area\n2. Choose a Google Font and apply it to all text\n3. Center your name on the page\n4. Use Flexbox to lay out your Skills and Goals sections side by side\n5. Add padding and margins so nothing feels cramped\n6. Make it responsive — on a phone screen, the two columns should stack vertically\n7. Style your links — remove the underline, change the color, add a hover effect\n\nShare it with someone on your phone. Does it look good on mobile?",
+        "sandbox": "https://codepen.io/pen/",
+        "estimated_minutes": 120
+      },
+      "interview_questions": [
+        {
+          "question": "Explain the CSS Box Model.",
+          "model_answer": "Every HTML element is a box with 4 layers: content (the actual text/image), padding (space inside the border), border (a line around the padding), margin (space outside the border). When you set width:200px, that is the content width by default. Use box-sizing:border-box to make width include padding and border — this is what most professional codebases use.",
+          "difficulty": "junior"
+        },
+        {
+          "question": "What is the difference between Flexbox and Grid?",
+          "model_answer": "Flexbox is one-dimensional — it lays items out in a row or column. It is best for navigation bars, button groups, centering items. Grid is two-dimensional — it handles rows AND columns simultaneously. It is best for full page layouts, card grids, complex two-dimensional designs. In practice, you use both: Grid for the overall page structure, Flexbox for components within that structure.",
+          "difficulty": "junior"
+        }
+      ],
+      "portfolio_contribution": "Your styled personal page is the start of your portfolio website",
+      "fcc_alignment": "Responsive Web Design Certification",
+      "odin_alignment": "Foundations/CSS Foundations"
+    },
+    {
+      "module_number": 4,
+      "title": "JavaScript Fundamentals — Making Websites Interactive",
+      "estimated_hours": 16,
+      "why_africa": "JavaScript is the most in-demand programming language in the world. Every website that does anything interactive — a button that opens a menu, a form that validates before sending, a cart that updates — uses JavaScript. Learning this opens the door to frontend, backend, and full-stack roles.",
+      "concepts": [
+        "Variables, data types, operators",
+        "Functions (the most important concept in JS)",
+        "Arrays and objects",
+        "Conditional logic (if/else, switch)",
+        "Loops (for, while, forEach)",
+        "DOM manipulation — changing what users see",
+        "Events — responding to user actions"
+      ],
+      "video_primary": {
+        "title": "JavaScript Programming — Full Course",
+        "channel": "freeCodeCamp.org",
+        "url": "https://www.youtube.com/watch?v=jS4aFq5-91M",
+        "video_id": "jS4aFq5-91M",
+        "duration_minutes": 192,
+        "watch_for": "Do not skip the functions section. Functions are how you think like a programmer. Write every example yourself before moving on."
+      },
+      "video_secondary": {
+        "title": "JavaScript Crash Course For Beginners",
+        "channel": "Traversy Media",
+        "url": "https://www.youtube.com/watch?v=hdI2bqOjy3c",
+        "video_id": "hdI2bqOjy3c",
+        "duration_minutes": 90
+      },
+      "practice_exercise": {
+        "title": "Build a Mobile Money Calculator",
+        "instructions": "Build a web page with:\n1. An input for an amount in RWF\n2. Radio buttons to select: Send Money, Withdraw Cash, Pay Bill\n3. A 'Calculate Fee' button\n4. A result section showing the fee and total amount\n\nFee rules (based on MTN MoMo approximate structure):\n- Send Money: 1% of amount (minimum 100 RWF)\n- Withdraw Cash: 1.5% of amount (minimum 150 RWF)\n- Pay Bill: Free\n\nRequirements:\n- Must use JavaScript to calculate (no server, all in the browser)\n- Must validate: only numbers allowed, amount must be positive\n- Show error messages for invalid input\n- Format numbers with commas (1,000 RWF not 1000 RWF)\n\nWhy this project: You are building something real that Rwandans use every day. When you show this in an interview and explain the logic, it demonstrates you can solve African problems with code.",
+        "sandbox": "https://codepen.io/pen/",
+        "estimated_minutes": 180
+      },
+      "interview_questions": [
+        {
+          "question": "What is the difference between == and === in JavaScript?",
+          "model_answer": "== does type coercion (converts types before comparing), so '5' == 5 is true. === is strict equality — no type conversion — so '5' === 5 is false. Always use === in professional code. Using == can cause subtle bugs that are very hard to find.",
+          "difficulty": "junior"
+        },
+        {
+          "question": "What is a closure in JavaScript?",
+          "model_answer": "A closure is when a function remembers the variables from the scope where it was created, even after that outer function has finished running. Example: a counter function that keeps its count private. Closures are used for data privacy, function factories, and callbacks. Interviewers test this because it shows you understand how JavaScript scope and memory really work.",
+          "difficulty": "mid"
+        },
+        {
+          "question": "Explain event bubbling.",
+          "model_answer": "When you click an element, the click event fires on that element first, then bubbles up through all its parent elements. So clicking a button inside a div inside main will fire click on button, then div, then main. You can stop this with event.stopPropagation(). Understanding bubbling is essential for building interactive UIs correctly.",
+          "difficulty": "junior"
+        }
+      ],
+      "portfolio_contribution": "Mobile Money Calculator — your first real JavaScript project",
+      "fcc_alignment": "JavaScript Algorithms and Data Structures Certification",
+      "odin_alignment": "Foundations/JavaScript Basics",
+      "leetcode_practice": [
+        {
+          "problem": "Two Sum",
+          "url": "https://leetcode.com/problems/two-sum/",
+          "why": "Tests array iteration and object lookup — core JavaScript skills"
+        },
+        {
+          "problem": "Reverse String",
+          "url": "https://leetcode.com/problems/reverse-string/",
+          "why": "Tests array manipulation — commonly asked in junior interviews"
+        }
+      ]
+    },
+    {
+      "module_number": 5,
+      "title": "Git and GitHub — The Tool Every Employer Expects You to Know",
+      "estimated_hours": 6,
+      "why_africa": "78% of tech recruiters check your GitHub before inviting you to interview. This is not optional. Git is how professional developers save and share code. Without Git, your work is invisible. With it, every project becomes proof of your skills.",
+      "concepts": [
+        "What version control is and why it matters",
+        "Git init, add, commit — the core workflow",
+        "Branches and merging",
+        "GitHub — pushing and pulling",
+        "Pull requests",
+        "Reading someone else's code on GitHub",
+        "Writing a README that impresses employers"
+      ],
+      "video_primary": {
+        "title": "Git and GitHub for Beginners — Crash Course",
+        "channel": "freeCodeCamp.org",
+        "url": "https://www.youtube.com/watch?v=RGOj5yH7evk",
+        "video_id": "RGOj5yH7evk",
+        "duration_minutes": 68,
+        "watch_for": "Install Git on your computer first. Then follow along — every command they type, you type. This only works by doing, not watching."
+      },
+      "video_secondary": {
+        "title": "GitHub Pull Request in 100 Seconds",
+        "channel": "Fireship",
+        "url": "https://www.youtube.com/watch?v=8lGpZkjnkt4",
+        "video_id": "8lGpZkjnkt4",
+        "duration_minutes": 2
+      },
+      "practice_exercise": {
+        "title": "Launch Your Developer Identity on GitHub",
+        "instructions": "1. Create a free GitHub account at github.com\n   Username tip: use your real name or a professional variation. This is your developer identity. Make it professional.\n\n2. Create your profile README:\n   - Create a repository named exactly your-username\n   - Add a README.md with:\n     * Your name and a one-sentence introduction\n     * 'Currently learning: Web Development on Learn4Africa'\n     * Skills you are building (HTML, CSS, JavaScript)\n     * Your goal (e.g., 'My goal is to become a junior web developer')\n\n3. Push your business card project to GitHub:\n   - Create a repository called 'my-portfolio-website'\n   - Use Git to push your HTML/CSS files\n   - Enable GitHub Pages — your site will be live at your-username.github.io/my-portfolio-website\n\n4. Share the link in your Learn4Africa profile\n\nYou now have a live website and a GitHub profile. This is your portfolio. This is what gets you interviews.",
+        "sandbox": null,
+        "estimated_minutes": 120
+      },
+      "interview_questions": [
+        {
+          "question": "What is the difference between git merge and git rebase?",
+          "model_answer": "Both integrate changes from one branch into another. Merge creates a new merge commit that preserves the full history of both branches — safer and more transparent. Rebase moves the branch's commits to the tip of the target branch, creating a cleaner linear history — but rewrites commit history, which can cause problems on shared branches. Use merge for integrating feature branches into main; use rebase for cleaning up your own commits before sharing.",
+          "difficulty": "mid"
+        },
+        {
+          "question": "What is a pull request and how does the code review process work?",
+          "model_answer": "A pull request is a request to merge your branch into the main codebase. It shows the diff of all changes, allows team members to comment line by line, request changes, and approve. The process: developer creates feature branch, pushes it, opens a PR, team reviews, developer addresses feedback, reviewer approves, branch is merged. This is how all professional development teams work.",
+          "difficulty": "junior"
+        }
+      ],
+      "portfolio_contribution": "Your GitHub profile and first live website — the foundation of everything",
+      "fcc_alignment": null,
+      "odin_alignment": "Foundations/Git Basics"
+    },
+    {
+      "module_number": 6,
+      "title": "React — Building Modern Web Applications",
+      "estimated_hours": 24,
+      "why_africa": "React is the most in-demand frontend skill in Africa. Job listings at Kigali tech companies, Andela, and international remote roles consistently require React. Once you learn React, you can build applications like Facebook, Instagram, or the next big Rwandan startup.",
+      "concepts": [
+        "Why React exists (the problem it solves)",
+        "Components — the building blocks",
+        "Props — passing data between components",
+        "State — data that changes",
+        "useEffect — connecting to the real world",
+        "Fetching data from APIs",
+        "React Router — multiple pages in one app"
+      ],
+      "video_primary": {
+        "title": "React Course — Beginner's Tutorial for React JavaScript Library",
+        "channel": "freeCodeCamp.org",
+        "url": "https://www.youtube.com/watch?v=bMknfKXIFA8",
+        "video_id": "bMknfKXIFA8",
+        "duration_minutes": 426,
+        "watch_for": "This is a long course. Do not watch it all at once. One section per day, build the project along with it. The hooks section (useState, useEffect) is where most beginners get confused — slow down there."
+      },
+      "video_secondary": {
+        "title": "React in 100 Seconds",
+        "channel": "Fireship",
+        "url": "https://www.youtube.com/watch?v=Tn6-PIqc4UM",
+        "video_id": "Tn6-PIqc4UM",
+        "duration_minutes": 2
+      },
+      "practice_exercise": {
+        "title": "Build a Kigali Job Board",
+        "instructions": "Build a React app that displays tech job listings in Kigali.\n\nCreate a file mockJobs.js with at least 8 job listings, each with: { id, title, company, location, salary_rwf, skills_required[], posted_date, description }\n\nInclude these real-looking companies and roles:\n- BK Tech Hub — Junior React Developer — 450,000 RWF\n- MTN Rwanda — Python Data Analyst — 550,000 RWF\n- Norrsken Kigali — Full Stack Developer — 700,000 RWF\n- Rwanda Revenue Authority — IT Support Officer — 350,000 RWF\n- Andela (Remote) — Junior Software Engineer — USD 1,200/month\n- Equity Bank Rwanda — Systems Administrator — 400,000 RWF\n- Irembo — Frontend Developer — 480,000 RWF\n- 250 Startups portfolio company — Mobile Developer — 500,000 RWF\n\nApp requirements:\n1. List all jobs with title, company, salary, and required skills as badges\n2. Filter by skill (React, Python, etc.) — clicking a skill shows only matching jobs\n3. Search by company name or job title\n4. Click a job to see full details\n5. A 'Skills I Have' section where you check off skills you know and it highlights jobs that match your skills\n\nThis is a real portfolio project. When you show this in an interview and say 'I built a job board for Kigali's tech scene', that is memorable. It shows you understand the local market.",
+        "sandbox": "https://stackblitz.com/fork/react",
+        "estimated_minutes": 480
+      },
+      "interview_questions": [
+        {
+          "question": "What is the difference between state and props in React?",
+          "model_answer": "Props are read-only data passed from a parent component to a child — like function arguments. The child cannot modify props. State is data that belongs to a component and can change over time — causing the component to re-render. When a button click changes what is shown on screen, that is state. When a parent tells a child what colour to be, that is props.",
+          "difficulty": "junior"
+        },
+        {
+          "question": "What is the Virtual DOM and why does React use it?",
+          "model_answer": "The Virtual DOM is a JavaScript representation of the real DOM kept in memory. When state changes, React updates the Virtual DOM first, then compares it to the previous version (diffing), then only updates the parts of the real DOM that actually changed. This is much faster than rebuilding the entire DOM on every change. It is why React apps feel fast.",
+          "difficulty": "junior"
+        },
+        {
+          "question": "Explain the useEffect hook.",
+          "model_answer": "useEffect runs side effects after React renders a component. Side effects are things that happen outside React — fetching data, subscribing to events, updating the document title. It takes two arguments: a function (the effect) and a dependency array. If the array is empty [], it runs only once after the first render. If it contains values, it runs whenever those values change. If there is no array, it runs after every render.",
+          "difficulty": "mid"
+        }
+      ],
+      "portfolio_contribution": "Kigali Job Board — a full React application showing real job market knowledge",
+      "fcc_alignment": "Front End Development Libraries Certification",
+      "odin_alignment": "React section",
+      "leetcode_practice": [
+        {
+          "problem": "Contains Duplicate",
+          "url": "https://leetcode.com/problems/contains-duplicate/",
+          "why": "Tests array and Set usage — common in React state management interviews"
+        }
+      ]
+    },
+    {
+      "module_number": 7,
+      "title": "Node.js and Express — Building Backend APIs",
+      "estimated_hours": 20,
+      "why_africa": "Frontend skills get you 50% of developer jobs. Backend skills get you the other 50%, and pays more. A full-stack developer can build an entire product alone — front, back, and database. This is the most valuable skill in Rwanda's tech market right now.",
+      "concepts": [
+        "What is a backend and why it exists",
+        "Node.js — JavaScript on the server",
+        "Express.js — building APIs fast",
+        "REST API design (what every backend uses)",
+        "Handling requests and sending responses",
+        "Middleware",
+        "Environment variables and security basics"
+      ],
+      "video_primary": {
+        "title": "Node.js and Express.js — Full Course",
+        "channel": "freeCodeCamp.org",
+        "url": "https://www.youtube.com/watch?v=Oe421EPjeBE",
+        "video_id": "Oe421EPjeBE",
+        "duration_minutes": 480,
+        "watch_for": "The REST API section is critical. Understand GET, POST, PUT, DELETE — these map to reading, creating, updating, deleting data. Every backend job tests this."
+      },
+      "video_secondary": null,
+      "practice_exercise": {
+        "title": "Build the Backend for Your Job Board",
+        "instructions": "Build a REST API that serves job listings data. This is the server that your React job board will connect to.\n\nCreate an Express.js server with these endpoints:\nGET    /api/jobs          — returns all jobs\nGET    /api/jobs/:id      — returns one job by id\nPOST   /api/jobs          — creates a new job (requires JSON body)\nPUT    /api/jobs/:id      — updates a job\nDELETE /api/jobs/:id      — deletes a job\nGET    /api/jobs/search?q= — search jobs by title or company\nGET    /api/jobs/filter?skill= — filter by required skill\n\nStore data in a JSON file (jobs.json) — no database yet.\nAdd proper error handling: 404 when job not found, 400 for bad requests.\nTest every endpoint with a tool like Hoppscotch (free, browser-based).\n\nConnect it to your React job board from Module 6. You now have a full-stack application.",
+        "sandbox": "https://replit.com/new/nodejs",
+        "estimated_minutes": 360
+      },
+      "interview_questions": [
+        {
+          "question": "What is REST and what are the HTTP methods?",
+          "model_answer": "REST (Representational State Transfer) is an architectural style for APIs. The main HTTP methods map to database operations: GET (read), POST (create), PUT/PATCH (update), DELETE (delete). A RESTful API uses these methods with resource-based URLs: GET /users returns all users, GET /users/5 returns user 5, POST /users creates a user. REST is stateless — each request contains all information needed, the server stores no client session.",
+          "difficulty": "junior"
+        },
+        {
+          "question": "What is middleware in Express.js?",
+          "model_answer": "Middleware are functions that execute between receiving a request and sending a response. They have access to the request object, response object, and a next() function that calls the next middleware. Used for: logging, authentication, input validation, parsing JSON body, error handling. Express processes middleware in order — if you forget to call next(), the request hangs forever.",
+          "difficulty": "junior"
+        }
+      ],
+      "portfolio_contribution": "Full-stack Job Board with working backend API — your most impressive portfolio project so far"
+    },
+    {
+      "module_number": 8,
+      "title": "MongoDB — Working with Databases",
+      "estimated_hours": 12,
+      "why_africa": "Data is how businesses make decisions. Every app stores data. Knowing databases makes you a complete developer who can build real products from start to finish — not just the visible parts.",
+      "concepts": [
+        "SQL vs NoSQL — when to use each",
+        "MongoDB documents and collections",
+        "CRUD operations",
+        "Mongoose — connecting MongoDB to Node.js",
+        "Schema design",
+        "Queries and filters",
+        "Connecting to MongoDB Atlas (free cloud database)"
+      ],
+      "video_primary": {
+        "title": "MongoDB Crash Course",
+        "channel": "Traversy Media",
+        "url": "https://www.youtube.com/watch?v=-56x56UppqQ",
+        "video_id": "-56x56UppqQ",
+        "duration_minutes": 35,
+        "watch_for": "When they show query operators ($gt, $lt, $in, $or) — write these down. Every database interview uses them."
+      },
+      "video_secondary": null,
+      "practice_exercise": {
+        "title": "Upgrade Your Job Board to Use a Real Database",
+        "instructions": "Replace your JSON file storage with MongoDB Atlas (free tier).\n\n1. Create a free MongoDB Atlas account\n2. Create a cluster and database called 'learn4africa_jobs'\n3. Install Mongoose in your Node.js project\n4. Create a Job schema with proper types and validation:\n   - title: String, required\n   - company: String, required\n   - salary_rwf: Number, required, min: 0\n   - skills_required: [String]\n   - posted_date: Date, default: now\n   - description: String\n   - is_remote: Boolean, default: false\n5. Update all your API endpoints to use MongoDB instead of JSON file\n6. Add a seed script that populates the database with your 8 mock jobs\n7. Test: can you still GET all jobs? Create a new one? Search?\n\nYou have just built a production-quality full-stack application.",
+        "sandbox": null,
+        "estimated_minutes": 240
+      },
+      "interview_questions": [
+        {
+          "question": "When would you use MongoDB over a SQL database?",
+          "model_answer": "MongoDB (NoSQL) is better when: data structure is flexible or evolves frequently, you need to store nested/hierarchical data naturally, you are scaling horizontally, data does not have complex relationships. SQL is better when: data has clear relationships (users have orders, orders have products), you need ACID transactions (financial systems), data is highly structured and unlikely to change. For a job board, either works — SQL if jobs have complex relationships, MongoDB if job structure varies.",
+          "difficulty": "junior"
+        }
+      ],
+      "portfolio_contribution": null
+    },
+    {
+      "module_number": 9,
+      "title": "Authentication and Security Basics",
+      "estimated_hours": 12,
+      "why_africa": "Every real application has login. Banks, government systems, e-commerce — they all need to know who is using them. Security is not optional. A developer who understands authentication is immediately more valuable than one who does not.",
+      "concepts": [
+        "Why passwords must be hashed (never stored as plain text)",
+        "JWT (JSON Web Tokens) — the industry standard",
+        "bcrypt for password hashing",
+        "Protected routes — only logged in users can access certain pages",
+        "CORS — why your API might refuse requests",
+        "Environment variables for secrets"
+      ],
+      "video_primary": {
+        "title": "Node.js Auth Tutorial (JWT)",
+        "channel": "The Net Ninja",
+        "url": "https://www.youtube.com/watch?v=SnoAwLP1a-0",
+        "video_id": "SnoAwLP1a-0",
+        "duration_minutes": 120,
+        "watch_for": "The JWT flow: user logs in → server creates token → client stores token → client sends token with every request → server verifies token. Draw this as a diagram. You will explain it in every backend interview."
+      },
+      "video_secondary": null,
+      "practice_exercise": {
+        "title": "Add User Accounts to Your Job Board",
+        "instructions": "Add authentication to your full-stack Job Board:\n\n1. Create a User model: { name, email, password (hashed), role: 'jobseeker'/'employer' }\n2. POST /api/auth/register — hash password with bcrypt, save user, return JWT\n3. POST /api/auth/login — verify password, return JWT\n4. Create authMiddleware — verifies JWT on protected routes\n5. Protect POST/PUT/DELETE job routes — only authenticated users\n6. On the React frontend:\n   - Add login and register forms\n   - Store JWT in localStorage\n   - Send JWT in Authorization header with every API request\n   - Show different UI for logged-in vs logged-out users\n\nYour job board now has real user accounts. This is production-level authentication used at real companies.",
+        "sandbox": null,
+        "estimated_minutes": 300
+      },
+      "interview_questions": [
+        {
+          "question": "Why should you never store passwords as plain text?",
+          "model_answer": "If your database is ever hacked (which happens to major companies), plain text passwords expose every user's account on every other website they use the same password for. bcrypt is a one-way hashing function — you store the hash, not the password. When a user logs in, you hash their input and compare the hashes. Even if someone steals your database, they cannot recover the original passwords.",
+          "difficulty": "junior"
+        }
+      ],
+      "portfolio_contribution": null
+    },
+    {
+      "module_number": 10,
+      "title": "Deployment — Getting Your App Online",
+      "estimated_hours": 8,
+      "why_africa": "A project that only runs on your laptop is invisible to employers. A project with a live URL proves you can ship. Deployment is the skill that converts learning into proof.",
+      "concepts": [
+        "What deployment means",
+        "Frontend deployment with Vercel (free)",
+        "Backend deployment with Render or Railway (free tier)",
+        "Environment variables in production",
+        "Custom domains",
+        "GitHub Actions basics — automatic deployment",
+        "Monitoring and reading error logs"
+      ],
+      "video_primary": {
+        "title": "How to Deploy a MERN Stack App",
+        "channel": "Traversy Media",
+        "url": "https://www.youtube.com/watch?v=6RHF7b2SBRM",
+        "video_id": "6RHF7b2SBRM",
+        "duration_minutes": 45,
+        "watch_for": "The environment variables section. Never commit secrets to GitHub. This is a mistake that costs companies millions of dollars and gets developers fired."
+      },
+      "video_secondary": null,
+      "practice_exercise": {
+        "title": "Deploy Your Full-Stack Job Board — Make It Live",
+        "instructions": "Deploy your complete full-stack Job Board so anyone on earth can use it:\n\n1. Deploy React frontend to Vercel:\n   - Connect your GitHub repository\n   - Set environment variable: REACT_APP_API_URL=your-backend-url\n   - Your frontend is live at: your-project.vercel.app\n\n2. Deploy Node.js backend to Render (free tier):\n   - Connect your GitHub repository\n   - Set environment variables: MONGODB_URI, JWT_SECRET\n   - Your API is live at: your-project.onrender.com\n\n3. Update MongoDB Atlas network access to allow all IPs (0.0.0.0/0) for now\n\n4. Update your React app to use the production API URL\n\n5. Test the entire flow on your phone:\n   - Register an account\n   - Log in\n   - Browse jobs\n   - Post a new job\n\n6. Write a README for your GitHub repository:\n   - What the project does\n   - Technologies used\n   - Live demo link\n   - Screenshot\n   - How to run locally\n\nShare the live URL in your Learn4Africa profile. This is a real, deployed full-stack application. This gets you hired.",
+        "sandbox": null,
+        "estimated_minutes": 180
+      },
+      "interview_questions": [
+        {
+          "question": "What is CORS and how do you fix it?",
+          "model_answer": "CORS (Cross-Origin Resource Sharing) is a security feature that blocks requests from a different origin (domain/port) than the server. When your React app on localhost:3000 calls your API on localhost:5000, the browser blocks it by default. Fix: add the cors npm package to your Express server and configure it to allow your frontend's origin. In production, only allow your actual frontend domain.",
+          "difficulty": "junior"
+        }
+      ],
+      "portfolio_contribution": "CAPSTONE PROJECT — Live full-stack Kigali Job Board with authentication, deployed, with a real URL and GitHub README",
+      "fcc_alignment": "Back End Development and APIs Certification"
+    },
+    {
+      "module_number": 11,
+      "title": "Data Structures and Algorithms — Passing Technical Interviews",
+      "estimated_hours": 30,
+      "why_africa": "This is the module that separates developers who can build things from developers who can get hired at competitive companies. Andela, remote jobs, and serious Kigali tech companies all test algorithms. This is not optional if you want the best jobs.",
+      "concepts": [
+        "Big O Notation — measuring code efficiency",
+        "Arrays and their operations",
+        "Objects/Hash Maps — O(1) lookup",
+        "Linked Lists — understanding memory",
+        "Stacks and Queues",
+        "Binary Search — 10x faster than linear search",
+        "Recursion",
+        "Sorting algorithms"
+      ],
+      "video_primary": {
+        "title": "Data Structures — Full Course Using C and C++ (conceptual — follow in JavaScript)",
+        "channel": "freeCodeCamp.org",
+        "url": "https://www.youtube.com/watch?v=B31LgI4Y4DQ",
+        "video_id": "B31LgI4Y4DQ",
+        "duration_minutes": 305,
+        "watch_for": "Watch this for the concepts. Then implement every data structure in JavaScript yourself. Understanding > memorizing."
+      },
+      "video_secondary": {
+        "title": "Big O Notation — Full Course",
+        "channel": "freeCodeCamp.org",
+        "url": "https://www.youtube.com/watch?v=Mo4vesaut8g",
+        "video_id": "Mo4vesaut8g",
+        "duration_minutes": 128
+      },
+      "practice_exercise": {
+        "title": "Solve 20 LeetCode Problems",
+        "instructions": "Create a free LeetCode account. Solve these 20 problems in order.\nFor each problem:\n1. Read it 3 times before writing any code\n2. Write your approach in plain English first\n3. Write the code\n4. Test with the examples\n5. After solving, read the top-voted solution and understand how it differs from yours\n\nProblems (start with Easy, then move to Medium):\nEasy: Two Sum, Reverse String, Contains Duplicate, Valid Parentheses, Maximum Subarray, Climbing Stairs, Best Time to Buy Stock, Valid Palindrome, Merge Two Sorted Lists, Linked List Cycle\n\nMedium: 3Sum, Group Anagrams, Product of Array Except Self, Longest Substring Without Repeating Characters, Find Minimum in Rotated Sorted Array, Number of Islands, Meeting Rooms (premium alternative: Merge Intervals), Decode Ways, Unique Paths, Jump Game\n\nTrack your solutions in a GitHub repository called 'dsa-practice'. This repository shows employers you practise algorithms seriously.",
+        "sandbox": "https://leetcode.com/",
+        "estimated_minutes": 1800
+      },
+      "interview_questions": [
+        {
+          "question": "What is Big O notation? What is the Big O of common operations?",
+          "model_answer": "Big O describes how an algorithm's time or space grows as input size grows. O(1) is constant — same time regardless of input (hash table lookup). O(log n) is logarithmic — binary search. O(n) is linear — one loop through an array. O(n log n) is common in good sorting algorithms. O(n²) is quadratic — nested loops, bad for large inputs. When asked to optimize, think: can I use a hash map (O(1) lookup) instead of a nested loop (O(n²))?",
+          "difficulty": "junior"
+        }
+      ],
+      "portfolio_contribution": "DSA Practice Repository — shows employers consistent algorithmic work"
+    },
+    {
+      "module_number": 12,
+      "title": "Your Job Search Strategy — Getting Hired",
+      "estimated_hours": 12,
+      "why_africa": "85% of Rwandan tech firms have skill gaps. You now have skills they need. But finding the right companies and presenting yourself correctly is a skill in itself. This module is where your work pays off.",
+      "concepts": [
+        "Writing a CV that gets past ATS systems",
+        "GitHub profile optimization",
+        "LinkedIn for African tech professionals",
+        "Where to find tech jobs in Rwanda and Africa",
+        "How to prepare for a Rwandan tech interview",
+        "Andela application process",
+        "Remote job applications to international companies",
+        "Salary negotiation"
+      ],
+      "video_primary": {
+        "title": "How to Get a Developer Job — Even in a Bad Economy",
+        "channel": "freeCodeCamp.org",
+        "url": "https://www.youtube.com/watch?v=CyD8yJFf5Kw",
+        "video_id": "CyD8yJFf5Kw",
+        "duration_minutes": 90,
+        "watch_for": "The portfolio and networking sections apply directly to Rwanda and remote work. Ignore US-specific visa advice."
+      },
+      "video_secondary": null,
+      "practice_exercise": {
+        "title": "Launch Your Job Search",
+        "instructions": "Complete every step. Do not skip any.\n\n1. Polish your GitHub:\n   - Profile photo (professional, friendly)\n   - Bio: 'Full-Stack Developer | Learning at Learn4Africa | Based in Rwanda'\n   - Pin 4 repositories: portfolio website, Mobile Money Calculator, Kigali Job Board, DSA Practice\n   - Every pinned repo must have: live demo link, description, tech stack listed, screenshot in README\n\n2. Write your CV (1 page):\n   - Name and contacts at top (no photo, no age, no marital status)\n   - Professional Summary: 3 sentences about what you can build\n   - Skills: JavaScript, React, Node.js, MongoDB, Git, HTML/CSS\n   - Projects section (more important than education):\n     * Kigali Job Board — link to live site and GitHub\n     * Mobile Money Calculator — link to live site\n     * Your Portfolio Website — link to live site\n   - Education: University/school, graduation year\n   - Format: Clean, no fancy design, ATS-readable plain text\n\n3. Create your LinkedIn profile:\n   - Professional photo\n   - Headline: 'Junior Full-Stack Developer | React | Node.js | Open to Opportunities'\n   - About section: what you can build, what you are looking for\n   - Add all your projects with links\n   - Connect with: 5 Rwandan tech professionals, 3 companies you want to work at, The Learn4Africa community\n\n4. Apply to your first 5 jobs this week:\n   - jobs.rw and kali.rw (Rwandan job boards)\n   - LinkedIn Jobs (filter: Rwanda, Software Developer, Entry Level)\n   - Andela.com (create profile — they place developers at international companies)\n   - Umurava.africa (Rwanda-focused developer placement)\n   - Remote: remoteafrica.io, weworkremotely.com (filter: junior, no timezone req)\n\n5. Interview preparation:\n   - Practice answering: 'Tell me about yourself' (90 seconds, confident)\n   - Practice: 'What projects have you built?' — demo your job board\n   - Practice: 'What are your salary expectations?'\n     Junior developer in Kigali: 350,000-550,000 RWF is reasonable to ask for\n     Remote/international: $800-$1,500/month is entry level\n\nYou are not a student anymore. You are a developer looking for your first job.",
+        "sandbox": null,
+        "estimated_minutes": 480
+      },
+      "interview_questions": [
+        {
+          "question": "Tell me about yourself.",
+          "model_answer": "A 90-second answer structured as: (1) Who you are — 'I am a full-stack web developer based in Kigali', (2) What you can do — 'I build full applications with React on the frontend, Node.js and MongoDB on the backend, deployed with Vercel and Render', (3) A proof point — 'My most recent project is a live Kigali Job Board with authentication that I built end-to-end', (4) What you are looking for — 'I am looking for a junior role where I can learn from senior developers and contribute immediately'. Confident, specific, no rambling.",
+          "difficulty": "junior"
+        },
+        {
+          "question": "What are your salary expectations?",
+          "model_answer": "Do your research first. For a junior developer role in Kigali, 350,000-550,000 RWF per month is the reasonable range. For remote international work, $800-$1,500 USD per month is entry level. Never give a single number — give a range, and explain it is based on market research. If pressed, ask what the role's budget is first. Never apologize for the number."
+        }
+      ],
+      "portfolio_contribution": "Your complete professional presence: CV + GitHub + LinkedIn + deployed projects"
+    }
+  ]
+}

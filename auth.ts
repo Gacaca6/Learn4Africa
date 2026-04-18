@@ -71,12 +71,35 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         email: { label: "Email", type: "email" },
         password: { label: "Password", type: "password" },
       },
-      // Stage 1: email/password is temporarily disabled. Stage 2 will
-      // reintroduce it backed by a Convex action that verifies bcrypt
-      // hashes inline. Returning null here makes NextAuth redirect back
-      // to /auth/login with the standard "Invalid credentials" error.
-      async authorize() {
-        return null;
+      /**
+       * Calls the Convex `passwords.verify` action which runs
+       * bcryptjs against the stored hash. Returning null means
+       * "invalid credentials" — NextAuth surfaces that to the login
+       * page without leaking which emails are registered.
+       */
+      async authorize(creds) {
+        const email = String(creds?.email || "").trim();
+        const password = String(creds?.password || "");
+        if (!email || !password) return null;
+
+        try {
+          const result = await convexServer.action(api.passwords.verify, {
+            email,
+            password,
+          });
+          if (!result) return null;
+          return {
+            id: result.id,
+            email: result.email,
+            name: result.name,
+            authProvider: result.authProvider,
+            preferredLanguage: result.preferredLanguage,
+            activeTrackId: result.activeTrackId,
+          };
+        } catch (err) {
+          console.error("[auth] credentials verify failed", err);
+          return null;
+        }
       },
     }),
   ],

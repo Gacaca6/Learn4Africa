@@ -23,6 +23,7 @@ import {
 import { useCurriculumStore } from "@/lib/curriculumStore";
 import { useAuth } from "@/lib/useAuth";
 import { syncTrackStart } from "@/lib/trackSync";
+import { getTrack } from "@/lib/tracks";
 
 interface TrackModule {
   module_number: number;
@@ -68,28 +69,20 @@ export default function TrackRoadmapPage() {
     setHydrated(true);
   }, []);
 
+  // Static content load — no network call needed.
   useEffect(() => {
-    let cancelled = false;
-    async function load() {
-      try {
-        const res = await fetch(`/api/v1/tracks/${trackId}`);
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data = await res.json();
-        if (!cancelled) {
-          setTrack(data);
-          setLoading(false);
-        }
-      } catch (e) {
-        if (!cancelled) {
-          setError(e instanceof Error ? e.message : "Failed to load track");
-          setLoading(false);
-        }
+    try {
+      const data = getTrack(trackId);
+      if (!data) {
+        setError("Track not found");
+      } else {
+        setTrack(data as any);
       }
+      setLoading(false);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Failed to load track");
+      setLoading(false);
     }
-    load();
-    return () => {
-      cancelled = true;
-    };
   }, [trackId]);
 
   const completedSet = new Set(trackProgress?.completed_modules || []);

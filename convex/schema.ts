@@ -49,7 +49,6 @@ export default defineSchema({
     portfolioPublic: v.optional(v.boolean()),
 
     // Credentials-provider password hash. Unset for OAuth-only users.
-    // Populated in Stage 2 when we port the email/password flow.
     passwordHash: v.optional(v.string()),
 
     // Audit timestamps — Convex also gives us `_creationTime` on every
@@ -59,4 +58,57 @@ export default defineSchema({
     updatedAt: v.number(),
   })
     .index("by_email", ["email"]),
+
+  // ──────────────────────────────────────────────────────────────────
+  // progress — one row per (user, trackId) pair.
+  //
+  // Stored as a single document with denormalised arrays (completed
+  // modules, quiz scores, portfolio items) rather than separate rows
+  // because:
+  //   1. A single user rarely goes past ~100 modules / quiz attempts
+  //      per track — well within Convex's 1 MB/document limit.
+  //   2. Reading "my progress on this track" is one lookup, not a join.
+  //   3. The frontend's zustand store already treats progress as a
+  //      single object per track — the schema mirrors that shape.
+  //
+  // `trackId` is a plain string (e.g. "python_data") because track
+  // content itself lives in the Next.js bundle, not in Convex. See
+  // `lib/tracks/index.ts`.
+  // ──────────────────────────────────────────────────────────────────
+  progress: defineTable({
+    userId: v.id("users"),
+    trackId: v.string(),
+
+    startedAt: v.number(),
+    lastActivityAt: v.number(),
+
+    // Module numbers the learner has marked complete (1-indexed, per
+    // the track JSON's `module_number` field).
+    completedModules: v.array(v.number()),
+
+    // History of quiz attempts across all modules in this track.
+    quizScores: v.array(
+      v.object({
+        moduleNumber: v.number(),
+        score: v.number(),
+        total: v.number(),
+        takenAt: v.number(),
+      }),
+    ),
+
+    // Portfolio entries contributed while going through the track.
+    portfolio: v.array(
+      v.object({
+        moduleNumber: v.number(),
+        projectName: v.string(),
+        description: v.optional(v.string()),
+        githubUrl: v.optional(v.string()),
+        liveUrl: v.optional(v.string()),
+        techStack: v.optional(v.array(v.string())),
+        createdAt: v.number(),
+      }),
+    ),
+  })
+    .index("by_user", ["userId"])
+    .index("by_user_track", ["userId", "trackId"]),
 });

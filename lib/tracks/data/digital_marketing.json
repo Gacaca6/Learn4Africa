@@ -1,0 +1,327 @@
+{
+  "id": "digital_marketing",
+  "title": "Digital Marketing",
+  "tagline": "Help African businesses grow online. Every company needs this skill.",
+  "duration_weeks": 8,
+  "estimated_weekly_hours": 10,
+  "difficulty": "beginner",
+  "target_jobs": [
+    {
+      "title": "Digital Marketing Specialist",
+      "salary_rwf": "250,000 - 500,000 RWF/month",
+      "companies": ["Teta Tech", "AC Group", "Local agencies"]
+    },
+    {
+      "title": "Social Media Manager",
+      "salary_rwf": "200,000 - 450,000 RWF/month",
+      "companies": ["Kigali startups", "NGOs", "Retail brands"]
+    },
+    {
+      "title": "SEO Specialist",
+      "salary_rwf": "300,000 - 600,000 RWF/month",
+      "companies": ["Remote international", "Tourism companies"]
+    },
+    {
+      "title": "Freelance Digital Marketer",
+      "salary_rwf": "Variable — often $500-$2,000 USD/month remote",
+      "companies": ["Self-employed", "Upwork"]
+    }
+  ],
+  "capstone_project": "Run a real 30-day marketing campaign for a Kigali small business (free certifications from Google + HubSpot)",
+  "modules": [
+    {
+      "module_number": 1,
+      "title": "Social Media Strategy — Not Just Posting",
+      "estimated_hours": 6,
+      "why_africa": "Every small business in Kigali has a WhatsApp and a Facebook page. Very few know how to use them strategically. A digital marketer who can turn likes into customers is worth their weight in gold.",
+      "concepts": [
+        "The difference between content and strategy",
+        "Choosing the right platforms for African audiences",
+        "Content pillars — what to post",
+        "Posting frequency and timing",
+        "Measuring what matters (not just likes)"
+      ],
+      "video_primary": {
+        "title": "Social Media Marketing Full Course",
+        "channel": "HubSpot",
+        "url": "https://www.youtube.com/watch?v=RrUzjwvhxrg",
+        "video_id": "RrUzjwvhxrg",
+        "duration_minutes": 120,
+        "watch_for": "Content pillars — the 4-5 topics your brand talks about. This is the foundation of every successful social media account."
+      },
+      "video_secondary": null,
+      "practice_exercise": {
+        "title": "Social Media Audit of a Kigali Business",
+        "instructions": "Pick a real Kigali business (a restaurant, a salon, a boutique). Review their Instagram and Facebook pages. Write a 1-page audit: (1) What they are doing well, (2) What is missing, (3) 5 specific post ideas for the next week, (4) Best posting times based on when their audience is active. Share this audit with them — this is how you get your first freelance client.",
+        "sandbox": null,
+        "estimated_minutes": 120
+      },
+      "interview_questions": [
+        {
+          "question": "What is the difference between organic and paid social media?",
+          "model_answer": "Organic reach is free — you post content and hope the algorithm shows it to your followers. Paid is when you give the platform money to show your content to a specific audience. Organic builds trust over time. Paid scales fast but costs money. Professional marketers use both: organic for community, paid for new customer acquisition.",
+          "difficulty": "junior"
+        }
+      ],
+      "portfolio_contribution": "Your first social media audit case study"
+    },
+    {
+      "module_number": 2,
+      "title": "SEO Basics — Getting Found on Google",
+      "estimated_hours": 8,
+      "why_africa": "When a tourist searches 'Kigali gorilla tour', the companies that appear first get the bookings. SEO is how you earn that placement. It is free traffic that compounds over time.",
+      "concepts": [
+        "How search engines work",
+        "Keywords — what people actually type",
+        "On-page SEO (titles, headings, meta descriptions)",
+        "Content quality signals",
+        "Local SEO for African businesses",
+        "Google My Business"
+      ],
+      "video_primary": {
+        "title": "SEO Tutorial for Beginners (Complete Course)",
+        "channel": "Ahrefs",
+        "url": "https://www.youtube.com/watch?v=xsVTqzratPs",
+        "video_id": "xsVTqzratPs",
+        "duration_minutes": 120,
+        "watch_for": "Keyword research — this is the foundation. If you pick the wrong keywords, nothing else matters."
+      },
+      "video_secondary": null,
+      "practice_exercise": {
+        "title": "Keyword Research for a Rwandan Business",
+        "instructions": "Use Google's free tools (Google Trends, 'Searches related to', keyword suggestions in search bar) to find 20 keywords a Kigali coffee shop could target. Group them into: high-intent (people ready to buy), informational (people learning), local (people searching for location). Write a 1-page SEO recommendation.",
+        "sandbox": "https://trends.google.com/",
+        "estimated_minutes": 120
+      },
+      "interview_questions": [
+        {
+          "question": "What is the difference between on-page SEO and off-page SEO?",
+          "model_answer": "On-page SEO is what you do on your own website — titles, headings, content quality, internal links. You control it completely. Off-page SEO is what happens outside your site — other sites linking to you (backlinks), mentions, reviews. You influence it but do not fully control it. Both matter: on-page is the foundation, off-page is the trust signal.",
+          "difficulty": "junior"
+        }
+      ],
+      "portfolio_contribution": "SEO keyword research case study"
+    },
+    {
+      "module_number": 3,
+      "title": "Google Analytics — Measuring What Works",
+      "estimated_hours": 6,
+      "why_africa": "Marketing without measurement is guessing. Google Analytics is free, universal, and required by every marketing job. The Google Analytics certification is free and globally recognised.",
+      "concepts": [
+        "Installing Google Analytics",
+        "Users, sessions, pageviews",
+        "Bounce rate and engagement",
+        "Traffic sources",
+        "Goals and conversions",
+        "Reading a dashboard"
+      ],
+      "video_primary": {
+        "title": "Google Analytics 4 Tutorial for Beginners",
+        "channel": "Analytics Mania",
+        "url": "https://www.youtube.com/watch?v=J7UpP2pOlpA",
+        "video_id": "J7UpP2pOlpA",
+        "duration_minutes": 90,
+        "watch_for": "Setting up conversion events. This is the #1 thing employers test."
+      },
+      "video_secondary": null,
+      "practice_exercise": {
+        "title": "Earn Your Google Analytics Certification",
+        "instructions": "Go to skillshop.exceedlms.com and take the free Google Analytics certification. This is a real, globally recognised credential. Add it to your LinkedIn when you pass.",
+        "sandbox": "https://skillshop.exceedlms.com/",
+        "estimated_minutes": 240
+      },
+      "interview_questions": [
+        {
+          "question": "What is a bounce rate and what is a good one?",
+          "model_answer": "Bounce rate is the percentage of visitors who leave after viewing only one page. 'Good' depends on the page type. For a blog post, 70-90% can be normal — they read and leave. For a product page, above 50% is bad — visitors are not clicking through. Context matters more than the raw number.",
+          "difficulty": "junior"
+        }
+      ],
+      "portfolio_contribution": "Google Analytics certification (globally recognised)"
+    },
+    {
+      "module_number": 4,
+      "title": "Content Creation that Converts",
+      "estimated_hours": 10,
+      "why_africa": "Content is how Africans discover new products. But generic content fails. Content that speaks to African contexts, uses local languages, and solves local problems — that is what converts.",
+      "concepts": [
+        "The buyer journey (awareness, consideration, decision)",
+        "Content formats (blogs, videos, stories, reels)",
+        "Writing headlines that get clicks",
+        "Storytelling for African audiences",
+        "Repurposing one idea into 5 posts",
+        "Canva for non-designers"
+      ],
+      "video_primary": {
+        "title": "Content Marketing Full Course",
+        "channel": "HubSpot",
+        "url": "https://www.youtube.com/watch?v=B_2DoJGfQyE",
+        "video_id": "B_2DoJGfQyE",
+        "duration_minutes": 90,
+        "watch_for": "The buyer journey framework — every piece of content should target one stage."
+      },
+      "video_secondary": null,
+      "practice_exercise": {
+        "title": "Create a 1-Week Content Calendar",
+        "instructions": "Pick a real or imagined Rwandan business. Create 7 posts for the week:\n- 2 awareness posts (educational)\n- 2 consideration posts (product benefits)\n- 1 decision post (offer/promotion)\n- 1 customer story\n- 1 behind-the-scenes\n\nDesign each with Canva (free). Include captions, hashtags, and best posting time. Save as a 1-page PDF content calendar.",
+        "sandbox": "https://www.canva.com/",
+        "estimated_minutes": 240
+      },
+      "interview_questions": [
+        {
+          "question": "How do you measure the success of a content campaign?",
+          "model_answer": "Depends on the goal. For awareness: reach, impressions, video views. For consideration: time on page, bounce rate, engagement. For decision: clicks, sign-ups, sales. Vanity metrics like likes are not success — pick 2-3 metrics that tie directly to business outcomes.",
+          "difficulty": "junior"
+        }
+      ],
+      "portfolio_contribution": "1-week content calendar case study"
+    },
+    {
+      "module_number": 5,
+      "title": "Email Marketing",
+      "estimated_hours": 6,
+      "why_africa": "Email is the highest ROI marketing channel — $42 back for every $1 spent. It is owned media (no algorithm blocks you). Every business needs email marketing and very few Rwandan companies do it well.",
+      "concepts": [
+        "Building an email list (ethically)",
+        "Subject lines that get opened",
+        "Writing emails people actually read",
+        "Segmentation",
+        "Automation basics",
+        "Metrics: open rate, click rate, unsubscribes"
+      ],
+      "video_primary": {
+        "title": "Email Marketing Crash Course",
+        "channel": "HubSpot",
+        "url": "https://www.youtube.com/watch?v=U3iY16_F1KM",
+        "video_id": "U3iY16_F1KM",
+        "duration_minutes": 60,
+        "watch_for": "Subject lines — the entire email's success depends on the first 5 words."
+      },
+      "video_secondary": null,
+      "practice_exercise": {
+        "title": "Write a 5-Email Welcome Sequence",
+        "instructions": "For a fictional Kigali tour company, write 5 welcome emails sent over 10 days to new subscribers:\n1. Day 1: Welcome + what to expect\n2. Day 3: Our story + why we do this\n3. Day 5: Top 5 things tourists miss in Rwanda\n4. Day 7: Customer story\n5. Day 10: Special welcome offer\n\nEach email: compelling subject line, clear call to action, readable length. Save as a Google Doc.",
+        "sandbox": null,
+        "estimated_minutes": 180
+      },
+      "interview_questions": [
+        {
+          "question": "What is email segmentation and why does it matter?",
+          "model_answer": "Segmentation means dividing your email list into groups based on behaviour, demographics, or interests — then sending each group different content. Segmented emails get 14% higher open rates and 100% higher click rates. Instead of blasting everyone the same message, you send relevant messages. This respects the reader's time.",
+          "difficulty": "junior"
+        }
+      ],
+      "portfolio_contribution": "5-email welcome sequence sample"
+    },
+    {
+      "module_number": 6,
+      "title": "Paid Advertising Basics",
+      "estimated_hours": 8,
+      "why_africa": "Facebook and Google ads are how most African e-commerce grows. A marketer who can run profitable ad campaigns is immediately more valuable than one who cannot.",
+      "concepts": [
+        "Meta Ads (Facebook + Instagram)",
+        "Google Ads basics",
+        "Targeting — who you show ads to",
+        "Ad creative — what makes people click",
+        "Budget and bidding",
+        "Measuring ROI"
+      ],
+      "video_primary": {
+        "title": "Facebook Ads Tutorial for Beginners",
+        "channel": "Ben Heath",
+        "url": "https://www.youtube.com/watch?v=hpnK61jVoBo",
+        "video_id": "hpnK61jVoBo",
+        "duration_minutes": 60,
+        "watch_for": "The targeting section — bad targeting burns money. Good targeting is everything."
+      },
+      "video_secondary": null,
+      "practice_exercise": {
+        "title": "Plan a 10,000 RWF Ad Campaign",
+        "instructions": "You have 10,000 RWF to spend on Facebook Ads to promote a Kigali bakery's new service. Plan:\n1. Your objective (awareness, traffic, or conversions)\n2. Your target audience (age, location, interests)\n3. Your ad creative (image description + caption)\n4. Your budget split across 3 days\n5. How you will measure success\n\nThis is exactly the planning you do on day one of any paid ads job.",
+        "sandbox": null,
+        "estimated_minutes": 180
+      },
+      "interview_questions": [
+        {
+          "question": "What is ROAS?",
+          "model_answer": "ROAS is Return On Ad Spend. For every 1 RWF spent on ads, how many RWF came back in revenue. A ROAS of 3 means you made 3 RWF for every 1 RWF spent. Different businesses need different ROAS targets — a low-margin grocery might need ROAS of 8. A high-margin SaaS might be fine with ROAS of 2.",
+          "difficulty": "mid"
+        }
+      ]
+    },
+    {
+      "module_number": 7,
+      "title": "Build Your Portfolio with a Real Business",
+      "estimated_hours": 15,
+      "why_africa": "Portfolio beats resume. Find a real small business in Kigali that needs help, offer to work free for 30 days, document the results. Now you have a case study no competitor has.",
+      "concepts": [
+        "Finding a business to help (free)",
+        "Writing a simple marketing proposal",
+        "Running a real campaign",
+        "Documenting results with screenshots",
+        "Writing a case study",
+        "Getting a testimonial"
+      ],
+      "video_primary": {
+        "title": "How to Get Your First Marketing Client",
+        "channel": "Income School",
+        "url": "https://www.youtube.com/watch?v=HcK1JYyf3bU",
+        "video_id": "HcK1JYyf3bU",
+        "duration_minutes": 20,
+        "watch_for": "The 'offer value first' approach — this is how you get clients without experience."
+      },
+      "video_secondary": null,
+      "practice_exercise": {
+        "title": "30-Day Real Business Campaign",
+        "instructions": "1. Find a small business near you that has a weak social media presence (salon, shop, restaurant)\n2. Offer to run their social media for 30 days, free, in exchange for permission to use the results as a case study\n3. Audit their current state (screenshots!)\n4. Plan and post 3x per week for 30 days\n5. Track: followers gained, engagement, any sales they credit to your work\n6. Write a case study: before, after, what you did, what worked, what you would do next\n\nThis is a real portfolio piece that beats any theory.",
+        "sandbox": null,
+        "estimated_minutes": 900
+      },
+      "interview_questions": [
+        {
+          "question": "Tell me about a campaign you ran.",
+          "model_answer": "Structure: (1) The client and goal, (2) What you inherited (baseline), (3) What you did and why, (4) The numbers (before/after), (5) What you learned. Never exaggerate. Never show vanity metrics without business metrics.",
+          "difficulty": "junior"
+        }
+      ],
+      "portfolio_contribution": "Real 30-day campaign case study — your most valuable portfolio piece"
+    },
+    {
+      "module_number": 8,
+      "title": "Getting Clients as a Freelancer",
+      "estimated_hours": 8,
+      "why_africa": "The highest paying digital marketing work is remote freelancing for international clients. African marketers earn 3-5x more through international freelance than local jobs.",
+      "concepts": [
+        "Upwork profile optimization",
+        "Writing proposals that win",
+        "Pricing your work",
+        "Contracts and payment",
+        "Client communication",
+        "Scaling from freelance to agency"
+      ],
+      "video_primary": {
+        "title": "How to Get Started on Upwork",
+        "channel": "Freelance Fundamentals",
+        "url": "https://www.youtube.com/watch?v=M4CJZMKkbdk",
+        "video_id": "M4CJZMKkbdk",
+        "duration_minutes": 20,
+        "watch_for": "The first 10 proposals are the hardest. Expect rejection. Keep applying."
+      },
+      "video_secondary": null,
+      "practice_exercise": {
+        "title": "Launch Your Freelance Profile",
+        "instructions": "1. Create an Upwork account\n2. Write a profile headline targeting one niche (e.g., 'Facebook Ads for African E-commerce')\n3. Write an 'About' section with your case study from Module 7\n4. Add portfolio items with screenshots\n5. Submit 10 proposals this week\n6. Also create a LinkedIn profile optimised for marketing roles\n\nExpect 0-1 wins from first 10 proposals. Do not stop.",
+        "sandbox": "https://upwork.com/",
+        "estimated_minutes": 480
+      },
+      "interview_questions": [
+        {
+          "question": "Why should we hire you instead of a cheaper freelancer?",
+          "model_answer": "Not about price. About results. Show a specific case study: 'For X business, I ran a 30-day campaign that grew followers from 400 to 1,200 and drove Y sales. I bring that kind of thinking.' Specifics beat generalities every time.",
+          "difficulty": "junior"
+        }
+      ],
+      "portfolio_contribution": "Live Upwork + LinkedIn profile — your gateway to international clients"
+    }
+  ]
+}

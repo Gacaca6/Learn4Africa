@@ -20,6 +20,7 @@ import {
 import { useCurriculumStore } from "@/lib/curriculumStore";
 import { TopNav } from "@/components/TopNav";
 import { useAuth } from "@/lib/useAuth";
+import { listTracks } from "@/lib/tracks";
 
 interface TrackSummary {
   id: string;
@@ -107,28 +108,16 @@ export default function TracksPage() {
     }
   }, [isAuthenticated, token, hydrateFromServer]);
 
+  // Career tracks are static content bundled with the app — no network
+  // round-trip needed. See lib/tracks/ for the loader + JSON sources.
   useEffect(() => {
-    let cancelled = false;
-    async function load() {
-      try {
-        const res = await fetch("/api/v1/tracks");
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data = await res.json();
-        if (!cancelled) {
-          setTracks(data.tracks || []);
-          setLoading(false);
-        }
-      } catch (e) {
-        if (!cancelled) {
-          setError(e instanceof Error ? e.message : "Failed to load tracks");
-          setLoading(false);
-        }
-      }
+    try {
+      setTracks(listTracks());
+      setLoading(false);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Failed to load tracks");
+      setLoading(false);
     }
-    load();
-    return () => {
-      cancelled = true;
-    };
   }, []);
 
   return (

@@ -1,0 +1,374 @@
+{
+  "id": "python_data",
+  "title": "Python for Data & AI",
+  "tagline": "Analyse data, build AI tools, and get hired at banks, NGOs, and government agencies across Africa.",
+  "duration_weeks": 12,
+  "estimated_weekly_hours": 15,
+  "difficulty": "beginner",
+  "target_jobs": [
+    {
+      "title": "Data Analyst",
+      "salary_rwf": "400,000 - 700,000 RWF/month",
+      "companies": ["Bank of Kigali", "MINICT", "RRA", "World Bank Rwanda"]
+    },
+    {
+      "title": "Data Scientist",
+      "salary_rwf": "600,000 - 1,200,000 RWF/month",
+      "companies": ["CMU-Africa", "AIMS Rwanda", "Irembo"]
+    },
+    {
+      "title": "AI Engineer",
+      "salary_rwf": "$1,000 - $2,500 USD/month (remote)",
+      "companies": ["Andela", "Remote international"]
+    }
+  ],
+  "capstone_project": "Rwanda Crop Price Predictor using MINAGRI historical data",
+  "modules": [
+    {
+      "module_number": 1,
+      "title": "Python Fundamentals",
+      "estimated_hours": 12,
+      "why_africa": "Python is the #1 language for data analysis in Africa's growing data economy. Banks, NGOs, and government agencies in Rwanda are hiring Python developers faster than they can find them. This is your entry point.",
+      "concepts": [
+        "Variables, strings, numbers",
+        "Lists, dictionaries, tuples",
+        "if/else and loops",
+        "Functions",
+        "Reading and writing files"
+      ],
+      "video_primary": {
+        "title": "Learn Python - Full Course for Beginners",
+        "channel": "freeCodeCamp.org",
+        "url": "https://www.youtube.com/watch?v=rfscVS0vtbw",
+        "video_id": "rfscVS0vtbw",
+        "duration_minutes": 270,
+        "watch_for": "The functions section is critical. Write every example yourself. Do not just watch."
+      },
+      "video_secondary": {
+        "title": "Python in 100 Seconds",
+        "channel": "Fireship",
+        "url": "https://www.youtube.com/watch?v=x7X9w_GIm1s",
+        "video_id": "x7X9w_GIm1s",
+        "duration_minutes": 2
+      },
+      "practice_exercise": {
+        "title": "Mobile Money Transaction Analyzer",
+        "instructions": "Create a Python script that takes a list of MTN MoMo transactions (a Python list of dictionaries with amount, type, and date) and calculates:\n1. Total amount sent\n2. Total amount received\n3. Average transaction size\n4. The biggest single transaction\n5. A summary printed to the console\n\nHardcode at least 10 transactions. This is a real-world analysis task just like what a junior data analyst does on day one.",
+        "sandbox": "https://replit.com/new/python3",
+        "estimated_minutes": 90
+      },
+      "interview_questions": [
+        {
+          "question": "What is the difference between a list and a tuple in Python?",
+          "model_answer": "Lists are mutable — you can add, remove, and change items. Tuples are immutable — once created, they cannot be changed. Use lists when your data will change (a shopping cart). Use tuples when data should never change (GPS coordinates, days of the week). Tuples are also slightly faster and can be used as dictionary keys.",
+          "difficulty": "junior"
+        },
+        {
+          "question": "What is a dictionary and when would you use one?",
+          "model_answer": "A dictionary is a collection of key-value pairs. You use it when you need O(1) fast lookup by key — for example, looking up a user by their ID, or counting how many times each word appears in a document. It is the most important data structure after lists.",
+          "difficulty": "junior"
+        }
+      ],
+      "portfolio_contribution": null,
+      "fcc_alignment": "Scientific Computing with Python"
+    },
+    {
+      "module_number": 2,
+      "title": "Data Structures in Python",
+      "estimated_hours": 8,
+      "why_africa": "Understanding when to use a list, set, dict, or tuple is the difference between slow code and fast code. When you are analyzing millions of rows of Rwandan health data, this matters.",
+      "concepts": [
+        "Lists — ordered, mutable",
+        "Dictionaries — O(1) lookup by key",
+        "Sets — unique values, fast membership check",
+        "Tuples — immutable pairs and records",
+        "List comprehensions",
+        "Choosing the right structure"
+      ],
+      "video_primary": {
+        "title": "Python Data Structures Tutorial",
+        "channel": "Corey Schafer",
+        "url": "https://www.youtube.com/watch?v=W8KRzm-HUcc",
+        "video_id": "W8KRzm-HUcc",
+        "duration_minutes": 38,
+        "watch_for": "List comprehensions are Python's secret weapon. Master them here."
+      },
+      "video_secondary": null,
+      "practice_exercise": {
+        "title": "Unique Districts Counter",
+        "instructions": "Given a list of 100 Rwandan sector names (some repeated), use a set to count unique sectors, a dict to count occurrences per sector, and a list comprehension to filter only sectors starting with 'K'. Print a clean summary.",
+        "sandbox": "https://replit.com/new/python3",
+        "estimated_minutes": 60
+      },
+      "interview_questions": [
+        {
+          "question": "When would you use a set instead of a list?",
+          "model_answer": "Use a set when you need unique values and fast membership checks. Checking if an item is in a list is O(n) — slow for large lists. Checking if an item is in a set is O(1) — instant. Sets also automatically remove duplicates. If you do not care about order and duplicates, use a set.",
+          "difficulty": "junior"
+        }
+      ]
+    },
+    {
+      "module_number": 3,
+      "title": "Working with Files and APIs",
+      "estimated_hours": 10,
+      "why_africa": "Real data does not come in your script — it comes from CSV files, JSON files, and APIs. Every data analyst job starts with 'here is a CSV, tell me something interesting about it'.",
+      "concepts": [
+        "Reading CSV files",
+        "Reading JSON files",
+        "HTTP requests with the requests library",
+        "Parsing API responses",
+        "Error handling with try/except",
+        "Writing results to files"
+      ],
+      "video_primary": {
+        "title": "Python Requests Library Tutorial",
+        "channel": "Corey Schafer",
+        "url": "https://www.youtube.com/watch?v=tb8gHvYlCFs",
+        "video_id": "tb8gHvYlCFs",
+        "duration_minutes": 33,
+        "watch_for": "Status codes (200, 404, 500) — these come up in every backend interview."
+      },
+      "video_secondary": null,
+      "practice_exercise": {
+        "title": "Fetch Rwanda Weather Data",
+        "instructions": "Use the free Open-Meteo API (no key needed) to fetch 7-day weather forecast for Kigali (coordinates: -1.9441, 30.0619). Parse the JSON response and print a clean daily summary: date, high temp, low temp, rainfall. Save the results to a CSV file called kigali_weather.csv.",
+        "sandbox": "https://replit.com/new/python3",
+        "estimated_minutes": 90
+      },
+      "interview_questions": [
+        {
+          "question": "What are HTTP status codes and what do they mean?",
+          "model_answer": "Status codes tell you what happened with a request. 2xx means success (200 OK). 3xx means redirect. 4xx means client error — your fault (400 Bad Request, 401 Unauthorized, 404 Not Found). 5xx means server error — their fault (500 Internal Server Error, 503 Service Unavailable). Always check status before parsing the response.",
+          "difficulty": "junior"
+        }
+      ]
+    },
+    {
+      "module_number": 4,
+      "title": "Pandas and Data Analysis",
+      "estimated_hours": 20,
+      "why_africa": "Pandas is THE Python library for data analysis. Every data analyst in Africa uses it. Master this and you have the core skill of the job.",
+      "concepts": [
+        "DataFrames — the spreadsheet in Python",
+        "Reading CSV/Excel into DataFrames",
+        "Filtering, sorting, grouping",
+        "Handling missing data",
+        "Merging and joining datasets",
+        "Calculating statistics"
+      ],
+      "video_primary": {
+        "title": "Pandas Tutorial — Data Analysis with Python",
+        "channel": "freeCodeCamp.org",
+        "url": "https://www.youtube.com/watch?v=vmEHCJofslg",
+        "video_id": "vmEHCJofslg",
+        "duration_minutes": 120,
+        "watch_for": "groupby() is the most important function in pandas. When you see it, pause and take notes."
+      },
+      "video_secondary": null,
+      "practice_exercise": {
+        "title": "Analyze Rwanda Open Data",
+        "instructions": "Download a dataset from statistics.gov.rw (for example, GDP or population by district). Load it with pandas. Answer these questions using code:\n1. Which district has the highest value?\n2. What is the average across all districts?\n3. Sort districts from highest to lowest\n4. Group by province and calculate provincial totals\n5. Save the province summary to a new CSV\n\nCommit your analysis notebook to GitHub. This is exactly what you would do in a real data analyst job interview task.",
+        "sandbox": "https://colab.research.google.com/",
+        "estimated_minutes": 180
+      },
+      "interview_questions": [
+        {
+          "question": "What is a DataFrame and how is it different from a list?",
+          "model_answer": "A DataFrame is a 2D labelled data structure — like a spreadsheet with rows and columns, where each column has a name and a data type. Unlike a list, you can filter, sort, group, and do math on entire columns at once with one line of code. It is much faster than writing Python loops over lists.",
+          "difficulty": "junior"
+        },
+        {
+          "question": "How do you handle missing data in pandas?",
+          "model_answer": "Pandas uses NaN for missing values. You have options: df.dropna() removes rows with any missing values. df.fillna(0) replaces with zero. df.fillna(df.mean()) replaces with the column average. The right choice depends on your data — for a survey, dropping is fine. For financial data, imputing the average can distort results. Always document what you chose and why.",
+          "difficulty": "mid"
+        }
+      ],
+      "portfolio_contribution": "Rwanda Open Data analysis notebook on GitHub"
+    },
+    {
+      "module_number": 5,
+      "title": "Data Visualization",
+      "estimated_hours": 10,
+      "why_africa": "A number in a table is invisible. A chart tells a story. Data visualization is what gets your analysis read by the people who make decisions.",
+      "concepts": [
+        "Matplotlib basics",
+        "Seaborn for beautiful statistical charts",
+        "Bar charts, line charts, scatter plots",
+        "Histograms for distributions",
+        "Customizing colors and labels",
+        "Saving charts as images"
+      ],
+      "video_primary": {
+        "title": "Matplotlib Tutorial",
+        "channel": "Corey Schafer",
+        "url": "https://www.youtube.com/watch?v=UO98lJQ3QGI",
+        "video_id": "UO98lJQ3QGI",
+        "duration_minutes": 33,
+        "watch_for": "Always label your axes. Unlabeled charts fail every review."
+      },
+      "video_secondary": null,
+      "practice_exercise": {
+        "title": "Visualize Rwanda's Population Growth",
+        "instructions": "Using Rwanda population data from the National Institute of Statistics (statistics.gov.rw), create:\n1. A line chart showing population growth over the last 20 years\n2. A bar chart showing top 10 districts by population\n3. A pie chart showing urban vs rural split\n\nAll charts must have titles, labeled axes, and clean colors. Save all 3 charts as PNG images. Create a GitHub repo called 'rwanda-population-analysis' with your code, data, and charts.",
+        "sandbox": "https://colab.research.google.com/",
+        "estimated_minutes": 120
+      },
+      "interview_questions": [
+        {
+          "question": "When would you use a bar chart vs a line chart?",
+          "model_answer": "Bar charts compare discrete categories — GDP by district, sales by product. Line charts show change over time — temperature over a year, population growth. If the x-axis is categories, use a bar chart. If the x-axis is continuous (usually time), use a line chart. Getting this wrong signals lack of basic data literacy.",
+          "difficulty": "junior"
+        }
+      ],
+      "portfolio_contribution": "Rwanda Population Analysis repo on GitHub"
+    },
+    {
+      "module_number": 6,
+      "title": "SQL for Data Analysis",
+      "estimated_hours": 12,
+      "why_africa": "Every company with data has a SQL database. Data analysts who cannot write SQL cannot get hired. This is non-negotiable.",
+      "concepts": [
+        "SELECT, FROM, WHERE",
+        "GROUP BY and aggregate functions",
+        "JOINs — combining tables",
+        "Subqueries",
+        "Window functions",
+        "Reading query plans"
+      ],
+      "video_primary": {
+        "title": "SQL Tutorial — Full Database Course for Beginners",
+        "channel": "freeCodeCamp.org",
+        "url": "https://www.youtube.com/watch?v=HXV3zeQKqGY",
+        "video_id": "HXV3zeQKqGY",
+        "duration_minutes": 260,
+        "watch_for": "JOINs section — this is tested in every SQL interview. Draw them as Venn diagrams."
+      },
+      "video_secondary": null,
+      "practice_exercise": {
+        "title": "Complete SQLZoo Tutorial",
+        "instructions": "Go to sqlzoo.net and complete these sections: SELECT basics, SELECT from WORLD, SELECT from Nobel, SELECT within SELECT, SUM and COUNT, JOIN, More JOIN. Do not skip any. Screenshot your completion and keep it as proof.",
+        "sandbox": "https://sqlzoo.net/",
+        "estimated_minutes": 480
+      },
+      "interview_questions": [
+        {
+          "question": "What is the difference between INNER JOIN and LEFT JOIN?",
+          "model_answer": "INNER JOIN returns only rows that match in both tables. LEFT JOIN returns all rows from the left table, with NULL for any missing matches in the right table. Use INNER when you only want complete matches. Use LEFT when you want everything from the left table plus any matching data from the right. Getting this wrong is the #1 SQL interview failure.",
+          "difficulty": "junior"
+        }
+      ]
+    },
+    {
+      "module_number": 7,
+      "title": "Introduction to Machine Learning",
+      "estimated_hours": 15,
+      "why_africa": "Machine learning is the highest-paying data skill. Rwanda is positioning itself as Africa's AI hub with CMU-Africa and AIMS. Understanding ML fundamentals opens doors to the top 10% of data jobs.",
+      "concepts": [
+        "What ML is (and is not)",
+        "Supervised vs unsupervised learning",
+        "Train/test split",
+        "Linear regression",
+        "Classification with scikit-learn",
+        "Evaluating a model",
+        "Overfitting and how to avoid it"
+      ],
+      "video_primary": {
+        "title": "Machine Learning with Python — Full Course",
+        "channel": "freeCodeCamp.org",
+        "url": "https://www.youtube.com/watch?v=7eh4d6sabA0",
+        "video_id": "7eh4d6sabA0",
+        "duration_minutes": 180,
+        "watch_for": "The train/test split section. Never train and test on the same data — this is the #1 ML mistake."
+      },
+      "video_secondary": null,
+      "practice_exercise": {
+        "title": "Your First ML Model",
+        "instructions": "Use scikit-learn to train a linear regression model that predicts a Rwandan student's exam score based on hours studied. Create synthetic but realistic data (30 samples). Train/test split 80/20. Report the R² score. Plot the predictions vs actuals.",
+        "sandbox": "https://colab.research.google.com/",
+        "estimated_minutes": 150
+      },
+      "interview_questions": [
+        {
+          "question": "What is overfitting?",
+          "model_answer": "Overfitting is when a model learns the training data too well, including the noise. It performs great on training data but badly on new data. You detect it when training accuracy is much higher than test accuracy. You prevent it with: more data, simpler models, regularization, or cross-validation.",
+          "difficulty": "mid"
+        }
+      ]
+    },
+    {
+      "module_number": 8,
+      "title": "Capstone — Rwanda Crop Price Predictor",
+      "estimated_hours": 25,
+      "why_africa": "Agriculture is 30% of Rwanda's GDP. Predicting crop prices is a real, valuable skill that can help thousands of farmers plan their sales. This is the project that makes interviewers remember you.",
+      "concepts": [
+        "End-to-end data project",
+        "Data cleaning at scale",
+        "Feature engineering",
+        "Model selection",
+        "Presenting results to non-technical stakeholders",
+        "Writing a project README"
+      ],
+      "video_primary": {
+        "title": "Full Data Science Project Walkthrough",
+        "channel": "Ken Jee",
+        "url": "https://www.youtube.com/watch?v=MpF9HENQjDo",
+        "video_id": "MpF9HENQjDo",
+        "duration_minutes": 50,
+        "watch_for": "The project structure — this is how professional data scientists organize work."
+      },
+      "video_secondary": null,
+      "practice_exercise": {
+        "title": "Build the Crop Price Predictor",
+        "instructions": "Goal: Build a model that predicts next month's price for a chosen Rwandan crop (maize, beans, or cassava) based on historical data.\n\nSteps:\n1. Find or create historical monthly price data (use MINAGRI reports or synthetic data for at least 3 years)\n2. Load into pandas, explore, visualize trends\n3. Engineer features: previous month price, 3-month average, month of year, season\n4. Train a regression model with scikit-learn\n5. Evaluate with RMSE and MAE\n6. Create a function: predict_price(crop, current_month_price) that returns next month's prediction\n7. Write a README explaining the project, your findings, and how it could help farmers\n8. Push to GitHub with the full analysis notebook\n\nThis project demonstrates you can solve a real African economic problem with data. When you explain this in an interview, you stand out.",
+        "sandbox": "https://colab.research.google.com/",
+        "estimated_minutes": 1500
+      },
+      "interview_questions": [
+        {
+          "question": "Walk me through a data science project you built.",
+          "model_answer": "Structure: (1) The problem — 'Rwandan farmers lose money when they sell at bad prices. I built a crop price predictor to help them decide when to sell.' (2) The data — 'I used 3 years of monthly price data from MINAGRI for maize.' (3) The approach — 'Feature engineering: previous prices, season, month. Model: random forest regression.' (4) The result — 'RMSE of 12% — good enough to give farmers a directional signal.' (5) The impact — 'With this, a farmer holding 100kg of maize could save 5,000-10,000 RWF by timing sales better.'",
+          "difficulty": "mid"
+        }
+      ],
+      "portfolio_contribution": "CAPSTONE — Rwanda Crop Price Predictor with full writeup on GitHub"
+    },
+    {
+      "module_number": 9,
+      "title": "Data Portfolio and Job Search",
+      "estimated_hours": 8,
+      "why_africa": "Skills without a portfolio are invisible. Portfolio without a job search strategy is wasted. This module is where you convert your work into offers.",
+      "concepts": [
+        "Building a data portfolio on GitHub",
+        "Writing case studies, not just code",
+        "LinkedIn for data professionals",
+        "Where to find data jobs in Rwanda",
+        "Kaggle for credibility",
+        "Interviewing for data roles"
+      ],
+      "video_primary": {
+        "title": "How to Build a Data Science Portfolio",
+        "channel": "Ken Jee",
+        "url": "https://www.youtube.com/watch?v=xrhPjE7wHas",
+        "video_id": "xrhPjE7wHas",
+        "duration_minutes": 15,
+        "watch_for": "Quality over quantity — 3 polished projects beat 10 sloppy ones."
+      },
+      "video_secondary": null,
+      "practice_exercise": {
+        "title": "Launch Your Data Career",
+        "instructions": "1. Clean up your GitHub — pin your 3 best data projects\n2. Write a README.md for each with problem, approach, findings, tech stack\n3. Create a Kaggle account and submit to one competition (even with a basic solution)\n4. Update LinkedIn: headline 'Data Analyst | Python | Pandas | SQL | Based in Rwanda'\n5. Apply to 5 jobs this week: jobs.rw, brightermonday.co.ke, LinkedIn, Andela\n6. Practice explaining your capstone project in 2 minutes — record yourself",
+        "sandbox": null,
+        "estimated_minutes": 480
+      },
+      "interview_questions": [
+        {
+          "question": "How did you choose which features to use in your model?",
+          "model_answer": "I started with domain knowledge: what do farmers actually look at when pricing crops? Previous price, season, supply. Then I visualized each feature's relationship with the target. I computed correlations. I dropped features with low correlation and high multicollinearity. This is called feature selection, and it makes models simpler and more accurate.",
+          "difficulty": "mid"
+        }
+      ],
+      "portfolio_contribution": "Complete data portfolio: 3 projects + Kaggle submission + polished LinkedIn"
+    }
+  ]
+}

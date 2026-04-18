@@ -3,17 +3,19 @@
 /**
  * Learn4Africa — Create account page.
  *
- * Creates a user on the FastAPI backend via /api/v1/auth/register, then
- * immediately signs them in using the Credentials provider so they land
- * back on the track they were trying to open (or /tracks).
+ * Calls the Convex `passwords.signUp` action to create the user (the
+ * bcrypt hashing + duplicate-email check run server-side on Convex),
+ * then signs them in via NextAuth Credentials so they land back on the
+ * track they were trying to open (or /tracks).
  */
 
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { signIn } from "next-auth/react";
+import { useAction } from "convex/react";
 import { FormEvent, Suspense, useState } from "react";
 
-import { apiPost } from "@/lib/apiClient";
+import { api } from "@/convex/_generated/api";
 import { ArrowRight, GraduationCap, Heart, Info } from "@/lib/icons";
 
 const COUNTRIES = [
@@ -62,6 +64,8 @@ function RegisterInner() {
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
 
+  const signUp = useAction(api.passwords.signUp);
+
   async function handleGoogle() {
     setBusy(true);
     setError(null);
@@ -79,15 +83,27 @@ function RegisterInner() {
     setBusy(true);
     setError(null);
     try {
-      await apiPost("/api/v1/auth/register", {
+      // Create the user on Convex. The action returns either
+      // { ok: true, user } or { ok: false, error } — errors come back
+      // as strings so we can render them directly (no exceptions thrown
+      // for expected conditions like duplicate email).
+      const result = await signUp({
         name: name.trim(),
         email: email.trim(),
         password,
-        country,
-        preferred_language: preferredLanguage,
       });
+      if (!result.ok) {
+        setError(result.error);
+        setBusy(false);
+        return;
+      }
 
-      // Now sign in with credentials so NextAuth issues a session
+      // `country` + `preferredLanguage` aren't persisted on the user
+      // row yet — Stage 3 adds a profile extension. Keeping them in
+      // the UI now so we don't lose state on the form.
+
+      // Sign in through NextAuth Credentials so the session cookie
+      // gets issued with the new user id.
       const res = await signIn("credentials", {
         email: email.trim(),
         password,
@@ -100,13 +116,7 @@ function RegisterInner() {
       router.refresh();
     } catch (err: any) {
       const msg = String(err?.message || "");
-      if (msg.includes("409")) {
-        setError("An account with this email already exists. Please sign in.");
-      } else if (msg) {
-        setError(msg);
-      } else {
-        setError("Could not create your account. Please try again.");
-      }
+      setError(msg || "Could not create your account. Please try again.");
       setBusy(false);
     }
   }

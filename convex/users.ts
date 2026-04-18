@@ -22,7 +22,12 @@
  */
 
 import { v } from "convex/values";
-import { mutation, query } from "./_generated/server";
+import {
+  internalMutation,
+  internalQuery,
+  mutation,
+  query,
+} from "./_generated/server";
 
 // ─────────────────────────────────────────────────────────────────────
 // Mutations
@@ -167,5 +172,66 @@ export const getPublicProfile = query({
       avatarUrl: user.avatarUrl,
       preferredLanguage: user.preferredLanguage,
     };
+  },
+});
+
+// ─────────────────────────────────────────────────────────────────────
+// Internal — used by `convex/passwords.ts` for the Credentials flow.
+//
+// These functions are only callable from inside Convex (from an action
+// via `ctx.runQuery` / `ctx.runMutation`) — they are NOT exposed over
+// the public API surface. This is Convex's equivalent of making a
+// method `private` — passwordHash never leaves the server and can't be
+// queried by client code.
+// ─────────────────────────────────────────────────────────────────────
+
+/** Internal lookup that returns the passwordHash — used by login flow. */
+export const _getByEmailWithHash = internalQuery({
+  args: { email: v.string() },
+  handler: async (ctx, args) => {
+    return await ctx.db
+      .query("users")
+      .withIndex("by_email", (q) =>
+        q.eq("email", args.email.toLowerCase().trim()),
+      )
+      .unique();
+  },
+});
+
+/** Create a new credentials user with a pre-hashed password. */
+export const _insertCredentialsUser = internalMutation({
+  args: {
+    email: v.string(),
+    name: v.string(),
+    passwordHash: v.string(),
+  },
+  handler: async (ctx, args) => {
+    const now = Date.now();
+    const email = args.email.toLowerCase().trim();
+
+    const existing = await ctx.db
+      .query("users")
+      .withIndex("by_email", (q) => q.eq("email", email))
+      .unique();
+
+    if (existing) {
+      // This branch is handled by the action too (it checks first),
+      // but guard here in case of a race.
+      throw new Error("EMAIL_TAKEN");
+    }
+
+    const id = await ctx.db.insert("users", {
+      email,
+      name: args.name,
+      authProvider: "credentials",
+      passwordHash: args.passwordHash,
+      preferredLanguage: "en",
+      activeTrackId: null,
+      portfolioPublic: false,
+      createdAt: now,
+      updatedAt: now,
+    });
+
+    return { id, email, name: args.name };
   },
 });

@@ -1,23 +1,110 @@
 /**
- * Learn4Africa — best-effort track progress writeback.
+ * Learn4Africa — track progress writeback via Convex.
  *
- * These helpers mirror the local zustand mutations onto the FastAPI
- * backend so that a signed-in learner's MongoDB progress stays in
- * sync with whatever they did on the device.
+ * Writes the learner's zustand track actions (start, complete module,
+ * quiz score, portfolio entry) into Convex so progress follows them
+ * across devices.
  *
- * Design rules:
- *   1. Never throw — a failed network call must not block the UI or
- *      the local store update. We console.warn and move on.
- *   2. Never call the backend if the learner is signed out. There is
- *      no session to authenticate the request against; logging out
- *      learners still get useful local progress.
- *   3. Every call is fire-and-forget from the caller's perspective,
- *      but awaits internally so errors are caught (we return void).
+ * Design rules (unchanged from the FastAPI era):
+ *   1. Never throw — a failed network call must not block the UI.
+ *      We console.warn and move on.
+ *   2. Never write for signed-out learners; their progress stays
+ *      device-local in zustand.
+ *   3. Fire-and-forget from the caller: `void syncModuleComplete(...)`.
  */
-import { apiPost } from "./apiClient";
+import { ConvexHttpClient } from "convex/browser";
+import { api } from "@/convex/_generated/api";
+import type { Id } from "@/convex/_generated/dataModel";
+
+const CONVEX_URL = process.env.NEXT_PUBLIC_CONVEX_URL;
+
+// One client, reused — keeps cookies / connection state consistent.
+const client: ConvexHttpClient | null = CONVEX_URL
+  ? new ConvexHttpClient(CONVEX_URL)
+  : null;
+
+/**
+ * Pull the signed-in user's Convex `_id` out of the NextAuth session.
+ * Returns null when logged out, when running on the server, or when
+ * the session hasn't been populated with an id yet.
+ */
+async function getUserId(): Promise<Id<"users"> | null> {
+  if (typeof window === "undefined") return null;
+  try {
+    const { getSession } = await import("next-auth/react");
+    const session = await getSession();
+    const id = (session?.user as any)?.id;
+    return id ? (id as Id<"users">) : null;
+  } catch {
+    return null;
+  }
+}
+
+/** Guard that short-circuits when we can't write. */
+async function ensureReady(): Promise<
+  { userId: Id<"users">; client: ConvexHttpClient } | null
+> {
+  if (!client) {
+    console.warn("[trackSync] NEXT_PUBLIC_CONVEX_URL not set; skipping write");
+    return null;
+  }
+  const userId = await getUserId();
+  if (!userId) return null;
+  return { userId, client };
+}
+
+export async function syncTrackStart(trackId: string): Promise<void> {
+  const ready = await ensureReady();
+  if (!ready) return;
+  try {
+    await ready.client.mutation(api.progress.startTrack, {
+      userId: ready.userId,
+      trackId,
+    });
+  } catch (err) {
+    console.warn("[trackSync] syncTrackStart failed", err);
+  }
+}
+
+export async function syncModuleComplete(
+  trackId: string,
+  moduleNumber: number,
+): Promise<void> {
+  const ready = await ensureReady();
+  if (!ready) return;
+  try {
+    await ready.client.mutation(api.progress.completeModule, {
+      userId: ready.userId,
+      trackId,
+      moduleNumber,
+    });
+  } catch (err) {
+    console.warn("[trackSync] syncModuleComplete failed", err);
+  }
+}
+
+export async function syncQuizScore(
+  trackId: string,
+  moduleNumber: number,
+  score: number,
+  total: number,
+): Promise<void> {
+  const ready = await ensureReady();
+  if (!ready) return;
+  try {
+    await ready.client.mutation(api.progress.recordQuizScore, {
+      userId: ready.userId,
+      trackId,
+      moduleNumber,
+      score,
+      total,
+    });
+  } catch (err) {
+    console.warn("[trackSync] syncQuizScore failed", err);
+  }
+}
 
 interface PortfolioItemPayload {
-  module_number: number;
   project_name: string;
   description?: string;
   github_url?: string;
@@ -25,99 +112,24 @@ interface PortfolioItemPayload {
   tech_stack?: string[];
 }
 
-/**
- * Return the current NextAuth backend token, or null when logged
- * out / running on the server. Lazy-imports `next-auth/react` so
- * this file remains tree-shakable on the server.
- */
-async function getBackendToken(): Promise<string | null> {
-  if (typeof window === "undefined") return null;
-  try {
-    const { getSession } = await import("next-auth/react");
-    const session = await getSession();
-    return (session as any)?.backendToken ?? null;
-  } catch {
-    return null;
-  }
-}
-
-/** POST /api/v1/tracks/{trackId}/start */
-export async function syncTrackStart(trackId: string): Promise<void> {
-  const token = await getBackendToken();
-  if (!token) {
-    console.info("[trackSync] skipping start — no session");
-    return;
-  }
-  try {
-    await apiPost(`/api/v1/tracks/${encodeURIComponent(trackId)}/start`, {}, {
-      token,
-    });
-  } catch (err) {
-    console.warn("[trackSync] syncTrackStart failed", err);
-  }
-}
-
-/** POST /api/v1/tracks/{trackId}/modules/{moduleNumber}/complete */
-export async function syncModuleComplete(
-  trackId: string,
-  moduleNumber: number
-): Promise<void> {
-  const token = await getBackendToken();
-  if (!token) {
-    console.info("[trackSync] skipping module complete — no session");
-    return;
-  }
-  try {
-    await apiPost(
-      `/api/v1/tracks/${encodeURIComponent(trackId)}/modules/${moduleNumber}/complete`,
-      {},
-      { token }
-    );
-  } catch (err) {
-    console.warn("[trackSync] syncModuleComplete failed", err);
-  }
-}
-
-/** POST /api/v1/tracks/{trackId}/modules/{moduleNumber}/quiz-score */
-export async function syncQuizScore(
-  trackId: string,
-  moduleNumber: number,
-  score: number,
-  total: number
-): Promise<void> {
-  const token = await getBackendToken();
-  if (!token) {
-    console.info("[trackSync] skipping quiz score — no session");
-    return;
-  }
-  try {
-    await apiPost(
-      `/api/v1/tracks/${encodeURIComponent(trackId)}/modules/${moduleNumber}/quiz-score`,
-      { score, total },
-      { token }
-    );
-  } catch (err) {
-    console.warn("[trackSync] syncQuizScore failed", err);
-  }
-}
-
-/** POST /api/v1/tracks/{trackId}/portfolio */
 export async function syncPortfolioItem(
   trackId: string,
   moduleNumber: number,
-  item: Omit<PortfolioItemPayload, "module_number">
+  item: PortfolioItemPayload,
 ): Promise<void> {
-  const token = await getBackendToken();
-  if (!token) {
-    console.info("[trackSync] skipping portfolio — no session");
-    return;
-  }
+  const ready = await ensureReady();
+  if (!ready) return;
   try {
-    await apiPost(
-      `/api/v1/tracks/${encodeURIComponent(trackId)}/portfolio`,
-      { module_number: moduleNumber, ...item },
-      { token }
-    );
+    await ready.client.mutation(api.progress.addPortfolioItem, {
+      userId: ready.userId,
+      trackId,
+      moduleNumber,
+      projectName: item.project_name,
+      description: item.description,
+      githubUrl: item.github_url,
+      liveUrl: item.live_url,
+      techStack: item.tech_stack,
+    });
   } catch (err) {
     console.warn("[trackSync] syncPortfolioItem failed", err);
   }

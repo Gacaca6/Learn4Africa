@@ -1,0 +1,277 @@
+{
+  "id": "interview_prep",
+  "title": "Interview Preparation Bootcamp",
+  "tagline": "You have the skills. Now learn how to prove it in 30 minutes of conversation.",
+  "duration_weeks": 3,
+  "estimated_weekly_hours": 8,
+  "difficulty": "intermediate",
+  "target_jobs": [
+    {
+      "title": "Any Tech Role",
+      "salary_rwf": "This track makes every other track pay off",
+      "companies": ["Andela", "AC Group", "Irembo", "Bank of Kigali", "Remote international"]
+    }
+  ],
+  "capstone_project": "Complete 5 recorded mock interviews with Mwalimu AI and receive a 'Interview Ready' assessment",
+  "modules": [
+    {
+      "module_number": 1,
+      "title": "The Anatomy of a Tech Interview",
+      "estimated_hours": 4,
+      "why_africa": "Most African candidates lose jobs not because they lack skills, but because they do not know how interviews work. A tech interview is not a test of knowledge. It is a test of clarity, communication, and confidence. Knowing the structure is half the battle.",
+      "concepts": [
+        "The 4 stages: Screening, Technical, Behavioural, Culture fit",
+        "What interviewers are actually evaluating",
+        "How to read an interviewer's body language",
+        "When to ask questions (and what to ask)",
+        "The final 'Do you have any questions for us?' trap",
+        "What happens after the interview"
+      ],
+      "video_primary": {
+        "title": "How Tech Interviews Really Work",
+        "channel": "Clément Mihailescu",
+        "url": "https://www.youtube.com/watch?v=XKu_SEDAykw",
+        "video_id": "XKu_SEDAykw",
+        "duration_minutes": 20,
+        "watch_for": "The hidden signals — what interviewers write down that candidates never see."
+      },
+      "video_secondary": null,
+      "practice_exercise": {
+        "title": "Research a Company You Want to Work At",
+        "instructions": "Pick one real company (Andela, AC Group, Irembo, Bank of Kigali, or any Rwandan tech company).\n\n1. Read their website — what do they do?\n2. Find their team on LinkedIn — what kind of people work there?\n3. Read 3 recent news articles about them\n4. Write 5 smart questions you could ask an interviewer there\n5. Write 2 paragraphs: 'Why I want to work here' — specific, not generic\n\nInterviewers can tell in 30 seconds who has done their research. Be that person.",
+        "sandbox": null,
+        "estimated_minutes": 120
+      },
+      "interview_questions": [
+        {
+          "question": "Why do you want to work here?",
+          "model_answer": "Never say 'I need a job' or 'I heard you pay well'. Say something specific: 'I read about your recent expansion into mobile banking and I am excited about the impact you are having on rural communities. I want to contribute to that mission because [specific personal reason].' Research wins jobs.",
+          "difficulty": "junior"
+        }
+      ],
+      "portfolio_contribution": "Company research document (reusable for any interview)"
+    },
+    {
+      "module_number": 2,
+      "title": "Coding Challenges — The Live Problem-Solving Test",
+      "estimated_hours": 8,
+      "why_africa": "Most African bootcamps skip this. But every serious tech role (especially remote ones) tests coding under time pressure. LeetCode Easy problems are free, unlimited, and exactly what you will face.",
+      "concepts": [
+        "Thinking out loud — the most important skill",
+        "Clarifying questions before coding",
+        "Starting with the simple solution, then optimising",
+        "Handling edge cases without being told",
+        "What to do when you are stuck",
+        "Time/space complexity — Big O basics"
+      ],
+      "video_primary": {
+        "title": "How to Solve Coding Interview Problems",
+        "channel": "freeCodeCamp",
+        "url": "https://www.youtube.com/watch?v=GBuHSRDGZBY",
+        "video_id": "GBuHSRDGZBY",
+        "duration_minutes": 45,
+        "watch_for": "The 5-step framework: Understand, Plan, Code, Test, Optimise. This is the exact structure interviewers want to see."
+      },
+      "video_secondary": null,
+      "practice_exercise": {
+        "title": "Solve 10 LeetCode Easy Problems — Out Loud",
+        "instructions": "Go to leetcode.com (free). Solve these 10 easy problems, but with one rule: YOU MUST TALK OUT LOUD as you solve each one. Record yourself on your phone.\n\n1. Two Sum\n2. Valid Parentheses\n3. Reverse String\n4. Palindrome Number\n5. Fizz Buzz\n6. Maximum Subarray\n7. Merge Two Sorted Lists\n8. Best Time to Buy and Sell Stock\n9. Contains Duplicate\n10. Valid Anagram\n\nFor each: (1) Explain the problem in your own words, (2) Describe your approach before coding, (3) Write the code, (4) Walk through an example, (5) Discuss time complexity.\n\nListen back to your recordings. You will cringe. That is how you improve.",
+        "sandbox": "https://leetcode.com/",
+        "estimated_minutes": 480
+      },
+      "interview_questions": [
+        {
+          "question": "What do you do if you get stuck on a problem during the interview?",
+          "model_answer": "Never go silent. Silence is the worst thing you can do. Say: 'Let me think about this differently. I am considering [approach 1] or [approach 2]. I think [approach 1] is simpler, let me try it.' Interviewers hire thinkers, not memorisers. Showing your thought process even when stuck is a massive plus.",
+          "difficulty": "junior"
+        }
+      ],
+      "portfolio_contribution": "10 solved LeetCode problems + recorded explanations"
+    },
+    {
+      "module_number": 3,
+      "title": "50 Most Common Technical Questions",
+      "estimated_hours": 6,
+      "why_africa": "These 50 questions appear in 80% of junior tech interviews worldwide. Memorise the answers, practice saying them out loud, and you will walk into any interview prepared for what is most likely coming.",
+      "concepts": [
+        "General tech concepts (internet, databases, APIs)",
+        "Language-specific (Python, JavaScript, SQL)",
+        "Framework-specific (React, Node.js)",
+        "Debugging and problem-solving questions",
+        "System basics (servers, deployment, Git)",
+        "The 'trick' questions that are not tricks"
+      ],
+      "video_primary": {
+        "title": "Top 50 Software Engineering Interview Questions",
+        "channel": "Simplilearn",
+        "url": "https://www.youtube.com/watch?v=qiDw4dMvVR0",
+        "video_id": "qiDw4dMvVR0",
+        "duration_minutes": 60,
+        "watch_for": "The structure of good technical answers — definition, example, when to use it, tradeoffs."
+      },
+      "video_secondary": null,
+      "practice_exercise": {
+        "title": "Build Your Personal Q&A Bank",
+        "instructions": "In a Google Doc, write out your OWN answers to these 20 critical questions:\n\n1. What happens when you type a URL into a browser?\n2. What is the difference between GET and POST?\n3. What is a database? SQL vs NoSQL?\n4. What is an API?\n5. What is the difference between == and === in JavaScript?\n6. What is a closure?\n7. What is async/await?\n8. What is React? Why use it?\n9. What is state vs props?\n10. What is Git? Why use it?\n11. What is the difference between merge and rebase?\n12. What is a REST API?\n13. What is authentication vs authorization?\n14. What is CORS?\n15. What is responsive design?\n16. What is Big O notation?\n17. What is the difference between let, const, and var?\n18. What is a pure function?\n19. What is dependency injection?\n20. How do you deploy a web app?\n\nFor each: definition (1 sentence), example (1-2 sentences), when you used it (if you have).\n\nPractice saying each answer out loud until it sounds natural.",
+        "sandbox": null,
+        "estimated_minutes": 300
+      },
+      "interview_questions": [
+        {
+          "question": "What is the difference between authentication and authorization?",
+          "model_answer": "Authentication is WHO you are — proving your identity (login with password, fingerprint, 2FA). Authorization is WHAT you can do — what resources you are allowed to access (admin vs regular user). You always authenticate first, then the system authorizes specific actions. Example: I log in (authentication), then the system checks if I am allowed to delete a post (authorization).",
+          "difficulty": "junior"
+        }
+      ],
+      "portfolio_contribution": "Personal Q&A bank — reusable for every interview"
+    },
+    {
+      "module_number": 4,
+      "title": "System Design for Beginners",
+      "estimated_hours": 6,
+      "why_africa": "System design questions used to only appear in senior interviews. Now, even junior candidates are asked 'How would you build Twitter?' at top companies. You do not need to be an expert. You need to show structured thinking.",
+      "concepts": [
+        "The 4 core pieces: Client, Server, Database, Cache",
+        "What 'scaling' actually means",
+        "Load balancers — the concept, not the details",
+        "Database choice — SQL vs NoSQL",
+        "Read vs write heavy systems",
+        "The 'high-level design' that juniors are expected to give"
+      ],
+      "video_primary": {
+        "title": "System Design Interview Basics",
+        "channel": "ByteByteGo",
+        "url": "https://www.youtube.com/watch?v=i7twT3x5yEI",
+        "video_id": "i7twT3x5yEI",
+        "duration_minutes": 30,
+        "watch_for": "The drawing approach — always start with a simple box diagram. Client → Server → Database. Then add complexity one piece at a time."
+      },
+      "video_secondary": null,
+      "practice_exercise": {
+        "title": "Design Three Familiar Systems",
+        "instructions": "On paper (or in a drawing tool like Excalidraw.com), sketch the high-level design for:\n\n1. A URL shortener (like bit.ly)\n2. A WhatsApp clone (messaging between 2 users)\n3. An Instagram-like photo feed\n\nFor each, show: Client, Server, Database, and explain in 5 sentences how data flows when a user takes one key action (e.g., 'user sends a message').\n\nDo NOT try to be perfect. The goal is to practice structured thinking under time pressure. In interviews, you get 30 minutes — you should aim to do each of these in 20.",
+        "sandbox": "https://excalidraw.com/",
+        "estimated_minutes": 240
+      },
+      "interview_questions": [
+        {
+          "question": "Design a simple URL shortener.",
+          "model_answer": "Start high-level. 'I would have 3 pieces: a web front-end where users paste URLs, a server that generates a short code (like using base62 of a database ID), and a database (MongoDB or Postgres) mapping short codes to original URLs. When a user clicks the short link, the server looks up the code and redirects.' Then ask: 'Do you want me to go deeper into scaling or database choice?' Showing structured thinking and asking smart questions = winning.",
+          "difficulty": "mid"
+        }
+      ],
+      "portfolio_contribution": "3 system design sketches with explanations"
+    },
+    {
+      "module_number": 5,
+      "title": "Behavioural Interviews — The STAR Method",
+      "estimated_hours": 4,
+      "why_africa": "50% of the interview is not technical. It is 'Tell me about a time when...' African candidates often feel these questions are unfair because 'I do not have work experience'. This module shows you how to turn school projects, personal projects, and life experiences into compelling stories.",
+      "concepts": [
+        "The STAR framework: Situation, Task, Action, Result",
+        "Turning small wins into big stories",
+        "How to talk about failure without looking bad",
+        "Showing leadership without having been a leader",
+        "Teamwork stories from school or community",
+        "Conflict resolution stories"
+      ],
+      "video_primary": {
+        "title": "STAR Method for Behavioural Interviews",
+        "channel": "Jeff Su",
+        "url": "https://www.youtube.com/watch?v=uQEuo7woEEk",
+        "video_id": "uQEuo7woEEk",
+        "duration_minutes": 15,
+        "watch_for": "The 'Result' part — always end with numbers or concrete outcomes. Not 'it went well' but 'we finished the project 2 days early and the professor gave us an A'."
+      },
+      "video_secondary": null,
+      "practice_exercise": {
+        "title": "Write Your 5 Core Stories",
+        "instructions": "Write 5 STAR-format stories from your life that you can adapt to almost any behavioural question:\n\n1. A time you overcame a technical challenge\n2. A time you worked in a team\n3. A time you failed and what you learned\n4. A time you took initiative\n5. A time you taught or helped someone\n\nFor each:\n- Situation (1 sentence)\n- Task (1 sentence)\n- Action (3-4 sentences — the bulk)\n- Result (1-2 sentences with numbers if possible)\n\nPractice telling each story in exactly 90 seconds. Record yourself. Tighten until it flows.",
+        "sandbox": null,
+        "estimated_minutes": 180
+      },
+      "interview_questions": [
+        {
+          "question": "Tell me about a time you failed.",
+          "model_answer": "Never say 'I have never failed'. Pick a real, small failure. STAR: 'In my [project/class], I was responsible for [X]. I underestimated how long it would take so I missed the deadline by 2 days. I apologised, owned it, and built a Google Sheet to track my deadlines. Since then I have not missed one.' Honesty + growth = hired.",
+          "difficulty": "junior"
+        }
+      ],
+      "portfolio_contribution": "5 polished STAR stories (your behavioural interview toolkit)"
+    },
+    {
+      "module_number": 6,
+      "title": "Salary Negotiation — The Conversation Most Africans Skip",
+      "estimated_hours": 3,
+      "why_africa": "The average African candidate accepts the first offer. The trained candidate negotiates and gets 15-30% more. Over a career, that is millions of Rwandan Francs. This module alone pays for every other module you have taken.",
+      "concepts": [
+        "Research — what the role actually pays",
+        "Never say a number first",
+        "The magic phrase: 'Is there flexibility?'",
+        "Negotiating remote work, learning budgets, and time off",
+        "When NOT to negotiate",
+        "Knowing your walk-away number"
+      ],
+      "video_primary": {
+        "title": "How to Negotiate Salary After a Job Offer",
+        "channel": "Andrew LaCivita",
+        "url": "https://www.youtube.com/watch?v=XY5SeCl_8NE",
+        "video_id": "XY5SeCl_8NE",
+        "duration_minutes": 20,
+        "watch_for": "The response to 'What are your salary expectations?' — this is the most dangerous question in the entire interview."
+      },
+      "video_secondary": null,
+      "practice_exercise": {
+        "title": "Build Your Salary Research Sheet",
+        "instructions": "In Google Sheets:\n\n1. Pick 3 job titles you might apply for (e.g., Junior Frontend Developer, Data Analyst, Digital Marketer)\n2. Research real salaries for each:\n   - JobInRwanda listings\n   - Glassdoor\n   - LinkedIn Salary insights\n   - Ask 2 people working in similar roles\n3. For each role, record: Low, Mid, High salary in RWF\n4. Write YOUR target: 'I would accept X. I would be happy with Y. My dream is Z.'\n5. Write your 'walk-away' number — below this, you say no.\n\nKnowing your numbers removes fear from the conversation.",
+        "sandbox": "https://sheets.google.com/",
+        "estimated_minutes": 120
+      },
+      "interview_questions": [
+        {
+          "question": "What are your salary expectations?",
+          "model_answer": "Do not say a number first. 'I am looking for a competitive package that reflects the market rate for this role and my skills. Based on my research for similar roles in Kigali, I have seen offers in the range of X to Y. What range did you have in mind for this position?' You flipped it back. Let them speak first.",
+          "difficulty": "mid"
+        }
+      ],
+      "portfolio_contribution": "Your personal salary research document"
+    },
+    {
+      "module_number": 7,
+      "title": "Mock Interview Marathon with Mwalimu",
+      "estimated_hours": 10,
+      "why_africa": "Practice is the only thing that cures interview fear. This module puts you through 5 full mock interviews with Mwalimu AI as the interviewer — technical, behavioural, and culture fit. By the end, you will walk into real interviews calm and ready.",
+      "concepts": [
+        "Starting strong (the first 60 seconds matter most)",
+        "Handling unexpected questions gracefully",
+        "Taking notes without looking distracted",
+        "Asking the right questions at the end",
+        "Following up with a thank-you email",
+        "Reviewing recordings to self-improve"
+      ],
+      "video_primary": {
+        "title": "Mock Interview Full Walkthrough",
+        "channel": "Exponent",
+        "url": "https://www.youtube.com/watch?v=XOtrOSatBoY",
+        "video_id": "XOtrOSatBoY",
+        "duration_minutes": 45,
+        "watch_for": "How the candidate handles the curveball questions — staying calm, asking clarifications, thinking out loud."
+      },
+      "video_secondary": null,
+      "practice_exercise": {
+        "title": "Complete 5 Mock Interviews with Mwalimu",
+        "instructions": "Use the built-in Mock Interview room in Zigama (Interview button on your track page). Complete 5 full mock interviews:\n\n1. Mock 1: Frontend focus (React, HTML, CSS)\n2. Mock 2: Backend focus (APIs, databases, Node.js)\n3. Mock 3: Behavioural (STAR stories)\n4. Mock 4: Mixed technical + behavioural\n5. Mock 5: Full 30-minute simulation\n\nAfter each mock, Mwalimu gives you a score and specific feedback. Aim for 8/10 or higher on Mock 5.\n\nAfter the final mock, write a 1-page self-assessment: (1) What improved, (2) What still needs work, (3) What you will do in the real interview.",
+        "sandbox": null,
+        "estimated_minutes": 600
+      },
+      "interview_questions": [
+        {
+          "question": "Do you have any questions for us?",
+          "model_answer": "Never say no. Always have 3 ready: (1) 'What does success look like in the first 90 days for this role?' (2) 'What do you enjoy most about working here?' (3) 'What are the biggest challenges the team is facing right now?' Smart questions flip the interview — now they are selling you on the role.",
+          "difficulty": "junior"
+        }
+      ],
+      "portfolio_contribution": "5 completed mock interviews + Mwalimu's 'Interview Ready' certificate"
+    }
+  ]
+}
