@@ -111,4 +111,38 @@ export default defineSchema({
   })
     .index("by_user", ["userId"])
     .index("by_user_track", ["userId", "trackId"]),
+
+  // ──────────────────────────────────────────────────────────────────
+  // conversations — persisted Mwalimu chat history.
+  //
+  // One row per conversation (tutor chat, mock interview, or module
+  // explanation thread). We store the full message array on the row so
+  // replaying a conversation is a single read — the action proxies the
+  // entire `messages` array back to Claude on each new turn.
+  //
+  // `type` lets the UI show the right affordances (interview feedback
+  // panel vs free-form tutor chat). `trackId` + `moduleNumber` are
+  // optional so free-roaming Mwalimu chats still fit here.
+  // ──────────────────────────────────────────────────────────────────
+  conversations: defineTable({
+    userId: v.id("users"),
+    trackId: v.optional(v.string()),
+    moduleNumber: v.optional(v.number()),
+    type: v.union(
+      v.literal("tutor"),
+      v.literal("interview"),
+      v.literal("explain"),
+    ),
+    messages: v.array(
+      v.object({
+        role: v.union(v.literal("user"), v.literal("assistant")),
+        content: v.string(),
+        timestamp: v.number(),
+      }),
+    ),
+    createdAt: v.number(),
+    updatedAt: v.number(),
+  })
+    .index("by_user", ["userId"])
+    .index("by_user_module", ["userId", "trackId", "moduleNumber"]),
 });

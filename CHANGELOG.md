@@ -27,15 +27,15 @@ First public release. Targeted at the April 2026 hackathon demo.
   YouTube videos for any topic the student types in.
 - **AI Tutor (Mwalimu).** Multi-language chat with weak-area tracking
   and long-term memory.
-- **Multi-format course viewer.** Reading, flashcards, quizzes, podcasts
-  (Edge TTS), comics (Hugging Face inference), songs.
+- **Multi-format course viewer.** Reading, flashcards, quizzes, and
+  browser-TTS podcasts (Web Speech API).
 - **Portfolio.** Auto-generated from completed modules, exports to CV.
 - **Observability.** `/health`, `/version`, `/status` endpoints; structured
   logging with per-request IDs.
 - **Demo-mode banner.** Surfaces in the UI when MongoDB is unreachable
   and the backend has fallen back to the local JSON store.
 - **Docker.** `docker compose up` brings up MongoDB + the backend with
-  healthchecks; `--profile ai` adds an Ollama sidecar.
+  healthchecks.
 - **Tests.** 39 pytest tests covering JWT, bcrypt, password policy,
   full auth route flows, and the portfolio privacy gate.
 

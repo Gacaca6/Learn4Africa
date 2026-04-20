@@ -95,12 +95,12 @@ export interface TrackSummary {
 // ─────────────────────────────────────────────────────────────────────
 
 const ALL_TRACKS: Track[] = [
-  webDevelopment as Track,
-  pythonData as Track,
-  cloudDevops as Track,
-  digitalMarketing as Track,
-  digitalLiteracy as Track,
-  interviewPrep as Track,
+  webDevelopment as unknown as Track,
+  pythonData as unknown as Track,
+  cloudDevops as unknown as Track,
+  digitalMarketing as unknown as Track,
+  digitalLiteracy as unknown as Track,
+  interviewPrep as unknown as Track,
 ];
 
 const TRACKS_BY_ID: Record<string, Track> = Object.fromEntries(

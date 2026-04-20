@@ -314,6 +314,152 @@ p {
 }
 
 /* ============================================
+   CONFETTI — module completion celebration
+   Pure CSS. No library, zero runtime when idle.
+   ============================================ */
+
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(-10vh) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+@keyframes confetti-fall-reverse {
+  0% {
+    transform: translateY(-10vh) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotate(-720deg);
+    opacity: 0;
+  }
+}
+
+.confetti-piece {
+  position: fixed;
+  top: -20px;
+  border-radius: 2px;
+  animation-duration: 3s;
+  animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  animation-fill-mode: forwards;
+}
+
+@keyframes celebration-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes celebration-pop {
+  0% { transform: scale(0.3); opacity: 0; }
+  60% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.celebration-fade {
+  animation: celebration-fade-in 250ms ease-out forwards;
+}
+
+.celebration-pop {
+  animation: celebration-pop 500ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Pulsing amber ring — used on the current module marker on roadmaps. */
+@keyframes module-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(245, 158, 11, 0);
+  }
+}
+
+.module-current-pulse {
+  animation: module-pulse 2s ease-in-out infinite;
+}
+
+/* ============================================
+   FLIP CARD — flashcards tab
+   CSS-only flip with perspective.
+   ============================================ */
+
+.flip-card {
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 600ms cubic-bezier(0.65, 0, 0.35, 1);
+  transform-style: preserve-3d;
+}
+
+.flip-card.is-flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+/* ============================================
+   MOBILE FIXES
+   iPhone SE = 375px. Everything must work here.
+   ============================================ */
+
+/* Prevent iOS input zoom on focus. 16px is the magic minimum. */
+input, select, textarea {
+  font-size: 16px;
+}
+
+/* Smooth momentum scrolling on iOS */
+.momentum-scroll {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Safe-area padding for phones with home-bar / notches. */
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+.safe-top {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+/* Tap target minimum — WCAG 2.5.5 (44×44). */
+.tap-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Horizontally scrollable tabs — used in the module learning room. */
+.scroll-tabs {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  white-space: nowrap;
+}
+.scroll-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+/* ============================================
    SKIP-TO-CONTENT (Accessibility)
    ============================================ */
 
@@ -332,4 +478,37 @@ p {
 .skip-to-content:focus {
   left: 50%;
   transform: translateX(-50%);
+}
+
+/* ── Page loader shimmer (thin progress bar at top of every page) ── */
+.page-loader-shimmer {
+  background: linear-gradient(90deg, #f59e0b, #10b981, #f59e0b);
+  background-size: 200% 100%;
+  animation: shimmer 1.2s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Tab pane fade-slide (used on module room) ──────────────── */
+.tab-pane {
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.tab-pane-active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.tab-pane-inactive {
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+  position: absolute;
 }

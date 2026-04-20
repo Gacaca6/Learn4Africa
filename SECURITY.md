@@ -54,9 +54,8 @@ Never commit these to git. `.gitignore` excludes every `.env*` file.
 | `JWT_SECRET`          | Attackers can mint arbitrary backend access tokens       |
 | `AUTH_GOOGLE_SECRET`  | Attackers can impersonate the Learn4Africa OAuth client  |
 | `GOOGLE_CLIENT_SECRET`| Same as above (backend copy of the same secret)          |
-| `HF_TOKEN`            | Attackers can drain Hugging Face inference quota         |
 | `MONGODB_URI`         | Full read/write access to production user data           |
-| `OPENAI_API_KEY` / `ANTHROPIC_API_KEY` (if set) | Billable quota theft           |
+| `ANTHROPIC_API_KEY`   | Billable Claude quota theft                              |
 
 ## Generating strong values
 
@@ -105,12 +104,12 @@ openssl rand -hex 48
    stored as bcrypt hashes, so even a full DB exfiltration does not
    reveal plaintext credentials.
 
-### 5. `HF_TOKEN` leaked
+### 5. `ANTHROPIC_API_KEY` leaked
 
-1. Hugging Face → Settings → Access Tokens → **Revoke**.
-2. Create a new read-only token.
-3. Update `HF_TOKEN` in your secret store.
-4. Restart the backend.
+1. Anthropic Console → API Keys → **Revoke** the compromised key.
+2. Create a new key.
+3. Rotate it into Convex: `npx convex env set ANTHROPIC_API_KEY <new-key>`.
+4. Redeploy Convex so actions pick up the new value.
 
 ## Operational checklist before going live
 

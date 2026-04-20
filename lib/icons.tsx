@@ -583,6 +583,59 @@ export function BookmarkCheck(p: IconProps) {
   );
 }
 
+export function Volume2(p: IconProps) {
+  return (
+    <svg {...svgProps(p)}>
+      <path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z" />
+      <path d="M16 9a5 5 0 0 1 0 6" />
+      <path d="M19.364 18.364a9 9 0 0 0 0-12.728" />
+    </svg>
+  );
+}
+
+export function VolumeX(p: IconProps) {
+  return (
+    <svg {...svgProps(p)}>
+      <path d="M16 9a5 5 0 0 1 .95 2.293" />
+      <path d="M19.364 5.636a9 9 0 0 1 1.889 9.96" />
+      <path d="m2 2 20 20" />
+      <path d="m7 7-.587.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298V11" />
+      <path d="M9.828 4.172A.686.686 0 0 1 11 4.657v.686" />
+    </svg>
+  );
+}
+
+export function RotateCw(p: IconProps) {
+  return (
+    <svg {...svgProps(p)}>
+      <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8" />
+      <path d="M21 3v5h-5" />
+    </svg>
+  );
+}
+
+export function Lightbulb(p: IconProps) {
+  return (
+    <svg {...svgProps(p)}>
+      <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" />
+      <path d="M9 18h6" />
+      <path d="M10 22h4" />
+    </svg>
+  );
+}
+
+export function Network(p: IconProps) {
+  return (
+    <svg {...svgProps(p)}>
+      <rect x="16" y="16" width="6" height="6" rx="1" />
+      <rect x="2" y="16" width="6" height="6" rx="1" />
+      <rect x="9" y="2" width="6" height="6" rx="1" />
+      <path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3" />
+      <path d="M12 12V8" />
+    </svg>
+  );
+}
+
 export function Rocket(p: IconProps) {
   return (
     <svg {...svgProps(p)}>

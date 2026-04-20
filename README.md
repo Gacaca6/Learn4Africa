@@ -41,8 +41,8 @@ but rough. **Stub** means a route or UI exists but is not wired.
 | Reading              | Live   | Rendered inside the course viewer (`/course/[id]`) and track modules              |
 | Flashcards           | Live   | Backend `/api/v1/flashcards` + course-viewer tab                                  |
 | Quizzes              | Live   | Backend `/api/v1/quizzes` + course-viewer tab                                     |
-| Podcasts             | Beta   | Edge-TTS generation works, podcast player is basic                                |
-| Comics               | Beta   | Hugging Face image generation wired; panel quality varies                         |
+| Podcasts             | Beta   | Browser Web Speech API reads Mwalimu aloud; no server TTS needed                  |
+| Comics               | Stub   | Removed in the Claude-only refactor; may return as Claude-drawn ASCII art         |
 | Games                | Stub   | Gamification engine exists (XP, badges) but no interactive game UI               |
 | Songs                | Beta   | Backend generates lyrics + audio; UI exposes download only                        |
 | AI Tutor (Mwalimu)   | Live   | `/tutor` chat with multi-language support and struggle detection                  |
@@ -81,7 +81,7 @@ learn4africa/
 - **Frontend**: Next.js 14, React 18, Tailwind CSS, Zustand, NextAuth v5
 - **Backend**: [Convex](https://convex.dev) — TypeScript functions + reactive DB
 - **Hosting**: Vercel (frontend) + Convex Cloud (backend/DB/functions)
-- **AI**: OpenAI / Anthropic — called from Convex actions (Stage 3+)
+- **AI**: Claude (Anthropic) — `claude-sonnet-4-5`, called from Convex actions only
 - **Auth**: Google OAuth via NextAuth v5 + Convex user upsert
 
 ## Designed for Africa
@@ -89,7 +89,7 @@ learn4africa/
 - **Mobile-first**: PWA-ready, works on basic smartphones
 - **Multilingual**: English, Swahili, Hausa, Yoruba, Amharic, French, Arabic, Kinyarwanda
 - **Low bandwidth**: Text-first with optional media; caches locally
-- **Free forever**: Can run entirely on local/free AI providers
+- **Free forever** for students: one Anthropic key on the server, no cost to learners
 
 ## Testing
 

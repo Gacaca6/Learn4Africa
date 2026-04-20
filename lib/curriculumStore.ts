@@ -104,6 +104,8 @@ interface CurriculumStore {
   tracks: Record<string, TrackProgress>;
 
   addCurriculum: (curriculum: Curriculum) => void;
+  setCurriculum: (id: string, curriculum: Curriculum) => void;
+  getCurriculum: (id: string) => Curriculum | null;
   setActive: (id: string) => void;
   startModule: (curriculumId: string, moduleNumber: number) => void;
   completeModule: (curriculumId: string, moduleNumber: number) => void;
@@ -224,6 +226,25 @@ export const useCurriculumStore = create<CurriculumStore>((set, get) => {
         };
       });
     },
+
+    setCurriculum: (id, curriculum) => {
+      // Same behaviour as addCurriculum, but honours the id the caller
+      // passes in (rather than curriculum.id). Keeps the AI-designed
+      // curricula in the same bucket so /curriculum/[id] finds them.
+      const withId: Curriculum = { ...curriculum, id };
+      set((state) => {
+        const curricula = { ...state.curricula, [id]: withId };
+        const moduleProgress = {
+          ...state.moduleProgress,
+          [id]: state.moduleProgress[id] || initialProgress(withId),
+        };
+        const next = { ...state, curricula, activeCurriculumId: id, moduleProgress };
+        saveToStorage(snapshot(next));
+        return { curricula, activeCurriculumId: id, moduleProgress };
+      });
+    },
+
+    getCurriculum: (id) => get().curricula[id] ?? null,
 
     setActive: (id) => {
       set((state) => {

@@ -83,3 +83,6 @@ convex/_generated/
 
 # ── Claude / LLM scratch ──────────────────────────────────────────────────────
 .claude/
+
+# ── Remotion demo video project (kept local, not shipped with the app) ────────
+video-demo/

@@ -52,18 +52,24 @@ export const signUp = action({
     password: v.string(),
     name: v.string(),
   },
-  handler: async (ctx, args) => {
+  handler: async (
+    ctx,
+    args,
+  ): Promise<
+    | { ok: false; error: string }
+    | { ok: true; user: { id: string; email: string; name: string } }
+  > => {
     const email = args.email.toLowerCase().trim();
     const name = args.name.trim();
 
     if (!email.includes("@")) {
-      return { ok: false as const, error: "Please enter a valid email." };
+      return { ok: false, error: "Please enter a valid email." };
     }
     if (!name) {
-      return { ok: false as const, error: "Please enter your name." };
+      return { ok: false, error: "Please enter your name." };
     }
     const policyError = validatePasswordPolicy(args.password);
-    if (policyError) return { ok: false as const, error: policyError };
+    if (policyError) return { ok: false, error: policyError };
 
     // Is the email taken? Done via internal query so the client can't
     // probe for existence without also trying to register.
@@ -72,21 +78,22 @@ export const signUp = action({
     });
     if (existing) {
       return {
-        ok: false as const,
+        ok: false,
         error: "An account with this email already exists.",
       };
     }
 
     const passwordHash = await bcrypt.hash(args.password, 10);
 
-    const created = await ctx.runMutation(internal.users._insertCredentialsUser, {
-      email,
-      name,
-      passwordHash,
-    });
+    const created: { id: string; email: string; name: string } =
+      await ctx.runMutation(internal.users._insertCredentialsUser, {
+        email,
+        name,
+        passwordHash,
+      });
 
     return {
-      ok: true as const,
+      ok: true,
       user: { id: created.id, email: created.email, name: created.name },
     };
   },
@@ -103,9 +110,19 @@ export const verify = action({
     email: v.string(),
     password: v.string(),
   },
-  handler: async (ctx, args) => {
+  handler: async (
+    ctx,
+    args,
+  ): Promise<{
+    id: string;
+    email: string;
+    name: string;
+    authProvider: string;
+    preferredLanguage: string;
+    activeTrackId: string | null;
+  } | null> => {
     const email = args.email.toLowerCase().trim();
-    const user = await ctx.runQuery(internal.users._getByEmailWithHash, {
+    const user: any = await ctx.runQuery(internal.users._getByEmailWithHash, {
       email,
     });
     if (!user || !user.passwordHash) return null;

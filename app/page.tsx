@@ -88,22 +88,28 @@ export default function HomePage() {
         </div>
       </HeroImage>
 
-      {/* Stats Bar — real research numbers */}
-      <section className="py-12 px-5 sm:px-8 bg-warm-900 border-b border-warm-800">
+      {/* Stats Bar — the three numbers that define Learn4Africa */}
+      <section className="py-12 sm:py-16 px-5 sm:px-8 bg-warm-900 border-b border-warm-800">
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
-            {[
-              { value: "98M", label: "Children out of school across Africa", source: "UNESCO" },
-              { value: "2,000+", label: "African languages spoken", source: "Endangered Languages" },
-              { value: "60%", label: "Of Africa is under 25", source: "UN Population" },
-              { value: "100%", label: "Free on Learn4Africa. Forever.", source: "Our promise" },
-            ].map((stat) => (
-              <div key={stat.label} className="text-center sm:text-left">
-                <p className="font-display text-3xl sm:text-4xl font-bold text-warm-50 mb-1 tabular-nums">{stat.value}</p>
-                <p className="text-sm text-warm-300 leading-snug mb-1">{stat.label}</p>
-                <p className="text-[10px] text-warm-500 uppercase tracking-wide">{stat.source}</p>
-              </div>
-            ))}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
+            <div className="bg-warm-800/60 border border-warm-700/60 rounded-2xl p-6 sm:p-7 text-center sm:text-left">
+              <p className="font-display text-4xl sm:text-5xl font-bold text-warm-50 mb-2 tabular-nums">86%</p>
+              <p className="text-sm text-warm-300 leading-snug">
+                of African children lack quality learning
+              </p>
+            </div>
+            <div className="bg-warm-800/60 border border-warm-700/60 rounded-2xl p-6 sm:p-7 text-center sm:text-left">
+              <p className="font-display text-4xl sm:text-5xl font-bold text-warm-50 mb-2 tabular-nums">52</p>
+              <p className="text-sm text-warm-300 leading-snug">
+                free modules across 6 career tracks
+              </p>
+            </div>
+            <div className="bg-zigama-600 border-2 border-zigama-400 rounded-2xl p-6 sm:p-7 text-center sm:text-left shadow-xl shadow-zigama-900/40">
+              <p className="font-display text-5xl sm:text-6xl font-bold text-white mb-2 tabular-nums">0 RWF</p>
+              <p className="text-sm sm:text-base text-warm-50 font-medium leading-snug">
+                cost to any student. Forever.
+              </p>
+            </div>
           </div>
         </div>
       </section>

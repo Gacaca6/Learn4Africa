@@ -20,8 +20,9 @@ npm run setup                    # installs frontend + backend deps
 npm run dev
 ```
 
-Or use Docker: `docker compose up` brings up MongoDB + the backend.
-Add `--profile ai` to also start Ollama.
+AI is handled entirely by Claude (Anthropic) from inside Convex actions.
+Set `ANTHROPIC_API_KEY` on the Convex deployment — no local AI services
+need to run.
 
 ## Branching + commits
 
