@@ -111,8 +111,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
      */
     async signIn({ account, user, profile }) {
       if (account?.provider !== "google") {
-        // Only Google is active in Stage 1. Credentials path already
-        // returned null above, so this branch just guards the future.
+        // Credentials path already verified password in `authorize`.
         return true;
       }
 
@@ -122,6 +121,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         return false;
       }
 
+      // Best-effort Convex upsert. If it fails (schema drift, prod env
+      // misconfig, network blip), still let the user through. The
+      // session just won't carry a Convex `_id`; the app already gates
+      // Convex queries on `userId` and renders empty state cleanly.
       try {
         const result = await convexServer.mutation(api.users.upsertFromOAuth, {
           email,
@@ -130,17 +133,27 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           authProvider: "google",
         });
 
-        // Convex returns the user's _id + profile fields. Mutate the
-        // NextAuth user object so `jwt()` picks them up.
         (user as any).id = result.id;
         (user as any).authProvider = result.authProvider;
         (user as any).preferredLanguage = result.preferredLanguage || "en";
         (user as any).activeTrackId = result.activeTrackId ?? null;
-        return true;
       } catch (err) {
-        console.error("[auth] Convex user upsert failed", err);
-        return false;
+        const e = err as Error;
+        console.error(
+          "[auth] Convex upsertFromOAuth failed — allowing sign-in anyway",
+          {
+            email,
+            convexUrl: process.env.NEXT_PUBLIC_CONVEX_URL,
+            errorName: e?.name,
+            errorMessage: e?.message,
+            errorStack: e?.stack,
+          },
+        );
+        (user as any).authProvider = "google";
+        (user as any).preferredLanguage = "en";
+        (user as any).activeTrackId = null;
       }
+      return true;
     },
 
     async jwt({ token, user }) {
