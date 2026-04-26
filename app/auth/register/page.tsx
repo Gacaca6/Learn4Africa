@@ -194,11 +194,11 @@ function RegisterInner() {
               <input
                 type="password"
                 required
-                minLength={6}
+                minLength={12}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className="w-full px-4 py-2.5 rounded-lg border border-earth-200 focus:border-warm-500 focus:ring-2 focus:ring-warm-200 outline-none"
-                placeholder="At least 6 characters"
+                placeholder="At least 12 characters, with a letter and a digit"
               />
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

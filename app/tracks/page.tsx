@@ -19,7 +19,6 @@ import {
 } from "@/lib/icons";
 import { useCurriculumStore } from "@/lib/curriculumStore";
 import { TopNav } from "@/components/TopNav";
-import { useAuth } from "@/lib/useAuth";
 import { listTracks } from "@/lib/tracks";
 
 interface TrackSummary {
@@ -95,18 +94,13 @@ export default function TracksPage() {
   const [hydrated, setHydrated] = useState(false);
 
   const trackProgress = useCurriculumStore((s) => s.tracks);
-  const hydrateFromServer = useCurriculumStore((s) => s.hydrateFromServer);
-  const { token, isAuthenticated } = useAuth();
 
   useEffect(() => {
     setHydrated(true);
   }, []);
 
-  useEffect(() => {
-    if (isAuthenticated && token) {
-      hydrateFromServer(token);
-    }
-  }, [isAuthenticated, token, hydrateFromServer]);
+  // Progress hydration handled directly by
+  // Convex useQuery(api.progress.getMyProgress)
 
   // Career tracks are static content bundled with the app — no network
   // round-trip needed. See lib/tracks/ for the loader + JSON sources.

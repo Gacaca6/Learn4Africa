@@ -268,23 +268,29 @@ function cleanResponse(text: string): string {
 // ─── Public API — used by every convex/ai/*.ts file ─────────
 // These signatures never change regardless of provider.
 
+// Internal raw helper — no cleanResponse. Used by askClaudeJSON so JSON
+// string content (asterisks, backticks, etc.) is preserved literally.
+async function askClaudeRaw(
+  system: string,
+  user: string,
+  maxTokens: number,
+  needsReasoning: boolean,
+): Promise<string> {
+  if (activeProvider() === "gemini") {
+    return askGemini_internal(system, user, maxTokens, needsReasoning);
+  }
+  return askClaude_internal(system, user, maxTokens);
+}
+
 export async function askClaude(
   system: string,
   user: string,
   maxTokens: number = AI_MAX_TOKENS,
   needsReasoning: boolean = false,
 ): Promise<string> {
-  if (activeProvider() === "gemini") {
-    const geminiResult = await askGemini_internal(
-      system,
-      user,
-      maxTokens,
-      needsReasoning,
-    );
-    return cleanResponse(geminiResult);
-  }
-  const claudeResult = await askClaude_internal(system, user, maxTokens);
-  return cleanResponse(claudeResult);
+  return cleanResponse(
+    await askClaudeRaw(system, user, maxTokens, needsReasoning),
+  );
 }
 
 export async function askClaudeJSON<T>(
@@ -300,7 +306,11 @@ export async function askClaudeJSON<T>(
     "Start your response with { and end with }. " +
     "Raw JSON only.";
 
-  const raw = await askClaude(jsonSystem, user, maxTokens, needsReasoning);
+  // IMPORTANT: use the raw helper here. cleanResponse strips `*`, `**`,
+  // and backticks — fine for prose, but those characters can legitimately
+  // appear inside JSON string values (quiz options like "2 * 3 = 6",
+  // explanations that quote markdown). Preserve them literally.
+  const raw = await askClaudeRaw(jsonSystem, user, maxTokens, needsReasoning);
 
   try {
     return JSON.parse(raw) as T;
@@ -313,9 +323,13 @@ export async function askClaudeJSON<T>(
     try {
       return JSON.parse(cleaned) as T;
     } catch {
+      // Log the raw response server-side for debugging without leaking
+      // it to the user. The frontend only sees a friendly message.
+      console.warn(
+        `[claude] invalid JSON from ${activeProvider()}: ${raw.substring(0, 200)}`,
+      );
       throw new Error(
-        `AI returned invalid JSON. Provider: ${activeProvider()}. ` +
-          `Raw response: ${raw.substring(0, 200)}`,
+        "Could not parse AI response. Please try again.",
       );
     }
   }
@@ -325,6 +339,10 @@ export async function askClaudeJSON<T>(
  * Multi-turn chat helper — used by the tutor and interview actions.
  * Handles the role-mapping / SDK differences between Claude and Gemini
  * so callers can pass a single unified `{role, content}[]` history.
+ *
+ * Output is run through cleanResponse so chat bubbles never show
+ * literal markdown symbols even if the model slips one in despite the
+ * "no markdown" rule in MWALIMU_SYSTEM.
  */
 export async function askClaudeChat(
   system: string,
@@ -332,10 +350,11 @@ export async function askClaudeChat(
   userMessage: string,
   maxTokens: number = AI_MAX_TOKENS,
 ): Promise<string> {
-  if (activeProvider() === "gemini") {
-    return askGeminiChat_internal(system, history, userMessage, maxTokens);
-  }
-  return askClaudeChat_internal(system, history, userMessage, maxTokens);
+  const raw =
+    activeProvider() === "gemini"
+      ? await askGeminiChat_internal(system, history, userMessage, maxTokens)
+      : await askClaudeChat_internal(system, history, userMessage, maxTokens);
+  return cleanResponse(raw);
 }
 
 // Legacy export — some files may still reference this directly.

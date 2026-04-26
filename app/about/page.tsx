@@ -209,16 +209,16 @@ export default function AboutPage() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <Link
-              href="/create"
+              href="/curriculum/new"
               className="bg-warm-50 text-warm-900 px-6 py-3 rounded-lg text-sm font-semibold hover:bg-white transition-colors"
             >
-              Create a Course
+              Build My Learning Path
             </Link>
             <Link
-              href="/learn"
+              href="/tracks"
               className="bg-warm-800 text-warm-200 px-6 py-3 rounded-lg text-sm font-medium hover:bg-warm-700 transition-colors border border-warm-700"
             >
-              Browse Courses
+              Browse Career Tracks
             </Link>
           </div>
         </div>

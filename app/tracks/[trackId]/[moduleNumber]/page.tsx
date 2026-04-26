@@ -33,6 +33,7 @@ import {
 import { useCurriculumStore } from "@/lib/curriculumStore";
 import { useAuth } from "@/lib/useAuth";
 import { useMwalimuVoice } from "@/lib/useSpeech";
+import { getTrack, getModule } from "@/lib/tracks";
 import { syncTrackStart, syncModuleComplete, syncPortfolioItem } from "@/lib/trackSync";
 import { CelebrationOverlay } from "@/components/CelebrationOverlay";
 import { DiagramView } from "@/components/DiagramView";
@@ -155,28 +156,25 @@ export default function LearningRoomPage() {
   const recordQuizScoreLocal = useCurriculumStore((s) => s.recordQuizScore);
   const addPortfolioItem = useCurriculumStore((s) => s.addPortfolioItem);
 
-  // ── Load module metadata ──────────────────────────────────
+  // ── Load module metadata (static, bundled at build time) ─────
   useEffect(() => {
-    let cancelled = false;
-    async function load() {
-      try {
-        setLoading(true);
-        const res = await fetch(`/api/v1/tracks/${trackId}/modules/${moduleNumber}`);
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const j = (await res.json()) as ModuleResponse;
-        if (!cancelled) {
-          setData(j);
-          setLoading(false);
-        }
-      } catch (e) {
-        if (!cancelled) {
-          setError(e instanceof Error ? e.message : "Failed to load module");
-          setLoading(false);
-        }
-      }
+    setLoading(true);
+    setError(null);
+    const track = getTrack(trackId);
+    const mod = getModule(trackId, moduleNumber);
+    if (!track || !mod) {
+      setError("Module not found");
+      setData(null);
+      setLoading(false);
+      return;
     }
-    load();
-    return () => { cancelled = true; };
+    setData({
+      track_id: track.id,
+      track_title: track.title,
+      total_modules: track.modules.length,
+      module: mod as unknown as Module,
+    });
+    setLoading(false);
   }, [trackId, moduleNumber]);
 
   // ── Start track on mount ──────────────────────────────────
@@ -244,31 +242,33 @@ export default function LearningRoomPage() {
     if (tab === "quiz" && !quiz && !quizLoading) void loadQuiz();
   }, [tab, quiz, quizLoading, loadQuiz]);
 
-  // ── Load flashcards on first open ─────────────────────────
+  // ── Load flashcards on first open (and retry button) ──────
+  const loadFlashcards = useCallback(async () => {
+    if (!data) return;
+    setFlashcardsLoading(true);
+    try {
+      const result = (await flashcardsAction({
+        topic: data.module.why_africa || data.module.title,
+        moduleTitle: data.module.title,
+        count: 8,
+      })) as { flashcards: Flashcard[] };
+      setFlashcards(result.flashcards ?? []);
+      setCardIndex(0);
+      setCardFlipped(false);
+    } catch {
+      setFlashcards([]);
+    } finally {
+      setFlashcardsLoading(false);
+    }
+  }, [data, flashcardsAction]);
+
   useEffect(() => {
-    if (tab !== "flashcards" || !data || flashcards.length > 0 || flashcardsLoading) return;
-    let cancelled = false;
-    (async () => {
-      setFlashcardsLoading(true);
-      try {
-        const result = (await flashcardsAction({
-          topic: data.module.why_africa || data.module.title,
-          moduleTitle: data.module.title,
-          count: 8,
-        })) as { flashcards: Flashcard[] };
-        if (!cancelled) {
-          setFlashcards(result.flashcards ?? []);
-          setCardIndex(0);
-          setCardFlipped(false);
-        }
-      } catch {
-        if (!cancelled) setFlashcards([]);
-      } finally {
-        if (!cancelled) setFlashcardsLoading(false);
-      }
-    })();
-    return () => { cancelled = true; };
-  }, [tab, data, flashcards.length, flashcardsLoading, flashcardsAction]);
+    if (tab === "flashcards" && flashcards.length === 0 && !flashcardsLoading) {
+      void loadFlashcards();
+    }
+    // Only run when entering the tab; loadFlashcards is stable.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tab]);
 
   // ── Handlers ──────────────────────────────────────────────
   const module = data?.module;
@@ -1005,7 +1005,13 @@ export default function LearningRoomPage() {
 
               {!flashcardsLoading && flashcards.length === 0 && (
                 <div className="text-center py-6 text-warm-500">
-                  Mwalimu could not build flashcards right now.
+                  <p className="mb-3">Mwalimu could not build flashcards right now.</p>
+                  <button
+                    onClick={loadFlashcards}
+                    className="px-4 py-2 bg-zigama-600 text-white rounded-lg text-sm font-semibold"
+                  >
+                    Try again
+                  </button>
                 </div>
               )}
           </section>
@@ -1055,6 +1061,17 @@ export default function LearningRoomPage() {
       {/* Sticky complete-module bar */}
       <div className="fixed bottom-0 inset-x-0 safe-bottom z-30 bg-white border-t-2 border-zigama-200 shadow-[0_-4px_16px_-4px_rgba(0,0,0,0.08)]">
         <div className="max-w-5xl mx-auto px-4 sm:px-8 py-3 flex items-center justify-between gap-3">
+          {moduleNumber > 1 && (
+            <Link
+              href={`/tracks/${trackId}/${moduleNumber - 1}`}
+              aria-label="Previous module"
+              className="shrink-0 px-3 sm:px-4 rounded-lg border border-warm-200 text-warm-700 hover:bg-warm-50 text-sm font-semibold flex items-center gap-1.5"
+              style={{ minHeight: "48px" }}
+            >
+              <ArrowLeft className="w-4 h-4" />
+              <span className="hidden sm:inline">Previous</span>
+            </Link>
+          )}
           <div className="min-w-0 flex-1">
             <p className="font-semibold text-warm-900 text-sm truncate">
               {isCompleted ? "Module complete" : "Ready to move on?"}

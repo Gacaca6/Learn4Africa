@@ -35,6 +35,7 @@ import {
 import { useCurriculumStore } from "@/lib/curriculumStore";
 import { useAuth } from "@/lib/useAuth";
 import { useMwalimuVoice } from "@/lib/useSpeech";
+import { getTrack, getModule } from "@/lib/tracks";
 
 interface ChatMessage {
   role: "user" | "assistant";
@@ -87,23 +88,25 @@ export default function MockInterviewPage() {
   );
 
   useEffect(() => {
-    let cancelled = false;
-    async function load() {
-      try {
-        const res = await fetch(
-          `/api/v1/tracks/${trackId}/modules/${moduleNumber}`,
-        );
-        if (!res.ok) return;
-        const j = await res.json();
-        if (!cancelled) setModuleData(j);
-      } catch {
-        // noop
-      }
-    }
-    load();
-    return () => {
-      cancelled = true;
-    };
+    // Static module metadata, bundled at build time.
+    const track = getTrack(trackId);
+    const mod = getModule(trackId, moduleNumber);
+    if (!track || !mod) return;
+    setModuleData({
+      track_id: track.id,
+      track_title: track.title,
+      total_modules: track.modules.length,
+      module: {
+        module_number: mod.module_number,
+        title: mod.title,
+        interview_questions: (mod.interview_questions ?? []).map((q) => ({
+          question: q.question,
+          model_answer: q.model_answer,
+          difficulty: q.difficulty,
+          companies_ask: q.companies_ask,
+        })),
+      },
+    });
   }, [trackId, moduleNumber]);
 
   useEffect(() => {

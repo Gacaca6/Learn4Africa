@@ -20,6 +20,7 @@ import {
 import { useCurriculumStore, PortfolioItem, TrackProgress } from "@/lib/curriculumStore";
 import { TopNav } from "@/components/TopNav";
 import { useAuth } from "@/lib/useAuth";
+import { listTracks } from "@/lib/tracks";
 
 interface TrackSummary {
   id: string;
@@ -36,8 +37,7 @@ export default function PortfolioPage() {
 
   const tracksState = useCurriculumStore((s) => s.tracks);
   const getAllPortfolioItems = useCurriculumStore((s) => s.getAllPortfolioItems);
-  const hydrateFromServer = useCurriculumStore((s) => s.hydrateFromServer);
-  const { user, token, isAuthenticated } = useAuth();
+  const { user } = useAuth();
 
   useEffect(() => {
     setHydrated(true);
@@ -48,29 +48,12 @@ export default function PortfolioPage() {
     if (user?.name && !name) setName(user.name);
   }, [user, name]);
 
-  // Hydrate learner progress from MongoDB when signed in.
-  useEffect(() => {
-    if (isAuthenticated && token) {
-      hydrateFromServer(token);
-    }
-  }, [isAuthenticated, token, hydrateFromServer]);
+  // Progress hydration handled directly by
+  // Convex useQuery(api.progress.getMyProgress)
 
   useEffect(() => {
-    let cancelled = false;
-    async function load() {
-      try {
-        const res = await fetch("/api/v1/tracks");
-        if (!res.ok) return;
-        const data = await res.json();
-        if (!cancelled) setTracks(data.tracks || []);
-      } catch {
-        // noop
-      }
-    }
-    load();
-    return () => {
-      cancelled = true;
-    };
+    // Static track summaries, bundled at build time.
+    setTracks(listTracks());
   }, []);
 
   const items: PortfolioItem[] = hydrated ? getAllPortfolioItems() : [];

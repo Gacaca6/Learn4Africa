@@ -263,9 +263,9 @@ export default function CurriculumViewPage() {
               <Globe className="w-5 h-5 text-warm-700" />
               <span className="text-lg font-semibold tracking-tight text-warm-900">Learn4Africa</span>
             </Link>
-            <Link href="/learn" className="text-sm text-warm-600 hover:text-warm-900 transition-colors flex items-center gap-1">
+            <Link href="/tracks" className="text-sm text-warm-600 hover:text-warm-900 transition-colors flex items-center gap-1">
               <ArrowLeft className="w-4 h-4" />
-              My Learning
+              All tracks
             </Link>
           </div>
         </div>
@@ -842,12 +842,12 @@ function CompletionScreen({ curriculum }: { curriculum: Curriculum }) {
           </span>
         </Link>
         <Link
-          href="/learn"
+          href="/portfolio"
           className="bg-white border border-warm-200/60 rounded-xl p-6 hover:border-zigama-300 transition-colors group"
         >
           <Trophy className="w-6 h-6 text-zigama-500 mb-3" />
-          <h3 className="font-semibold text-warm-900 mb-1">My learning</h3>
-          <p className="text-sm text-warm-500 mb-2">See all your curricula and progress in one place.</p>
+          <h3 className="font-semibold text-warm-900 mb-1">My portfolio</h3>
+          <p className="text-sm text-warm-500 mb-2">See completed modules and progress in one place.</p>
           <span className="text-sm font-semibold text-warm-900 flex items-center gap-1">
             Open <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </span>

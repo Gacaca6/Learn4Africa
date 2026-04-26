@@ -372,8 +372,8 @@ export default function HomePage() {
               <span className="text-warm-300 font-semibold text-sm">Learn4Africa</span>
             </div>
             <div className="flex items-center gap-5 text-xs">
-              <Link href="/learn" className="text-warm-500 hover:text-warm-300 transition-colors">Learn</Link>
-              <Link href="/create" className="text-warm-500 hover:text-warm-300 transition-colors">Create</Link>
+              <Link href="/tracks" className="text-warm-500 hover:text-warm-300 transition-colors">Tracks</Link>
+              <Link href="/curriculum/new" className="text-warm-500 hover:text-warm-300 transition-colors">Build a path</Link>
               <Link href="/tutor" className="text-warm-500 hover:text-warm-300 transition-colors">Tutor</Link>
               <Link href="/about" className="text-warm-500 hover:text-warm-300 transition-colors">About</Link>
             </div>

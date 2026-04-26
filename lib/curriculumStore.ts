@@ -445,76 +445,8 @@ export const useCurriculumStore = create<CurriculumStore>((set, get) => {
       );
     },
 
-    // ── Server sync ───────────────────────────────────────────
-    hydrateFromServer: async (token: string) => {
-      if (!token) return;
-      try {
-        const { apiGet } = await import("./apiClient");
-        const data = await apiGet<{
-          active_track_id: string | null;
-          tracks_progress: Record<string, any>;
-          portfolio_items: any[];
-        }>("/api/v1/users/me/progress", { token });
-
-        const serverTracks: Record<string, TrackProgress> = {};
-        for (const [trackId, raw] of Object.entries(data.tracks_progress || {})) {
-          const r = raw as any;
-          serverTracks[trackId] = {
-            track_id: trackId,
-            started_at: r.started_at || new Date().toISOString(),
-            current_module: r.current_module || 1,
-            completed_modules: (r.completed_modules || []).map(Number),
-            quiz_scores: Object.fromEntries(
-              Object.entries(r.quiz_scores || {}).map(([k, v]) => [
-                Number(k),
-                Number(v),
-              ])
-            ),
-            practice_completed: (r.practice_completed || []).map(Number),
-            interview_practiced: (r.interview_practiced || []).map(Number),
-            portfolio_items: [],
-          };
-        }
-
-        // Bucket portfolio items onto their tracks.
-        for (const item of data.portfolio_items || []) {
-          const tid = item.track_id;
-          if (!tid) continue;
-          if (!serverTracks[tid]) {
-            serverTracks[tid] = emptyTrackProgress(tid);
-          }
-          serverTracks[tid].portfolio_items.push({
-            track_id: tid,
-            track_title: "",
-            module_number: Number(item.module_number),
-            module_title: item.project_name || "",
-            contribution: item.description || "",
-            completed_at: item.completed_at || new Date().toISOString(),
-            notes: item.github_url || undefined,
-          });
-        }
-
-        set((state) => {
-          // Merge: server wins on track fields, local portfolio is kept
-          // if server has nothing yet (so in-flight edits aren't lost).
-          const merged: Record<string, TrackProgress> = { ...state.tracks };
-          for (const [tid, server] of Object.entries(serverTracks)) {
-            const local = state.tracks[tid];
-            merged[tid] = {
-              ...server,
-              portfolio_items:
-                server.portfolio_items.length > 0
-                  ? server.portfolio_items
-                  : local?.portfolio_items || [],
-            };
-          }
-          const next = { ...state, tracks: merged };
-          saveToStorage(snapshot(next));
-          return { tracks: merged };
-        });
-      } catch (err) {
-        console.warn("[store] server hydrate failed", err);
-      }
-    },
+    // Progress hydration handled directly by
+    // Convex useQuery(api.progress.getMyProgress)
+    hydrateFromServer: async (_token: string) => {},
   };
 });

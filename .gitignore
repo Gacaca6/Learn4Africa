@@ -85,3 +85,6 @@ docker-compose.override.yml
 
 # ── Remotion demo video project (kept local, not shipped with the app) ────────
 video-demo/
+
+# Design handoff bundle (local HTML prototypes from claude.ai/design)
+design-handoff/

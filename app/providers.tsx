@@ -10,16 +10,12 @@
 
 import { SessionProvider } from "next-auth/react";
 import type { ReactNode } from "react";
-import { DemoModeBanner } from "@/components/DemoModeBanner";
 import { ConvexClientProvider } from "./ConvexClientProvider";
 
 export function Providers({ children }: { children: ReactNode }) {
   return (
     <SessionProvider>
-      <ConvexClientProvider>
-        <DemoModeBanner />
-        {children}
-      </ConvexClientProvider>
+      <ConvexClientProvider>{children}</ConvexClientProvider>
     </SessionProvider>
   );
 }

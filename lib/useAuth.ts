@@ -4,8 +4,14 @@
  * Learn4Africa — useAuth hook.
  *
  * Thin wrapper over NextAuth's useSession that exposes a shape more
- * convenient for our components: `user`, `token`, `status`, and
- * `isAuthenticated`.
+ * convenient for our components: `user`, `userId` (the Convex _id),
+ * `status`, and `isAuthenticated`.
+ *
+ * Note: there is no separate "backend token" — the NextAuth session
+ * cookie IS the auth surface. Convex queries/mutations that need to
+ * scope by user pass `userId` directly as an argument; the value comes
+ * from `session.user.id` set by the `signIn`/`jwt`/`session` callbacks
+ * in `auth.ts`.
  */
 
 import { useSession } from "next-auth/react";
@@ -24,15 +30,13 @@ export interface AuthUser {
 
 export function useAuth() {
   const { data, status } = useSession();
-  const session = data as unknown as
-    | { backendToken?: string; user: AuthUser }
-    | null;
+  const user = (data?.user as AuthUser | undefined) ?? null;
 
   return {
     status: status as AuthStatus,
     isAuthenticated: status === "authenticated",
     isLoading: status === "loading",
-    user: session?.user ?? null,
-    token: session?.backendToken ?? null,
+    user,
+    userId: user?.id ?? null,
   };
 }

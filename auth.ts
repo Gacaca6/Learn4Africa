@@ -7,11 +7,11 @@
  * mutations.
  *
  * Providers:
- *   1. Google — OAuth, fully wired via Convex.
- *   2. Credentials (email + password) — DISABLED in Stage 1. The old
- *      FastAPI `/api/v1/auth/login` route is gone; email/password will
- *      come back in Stage 2 with bcrypt-in-Convex. Until then the form
- *      returns "Invalid credentials" if submitted.
+ *   1. Google — OAuth, fully wired via Convex (`api.users.upsertFromOAuth`).
+ *   2. Credentials (email + password) — wired via Convex
+ *      `api.passwords.verify` (bcrypt compare). Sign-up uses
+ *      `api.passwords.signUp` from the register page. Password policy
+ *      (12+ chars, letter + digit) is enforced in `convex/passwords.ts`.
  */
 
 import NextAuth, { type DefaultSession } from "next-auth";
@@ -156,7 +156,11 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     async session({ session, token }) {
       const t = token as any;
       if (session.user) {
-        (session.user as any).id = t.userId || "";
+        // Leave `id` undefined when no userId is present. Empty-string
+        // ids would silently pass `String(args.userId)` validation in
+        // Convex handlers and turn into null after `normalizeId`, which
+        // is harder to spot than a clear "no user" signal.
+        (session.user as any).id = t.userId || undefined;
         (session.user as any).authProvider = t.authProvider;
         (session.user as any).preferredLanguage = t.preferredLanguage;
         (session.user as any).activeTrackId = t.activeTrackId ?? null;
